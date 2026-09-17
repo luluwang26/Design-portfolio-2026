@@ -1,0 +1,112 @@
+<svg width="1282" height="768" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 1282 768">
+<rect width="1282" height="768" x="0" y="0" fill="#ffffff"></rect>
+<path d="M164 270.5L1270 270.5" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M164 502.5L1270 502.5" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M164 733.5L1270 733.5" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M164 502.5L1270 502.5" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M164.5 38L164.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M274.5 38L274.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M385.5 38L385.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M496.5 38L496.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M606.5 38L606.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M717.5 38L717.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M827.5 38L827.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M938.5 38L938.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M1049.5 38L1049.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M1159.5 38L1159.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M1270.5 38L1270.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.1" stroke-dasharray="4,2" class="zr2-cls-8"></path>
+<path d="M164.5 38L164.5 733.72" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.22" stroke-linecap="round" class="zr2-cls-8"></path>
+<path d="M164 733.5L1270 733.5" fill="none" stroke="rgb(0,0,25)" stroke-opacity="0.22" stroke-linecap="round" class="zr2-cls-8"></path>
+<path d="M-140 -9l140 0l0 18l-140 0Z" transform="translate(152 153.9533)" fill="none" class="zr2-cls-8"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Inter, Arial, sans-serif;" xml:space="preserve" transform="translate(152 153.9533)" fill="rgb(0,0,0)" fill-opacity="0.85">Invoice created</text>
+<path d="M-140 -9l140 0l0 18l-140 0Z" transform="translate(152 385.86)" fill="none" class="zr2-cls-8"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Inter, Arial, sans-serif;" xml:space="preserve" transform="translate(152 385.86)" fill="rgb(0,0,0)" fill-opacity="0.85">Initial TPV</text>
+<path d="M-140 -9l140 0l0 18l-140 0Z" transform="translate(152 617.7667)" fill="none" class="zr2-cls-8"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Inter, Arial, sans-serif;" xml:space="preserve" transform="translate(152 617.7667)" fill="rgb(0,0,0)" fill-opacity="0.85">Incremental TPV</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(164 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">0</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(274.6 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">10</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(385.2 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">20</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(495.8 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">30</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(606.4 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">40</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(717 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">50</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(827.6 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">60</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(938.2 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">70</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(1048.8 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">80</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(1159.4 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">90</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:14px;font-family:Inter, Arial, sans-serif;" y="7.1399993896484375" transform="translate(1270 741.72)" fill="rgb(0,0,0)" fill-opacity="0.55">100</text>
+<path d="M164 84.3813l1106 0l0 64.2203l-1106 0Z" fill="rgb(77,29,29)" fill-opacity="0" class="zr2-cls-8"></path>
+<path d="M164 316.288l1106 0l0 64.2203l-1106 0Z" fill="rgb(77,29,29)" fill-opacity="0" class="zr2-cls-8"></path>
+<path d="M164 548.1947l1106 0l0 64.2203l-1106 0Z" fill="rgb(77,29,29)" fill-opacity="0" class="zr2-cls-8"></path>
+<path d="M164 159.305l1106 0l0 64.2203l-1106 0Z" fill="rgb(77,29,29)" fill-opacity="0" class="zr2-cls-8"></path>
+<path d="M164 391.2117l1106 0l0 64.2203l-1106 0Z" fill="rgb(77,29,29)" fill-opacity="0" class="zr2-cls-8"></path>
+<path d="M164 623.1184l1106 0l0 64.2203l-1106 0Z" fill="rgb(77,29,29)" fill-opacity="0" class="zr2-cls-8"></path>
+<path d="M164 84.3813l553 0l0 64.2203l-553 0Z" fill="rgb(0,0,0)" fill-opacity="0.3" class="zr2-cls-9"></path>
+<path d="M164 84.3813l553 0l0 64.2203l-553 0Z" fill="url(#zr2-p0)" class="zr2-cls-8"></path>
+<path d="M164 316.288l663.6 0l0 64.2203l-663.6 0Z" fill="rgb(0,0,0)" fill-opacity="0.3" class="zr2-cls-9"></path>
+<path d="M164 316.288l663.6 0l0 64.2203l-663.6 0Z" fill="url(#zr2-p0)" class="zr2-cls-8"></path>
+<path d="M164 548.1947l774.2 0l0 64.2203l-774.2 0Z" fill="rgb(0,0,0)" fill-opacity="0.3" class="zr2-cls-9"></path>
+<path d="M164 548.1947l774.2 0l0 64.2203l-774.2 0Z" fill="url(#zr2-p0)" class="zr2-cls-8"></path>
+<path d="M164 159.305l718.9 0l0 64.2203l-718.9 0Z" fill="rgb(126,140,13)" fill-opacity="0.8" class="zr2-cls-10"></path>
+<path d="M164 159.305l718.9 0l0 64.2203l-718.9 0Z" fill="url(#zr2-p1)" class="zr2-cls-8"></path>
+<path d="M164 391.2117l809.592 0l0 64.2203l-809.592 0Z" fill="rgb(126,140,13)" fill-opacity="0.8" class="zr2-cls-10"></path>
+<path d="M164 391.2117l809.592 0l0 64.2203l-809.592 0Z" fill="url(#zr2-p1)" class="zr2-cls-8"></path>
+<path d="M164 623.1184l936.782 0l0 64.2203l-936.782 0Z" fill="rgb(126,140,13)" fill-opacity="0.8" class="zr2-cls-10"></path>
+<path d="M164 623.1184l936.782 0l0 64.2203l-936.782 0Z" fill="url(#zr2-p1)" class="zr2-cls-8"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:20px;font-family:Inter, Arial, sans-serif;" transform="translate(722 116.4915)" fill="rgb(0,0,0)" fill-opacity="0.78">50</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:20px;font-family:Inter, Arial, sans-serif;" transform="translate(832.6 348.3982)" fill="rgb(0,0,0)" fill-opacity="0.78">60</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:20px;font-family:Inter, Arial, sans-serif;" transform="translate(943.2 580.3048)" fill="rgb(0,0,0)" fill-opacity="0.78">70</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:20px;font-family:Inter, Arial, sans-serif;" transform="translate(887.9 191.4152)" fill="rgb(0,0,0)" fill-opacity="0.85">65</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:20px;font-family:Inter, Arial, sans-serif;" transform="translate(978.592 423.3218)" fill="rgb(0,0,0)" fill-opacity="0.85">73.2</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:20px;font-family:Inter, Arial, sans-serif;" transform="translate(1105.782 655.2285)" fill="rgb(0,0,0)" fill-opacity="0.85">84.7</text>
+<path d="M-8 -4l177.1953 0l0 24.32l-177.1953 0Z" transform="translate(560.4023 8)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#b7b9be" stroke-width="0" class="zr2-cls-8"></path>
+<path d="M3 0L9 0A3 3 0 0 1 12 3L12 9A3 3 0 0 1 9 12L3 12A3 3 0 0 1 0 9L0 3A3 3 0 0 1 3 0Z" transform="translate(560.4023 10.16)" fill="rgb(0,0,0)" fill-opacity="0.3" class="zr2-cls-8"></path>
+<path d="M3 0L9 0A3 3 0 0 1 12 3L12 9A3 3 0 0 1 9 12L3 12A3 3 0 0 1 0 9L0 3A3 3 0 0 1 3 0Z" transform="translate(560.4023 10.16)" fill="url(#zr2-p0)" class="zr2-cls-8"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:16px;font-family:Inter, Arial, sans-serif;" x="17" y="6" transform="translate(560.4023 10.16)" fill="rgb(0,0,0)" fill-opacity="0.55">Legacy</text>
+<path d="M0 -2.16l68.5938 0l0 16.32l-68.5937 0Z" transform="translate(560.4023 10.16)" fill="none" class="zr2-cls-11"></path>
+<path d="M3 0L9 0A3 3 0 0 1 12 3L12 9A3 3 0 0 1 9 12L3 12A3 3 0 0 1 0 9L0 3A3 3 0 0 1 3 0Z" transform="translate(636.9961 10.16)" fill="rgb(126,140,13)" fill-opacity="0.8" class="zr2-cls-8"></path>
+<path d="M3 0L9 0A3 3 0 0 1 12 3L12 9A3 3 0 0 1 9 12L3 12A3 3 0 0 1 0 9L0 3A3 3 0 0 1 3 0Z" transform="translate(636.9961 10.16)" fill="url(#zr2-p1)" class="zr2-cls-8"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:16px;font-family:Inter, Arial, sans-serif;" x="17" y="6" transform="translate(636.9961 10.16)" fill="rgb(0,0,0)" fill-opacity="0.55">Redesign</text>
+<path d="M0 -2.16l84.6016 0l0 16.32l-84.6016 0Z" transform="translate(636.9961 10.16)" fill="none" class="zr2-cls-11"></path>
+<defs >
+<pattern width="1" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(29.999999999999996)" id="zr2-p0">
+<g >
+<path d="M0 -7l1 0l0 2l-1 0Z" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M1 -7l1 0l0 2l-1 0Z" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M0 0l1 0l0 2l-1 0Z" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M1 0l1 0l0 2l-1 0Z" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+</g>
+</pattern>
+<pattern width="16" height="12" patternUnits="userSpaceOnUse" id="zr2-p1">
+<g >
+<path d="M6.4 -3A2.4 2.4 0 1 1 6.4 -3.0002" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M22.4 -3A2.4 2.4 0 1 1 22.4 -3.0002" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M0 3A0 0 0 1 1 0 3" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M14.4 3A2.4 2.4 0 1 1 14.4 2.9998" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M16 3A0 0 0 1 1 16 3" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M30.4 3A2.4 2.4 0 1 1 30.4 2.9998" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M6.4 9A2.4 2.4 0 1 1 6.4 8.9998" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+<path d="M22.4 9A2.4 2.4 0 1 1 22.4 8.9998" fill="rgb(0,0,0)" fill-opacity="0.2"></path>
+</g>
+</pattern>
+</defs>
+<style ><![CDATA[
+.zr2-cls-8:hover {
+pointer-events:none;
+}
+.zr2-cls-9:hover {
+cursor:pointer;
+fill:rgba(0,0,0,0.3);
+}
+.zr2-cls-10:hover {
+cursor:pointer;
+fill:rgba(138,154,14,0.8);
+}
+.zr2-cls-11:hover {
+cursor:pointer;
+fill:rgba(0,0,0,0);
+}
+
+]]>
+
+</style>
+</svg>

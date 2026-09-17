@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>“How it works” in Guided Onboarding — Lulu Wang</title>
+  <meta name="description"
+    content="Bringing product understanding into onboarding so more new customers reach value faster.">
+  <link rel="stylesheet" href="../assets/style.css?v=76">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rock+Salt&display=swap"
+    rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="how-it-works-onboarding.html" aria-current="page">“How it works” in Guided Onboarding</a></li>
+            <li><a href="basic-ftu-redesign.html">Receiver First-Time-Use Redesign</a></li>
+            <li><a href="in-product-sales-connect.html">In-Product Sales Connect</a></li>
+            <li><a href="supplier-onboarding-agent.html">Supplier Onboarding</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="cs-banner cs-banner--proto">
+    <div class="hero-proto">
+      <div class="laptop-mock">
+        <div class="laptop-lid">
+          <div class="laptop-screen proto-fit">
+            <iframe title="Interactive prototype of the &quot;How it works&quot; onboarding walkthrough"
+              src="https://embed.figma.com/proto/2l2Tjm7yYYDeJR0BUOvlQT/2027-Portfolio?node-id=10005-34992&amp;page-id=9623%3A944&amp;starting-point-node-id=10005%3A34992&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;hide-ui=1&amp;embed-host=share"
+              allowfullscreen></iframe>
+            <!-- First frame of the prototype, held over the embed until it has loaded. -->
+            <img class="proto-poster" src="../assets/img/how it works/Loading-proto.png" alt="" aria-hidden="true"
+              width="2880" height="1833" fetchpriority="high">
+          </div>
+        </div>
+        <div class="laptop-base"><span class="laptop-notch"></span></div>
+      </div>
+    </div>
+
+    <!-- Loading toast: springs in from the top of the hero, counts the embed in,
+         then springs back out as the prototype takes over. -->
+    <div class="proto-toast" id="proto-toast" role="status" aria-live="polite">
+      <div class="proto-toast-card">
+        <div class="proto-gauge" style="--stroke-percent: 0">
+          <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <circle class="gauge-track" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <circle class="gauge-fill" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <span class="proto-gauge-num">0</span>
+        </div>
+        <p class="proto-toast-title">Prototype is loading...</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="cs-main cs-main--coral">
+
+    <h1 class="cs-title">“How it works” in Guided Onboarding</h1>
+    <p class="cs-lede">Bringing product understanding into onboarding so more new customers reach value faster.</p>
+
+    <section class="glance-card">
+      <span class="chip chip-accent">At a glance</span>
+      <dl class="glance-list">
+        <dt>Problem:</dt>
+        <dd>When this work began, onboarding was posting negative net adds month over month. Sentiment wise, new trial
+          users signed up believing the product could help, but many never saw enough value to keep going. Workflow
+          wise, the existing onboarding moved new customers straight from signup into setup tasks, before the product
+          had earned enough understanding or trust, which exacerbated the abandon rate.</dd>
+
+        <dt>Design process:</dt>
+        <dd>Research partnership and synthesis → 15-person cross-functional design workshop → concept and Figma
+          prototype → 8-person concept validation → design lock and a staged A/B launch.</dd>
+
+        <dt>Solution scope:</dt>
+        <dd>A skippable, full-screen "How it Works" walkthrough near the top of AP/AR onboarding, personalized by the
+          user's primary goal: paying bills, getting paid, or exploring.</dd>
+
+        <dt>Research:</dt>
+        <dd>~12 moderated customer interviews, dozens of recorded sales discovery calls, an 8-person moderated concept
+          test.</dd>
+
+        <dt>Hypothesis:</dt>
+        <dd>By adding a concise educational walkthrough in onboarding before set up tasks improves comprehension and
+          lifts downstream setup and activation.</dd>
+
+        <dt>Team:</dt>
+        <dd>1 product manager, 1 product designer, 2 researchers, 1 content designer, 2 engineers.</dd>
+      </dl>
+
+      <div class="stat-row">
+        <div class="stat-tile">
+          <span class="stat-num">5–7×</span>
+          <span class="stat-label">Setup completion rate for tour-takers vs. skippers</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">83%</span>
+          <span class="stat-label">Of users who started the tour completed it</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">1.4×</span>
+          <span class="stat-label">Sales calls booked, learners vs. skippers</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">01</span>Context &amp; problem</h2>
+      <p>The existing onboarding moved new customers straight from signup into setup tasks before the product had earned
+        enough understanding or trust. In legacy set up step, 50% of users clicked at least one tile, 39.2% clicked more
+        than one, yet fewer than 7% completed all AP setup tasks during trial. Sync rate, one of the critical retention
+        signals, sat below 12%. Customers were exploring, but not confidently committing to the actions that mattered
+        most.</p>
+      <p>Our hunch was that customers signed up because they believed the platform could help, but many didn't yet
+        understand how it would fit into their workflow, what value they'd get first, or where to start.</p>
+      <p>That framing shaped the design challenge: create a first-run experience that teaches just enough, captures
+        intent, and guides people toward the right next step without overwhelming them.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">02</span>Three ways to find out why</h2>
+
+      <div class="method-tree method-tree--branch">
+        <div class="method-question">Why onboarding was posting negative net adds month over month.</div>
+
+        <!-- Three methods feed up into the question: a stem per card, a shared
+             bus, and one arrow into the box. Drawn in the design's own 820-unit
+             space and scaled to fit, so the stems stay on the card centres at
+             any width. -->
+        <svg class="method-links" viewBox="0 0 820 72" fill="none" aria-hidden="true">
+          <g stroke="#D5D5D5" stroke-width="1.5">
+            <path d="M136 31.5 H674" stroke-dasharray="4 4" />
+            <path d="M136 31.5 V66" stroke-dasharray="4 4" />
+            <path d="M400 31.5 V66" stroke-dasharray="4 4" />
+            <path d="M674 31.5 V66" stroke-dasharray="4 4" />
+            <path d="M400 31.5 V7" stroke-dasharray="4 4" />
+            <path d="M394.5 11 L400 4 L405.5 11" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+          <g fill="#D5D5D5">
+            <circle cx="136" cy="69" r="3" />
+            <circle cx="400" cy="69" r="3" />
+            <circle cx="674" cy="69" r="3" />
+          </g>
+        </svg>
+
+        <div class="method-cards">
+          <div class="method-card">
+            <h3>Talk to customers</h3>
+            <p>Sit in 12 moderated trial user interviews, synthesized independently</p>
+          </div>
+          <div class="method-card">
+            <h3>Sales calls</h3>
+            <p>Listened to dozens of recorded sales calls</p>
+          </div>
+          <div class="method-card">
+            <h3>Cross-functional workshop</h3>
+            <p>Organized and led a 15 people working session to create onboarding flow concepts</p>
+          </div>
+        </div>
+      </div>
+
+      <p>I began by partnering with our researcher on the trial onboarding research plan. The goal was to deeply
+        understand who new customers were, what triggered them to sign up, what they expected the platform to solve, and
+        what barriers kept them from continuing beyond the first 30 days. Key questions include:</p>
+      <ul>
+        <li>What pain or business event triggered the search for a solution?</li>
+        <li>How customers worked before adopting the platform?</li>
+        <li>What "value" meant to them during evaluation?</li>
+        <li>Where they got stuck, hesitated, or dropped off?</li>
+        <li>How they decided whether the platform was worth paying for?</li>
+      </ul>
+
+      <p>We then paired that with dozens of recorded sales qualification and discovery calls, the theme of “A desire for
+        education” started to emerge besides other findings.</p>
+
+      <figure class="cs-figure">
+        <img src="../assets/img/how it works/what customers say.png"
+          alt="Affinity board synthesising what trial customers said about AP onboarding, grouped into intent, misdirected recipients, education, account succession, one-stop shop, and ongoing usage issues.">
+      </figure>
+
+      <div class="quote-card">
+        <span class="chip chip-grey">What customers say about our onboarding</span>
+
+        <blockquote>One participant heard about the product through a connection, so she wanted to know how it worked
+          even before she received an invite link. She said her company would "try it out for 6 months" for new
+          applications to truly "draw the benefits", which indicates a foundational eagerness to learn and evaluate over
+          time.</blockquote>
+
+        <blockquote>Another wanted to know what software we sync with (especially 2-way sync) and how we sync with them.
+          She wasn't aware of the software we support, a key question for her to adopt us.</blockquote>
+
+        <blockquote>A third mentioned that even though she created a trial account, she wasn't aware that the advanced
+          payables product could solve these specific needs for her — education was a big gap.</blockquote>
+      </div>
+
+      <p>We then organized a design-led workshop, gathering 15 designers, researchers, sales, marketing in one room for
+        2 full days to understand user needs and create solution concepts.</p>
+
+      <figure class="cs-figure">
+        <img src="../assets/img/how it works/workshop.png"
+          alt="Workshop artefacts: a design principles board, suggestions from teams, a floating response wall of sticky notes, an inspiration highlights wall, and a sketching wall of concept storyboards.">
+      </figure>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">03</span>Insights &amp; roadmap prioritization</h2>
+      <p>The research surfaced many pain points, but one theme stood out: customers often believed the platform could
+        help them, yet they were missing the "how." The confusion was about how the platform worked, how it mapped to
+        their existing process, and how to judge whether it was the right fit.</p>
+      <p><strong>Two truths were especially important.</strong> First, most new AP customers had their “Aha” moment when
+        talking to sales and watching a hero workflow, then they are convinced that the platform was a good solution.
+        Second, previous onboarding improvements had lifted setup completion in the short term, but those gains hadn't
+        translated into sustained activation and conversion across later cohorts, which helped us avoid optimizing only
+        for shallow task completion.</p>
+      <p>From there, I helped the team prioritize "lack of product knowledge and education" as the first roadmap item,
+        because it had the best balance of impact, speed, and risk. By solving general unfamiliarity with the platform
+        over adding more setup-specific guidance in v1, we will be able to test whether foundational education would
+        unlock stronger activation.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">04</span>Final design &amp; user tests</h2>
+      <p>In practical terms, the design did what a good salesperson or implementation partner does in a live
+        conversation: explain the product in the customer's language before asking them to configure it.</p>
+      <p>You can walk the flow yourself in the live prototype at the top of this page.</p>
+      <p>After I created the concept, I partnered with our researcher to test it with 8 new customers. The strongest
+        signal was that <strong>customers generally understood the intent of the experience</strong>. Several read it as
+        a tutorial or product overview and said it looked simple, useful, and approachable, something they could imagine
+        using as a refresher during their first few weeks with the platform.</p>
+      <p>The test also <strong>surfaced important gaps</strong>:</p>
+      <ul>
+        <li>some users wanted a clearer bridge from the educational tour into setup</li>
+        <li>some wanted deeper proof around integrations, security, payment methods, and cost</li>
+        <li>some expected richer "see it in action" moments, such as a test account, video, or concrete examples</li>
+        <li>a few labels and concepts felt too abstract or too marketing-led — one participant called out "Generate
+          reminders with AI" as less clear than the plain-language "generate reminders"</li>
+      </ul>
+      <p>The clearest signal on sequencing came straight from a participant who expected the tour to hand off directly
+        into setup:</p>
+      <blockquote class="cs-quote">“Expected to see set up guide after 'how it works'.”</blockquote>
+      <p>I used that feedback to sharpen the experience: <strong>keep the walkthrough lightweight, make the path back
+          into setup clearer, improve the explanation of high-scrutiny areas</strong> like payments and trust, and
+        ground the content in the real questions customers ask while evaluating.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">05</span>Design lock &amp; pre-launch audit</h2>
+      <p>As the concept moved toward launch, I shifted from exploration into design lock and pre-launch quality work.
+      </p>
+      <p>Since "How it Works" touched multiple functions at once: Growth, engineering, AR, payments, customer marketing,
+        content, and multi-product adoption. Before launch I aligned the flow across those stakeholders, resolved open
+        questions in content and sequencing, and kept the v1 scope tight enough to ship and to learn from quickly.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">06</span>Key decisions &amp; tradeoffs</h2>
+      <p><strong>Education before prescription.</strong> We prioritized familiarity with the platform over deeper setup
+        guidance in v1, relying on the existing setup guide to carry the next phase.</p>
+      <p><strong>Lightweight and skippable, not an interactive demo.</strong> A sandbox could have answered more
+        detailed "show me" questions, but it would have been significantly more expensive to build. v1 tested whether a
+        concise walkthrough alone could move understanding and behavior.</p>
+      <p><strong>Personalize lightly.</strong> We captured primary intent and reordered the setup guide accordingly, but
+        didn't ask a long series of qualification questions. This reduces both engineering scope and cognitive load.</p>
+      <p><strong>Depth versus clarity.</strong> We deliberately didn't try to answer every downstream setup question
+        here. Implementation specifics and trust-building moments around bank add or sync would need follow-on
+        onboarding work.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">07</span>Outcome &amp; impact</h2>
+      <p>The feature launched in December 2025. The early readout showed the core idea was working. In January 2026,
+        users who selected a tour completed setup at 5–7× the rate of users who skipped it, more than 83% of users who
+        started the educational tour completed it, and learners booked Sales Connect calls at 1.4× the rate of
+        skippers.</p>
+      <p>Just as importantly, the data invalidated a prior hypothesis. We had assumed some users skipped because they
+        were power users ready to move quickly. Instead, users who skipped "How it Works" were not only booking fewer
+        sales calls but also setting up less often, which reframed skipping as a possible signal of under-engagement,
+        not expertise.</p>
+      <p>For me, this project reinforced a <strong>principle I care about</strong> in onboarding design: <strong>before
+          users can trust a workflow, they need to understand the promise behind it.</strong> "How it Works" didn't try
+        to solve every onboarding problem at once, it solved the earlier, more foundational problem of helping customers
+        understand what the platform does, why it matters, and where to begin. That made it a strong first roadmap
+        investment: it created measurable lift, captured intent we previously lacked, and established a clearer
+        foundation for the more prescriptive guided setup work that could come next.</p>
+    </section>
+
+    <nav class="cs-pager cs-pager--single" aria-label="Case study navigation">
+      <a class="pager-link next" href="basic-ftu-redesign.html">
+        <span class="pager-dir">Next →</span>
+        <span class="pager-title">Receiver First-Time-Use Redesign</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">© 2026 Lulu Wang. All rights reserved.</footer>
+
+  <!-- Lightbox: click any figure image to view it at 80% of the viewport width. -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" data-lb-close></div>
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Enlarged image">
+      <button type="button" class="lightbox-close" data-lb-close aria-label="Close image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+      <img class="lightbox-img" id="lightbox-img" alt="">
+    </div>
+  </div>
+
+  <script>
+    // The Figma prototype renders at its native 1440x916. Scale it to fill its
+    // container exactly, so it fits edge to edge with no Figma letterboxing.
+    (function () {
+      var boxes = document.querySelectorAll('.proto-fit');
+      Array.prototype.forEach.call(boxes, function (box) {
+        var frame = box.querySelector('iframe');
+        if (!frame) return;
+        function fit() {
+          frame.style.transform = 'scale(' + (box.clientWidth / 1440) + ')';
+        }
+        fit();
+        window.addEventListener('resize', fit);
+        if (window.ResizeObserver) new ResizeObserver(fit).observe(box);
+      });
+    })();
+  </script>
+
+  <script>
+    // The poster is the prototype's own first frame, so the laptop shows the
+    // real opening screen from the moment the page paints, and the viewer
+    // never sees Figma's blank canvas or its loading bar.
+    //
+    // The poster covers the embed and swallows clicks until the prototype is
+    // ready, so nobody can interact with a half-loaded player.
+    //
+    // Figma gives us nothing to wait ON: the embed posts no readiness message
+    // (verified — zero postMessages from any origin over 65s), and same-origin
+    // rules prevent watching its loading bar from out here. The iframe's own
+    // load event only means the document arrived, not that the player has
+    // finished. So the handover is a timed hold after that event.
+    //
+    // The same hold drives the loading toast's gauge, so the ring reaches 100%
+    // at the exact moment the prototype takes over. Change it in one place.
+    (function () {
+      var HOLD_AFTER_LOAD_MS = 5000;
+
+      var boxes = document.querySelectorAll('.proto-fit');
+      if (!boxes.length) return;
+
+      var toast = document.getElementById('proto-toast');
+      var gauge = toast && toast.querySelector('.proto-gauge');
+      var num = toast && toast.querySelector('.proto-gauge-num');
+
+      function reveal(box) { box.classList.add('proto-ready'); }
+
+      var EXIT_MS = 300;
+
+      // Counts the ring from 0 to 100 across the hold, then springs the toast
+      // back out. rAF paints the sweep smoothly, but completion is owned by a
+      // plain timer: browsers pause rAF in background tabs, and without this
+      // the gauge would stall mid-count and leave the prototype masked for
+      // good. Same reason the toast is hidden on a timer rather than on
+      // animationend — under prefers-reduced-motion there is no animation, so
+      // that event would never arrive.
+      function runGauge(done) {
+        var start = performance.now();
+        var finished = false;
+
+        function set(pct) {
+          if (!gauge || !num) return;
+          gauge.style.setProperty('--stroke-percent', pct);
+          num.textContent = pct;
+        }
+
+        function finish() {
+          if (finished) return;
+          finished = true;
+          set(100);
+          done();
+          if (!toast) return;
+          toast.setAttribute('data-state', 'out');
+          setTimeout(function () { toast.setAttribute('hidden', ''); }, EXIT_MS);
+        }
+
+        (function step() {
+          if (finished) return;
+          var pct = Math.min(100, Math.round(((performance.now() - start) / HOLD_AFTER_LOAD_MS) * 100));
+          set(pct);
+          if (pct < 100) requestAnimationFrame(step);
+        })();
+
+        setTimeout(finish, HOLD_AFTER_LOAD_MS);
+      }
+
+      Array.prototype.forEach.call(boxes, function (box) {
+        var frame = box.querySelector('iframe');
+        var poster = box.querySelector('.proto-poster');
+        if (!frame || !poster) return;
+
+        // The embed can fire load more than once; only ever count in once.
+        var started = false;
+
+        // If the embed never loads, the poster and toast stay up — showing the
+        // first frame beats showing a broken player.
+        frame.addEventListener('load', function () {
+          if (started) return;
+          started = true;
+          runGauge(function () { reveal(box); });
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // Click any content image to open it in a lightbox at 80% of the viewport width.
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      var closeBtn = lb.querySelector('.lightbox-close');
+      var lastFocus = null;
+
+      // Every image in the article body. The hero poster sits outside .cs-main,
+      // so the prototype is never swallowed by the lightbox.
+      var targets = document.querySelectorAll('.cs-main img');
+
+      Array.prototype.forEach.call(targets, function (img) {
+        img.classList.add('zoomable');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'Enlarge image: ' + (img.alt || 'image'));
+        img.addEventListener('click', function () { open(img); });
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+        });
+      });
+
+      function open(img) {
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt || '';
+        lastFocus = document.activeElement;
+        lb.removeAttribute('hidden');
+        document.body.classList.add('lb-open');
+        closeBtn.focus();
+      }
+
+      function close() {
+        lb.setAttribute('hidden', '');
+        document.body.classList.remove('lb-open');
+        lbImg.removeAttribute('src');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      lb.addEventListener('click', function (e) {
+        if (e.target.closest('[data-lb-close]')) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (lb.hasAttribute('hidden')) return;
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); }
+      });
+    })();
+  </script>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

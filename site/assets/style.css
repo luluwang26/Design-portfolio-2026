@@ -1,0 +1,3385 @@
+/* ============================================================
+   Lulu Wang — Portfolio
+   Calm neutrals + two vivid accents (coral, violet).
+   Type: Plus Jakarta Sans (self-hosted variable font).
+   ============================================================ */
+
+
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --ink: #17171c;
+  --muted: #242429;
+  --line: #e7e4dd;
+
+  /* Vivid accent 1 — coral. Big numbers, links, emphasis. */
+  --accent: #E16A54;
+  --accent-ink: #E16A54;
+  /* darker coral for body-size text (contrast) */
+  --accent-soft: #fcf4f2;
+  --accent-ink-tpv: #E16A54;
+  /* darker coral for body-size text (contrast) */
+  --accent-soft-tpv: #f4f2fd;
+
+  /* Vivid accent 2 — violet. Eyebrows and tags, used sparingly. */
+  --violet: #120601f1;
+  --violet-soft: #f5f5f5;
+
+  /* subtle accent — yellow. Used for subtle elements. */
+  --green: #E9EDC9;
+  --green-soft: #F8F9ED;
+  --blue: #D2E0FB;
+  --pink: #F8E8EE;
+  --butter: #FBF0D4;
+  --lilac: #EAE5F7;
+  --mint: #DFEEE6;
+  --white: #FFFFFF;
+
+
+  --radius: 16px;
+  --maxw: 1440px;
+  --prose: 46rem;
+
+  --font: "", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* ...other vars */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", normal, var(--font);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+a {
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Navigation ---------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.nav-logo {
+  height: 36px;
+  object-fit: cover;
+}
+
+.nav-name {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  font-size: 15.5px;
+}
+
+.nav-name:hover {
+  text-decoration: none;
+  color: var(--accent-ink);
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* ---------- Home: hero ---------- */
+
+.hero {
+  padding: 72px 0 56px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 48px;
+  align-items: start;
+}
+
+/* While the chat is hidden, let the intro take the full row. */
+.hero-grid:not(:has(.chat)) {
+  grid-template-columns: 1fr;
+}
+
+.hero-intro {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.hero-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: #f3f3f3;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin: 0 0 20px;
+}
+
+.hero h1 {
+  font-size: clamp(1.54rem, 3.85vw, 2.52rem);
+  font-family: "Carter One", normal, var(--font);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+  margin: 0 0 20px;
+  max-width: 18em;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent-ink-tpv);
+}
+
+.hero .sub {
+  font-size: 1rem;
+  font-family: "Inter", normal, var(--font);
+  color: var(--muted);
+  max-width: 36em;
+  margin: 0 0 14px;
+}
+
+.contact {
+  margin-top: 14px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact a {
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+
+/* ---------- Hero chat (Q&A) ---------- */
+
+.chat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 14px 36px -24px rgba(23, 23, 28, 0.25);
+}
+
+.chat-head {
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--violet);
+}
+
+.chat-log {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  min-height: 120px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.msg {
+  max-width: 88%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+.msg.bot {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+}
+
+.msg.user {
+  background: var(--violet-soft);
+  color: var(--ink);
+  border-bottom-right-radius: 4px;
+  align-self: flex-end;
+}
+
+.msg.typing {
+  color: var(--muted);
+}
+
+.chat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 16px 12px;
+}
+
+.chat-chips button {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--violet-soft);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.chat-chips button:hover {
+  border-color: var(--ink);
+}
+
+.chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px 16px;
+  border-top: 1px solid var(--line);
+}
+
+.chat-form input {
+  flex: 1;
+  font: inherit;
+  font-size: 14.5px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 16px;
+  outline: none;
+  min-width: 0;
+}
+
+.chat-form input:focus {
+  border-color: var(--accent);
+}
+
+.chat-form button {
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: 9px 18px;
+  cursor: pointer;
+}
+
+.chat-form button:hover {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- Section headers ---------- */
+
+.section {
+  padding: 40px 0 24px;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.section-head h2 {
+  font-size: 1.6rem;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.section-head .note {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.lock {
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+
+/* ---------- Featured cards ---------- */
+
+/* Two project tiles per row (reference: pratibhajoshi.com). */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  border: 0px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  color: var(--ink);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+#basic-ftu-redesign {
+  background: var(--white);
+}
+
+#in-product-sales-connect {
+  background: var(--white);
+}
+
+#how-it-works-onboarding {
+  background: var(--white);
+}
+
+#remediable-payments {
+  background: var(--white);
+}
+
+
+#altitude-design-system {
+  background: var(--white);
+}
+
+
+.card:hover {
+  text-decoration: none;
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  box-shadow: 0 14px 36px -18px rgba(23, 23, 28, 0.25);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.card .tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--violet);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.45rem;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.card .metrics {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 2px;
+}
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 11px 22px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.card-cta:hover {
+  text-decoration: none;
+  border-color: var(--ink);
+}
+
+.card:hover .card-cta {
+  transform: translateX(2px);
+}
+
+.card-cta .arrow {
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+.card-media {
+  order: -1;
+  /* image leads the tile, matching the reference layout */
+  align-self: stretch;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+  border: 1px dashed color-mix(in srgb, var(--accent) 40%, var(--line));
+  border-radius: var(--radius);
+  color: var(--accent-ink);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+}
+
+.card-media:has(img) {
+  border: none;
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 0;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.chipmetric {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+.chiptpv {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+/* ---------- Archive list ---------- */
+
+/* Two tiles per row, matching the featured grid. */
+.archive {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 24px;
+  align-items: center;
+  padding: 28px 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.row:hover {
+  text-decoration: none;
+  background: var(--surface);
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  box-shadow: 0 14px 36px -18px rgba(23, 23, 28, 0.25);
+}
+
+.row:hover .row-title {
+  color: var(--accent-ink);
+}
+
+.row-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.025em;
+  transition: color 0.15s ease;
+}
+
+.row-sub {
+  grid-column: 1;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.row .metrics {
+  grid-column: 1;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.row .arrow {
+  grid-row: 1 / -1;
+  grid-column: 2;
+  align-self: center;
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: 40px 0 56px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- Case study pages ---------- */
+
+/* Center the reading column within the wide page wrap.
+   Scoped to direct children of .wrap so home-page article.card is unaffected. */
+.wrap>article {
+  max-width: var(--prose);
+  margin: 0 auto;
+}
+
+.case-hero {
+  padding: 72px 0 40px;
+  max-width: var(--maxw);
+}
+
+.case-cover {
+  /* Break out of the narrow prose column to match the home-page card width. */
+  width: min(calc(100vw - 48px), calc(var(--maxw) - 48px));
+  max-width: none;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  margin-bottom: 28px;
+}
+
+.case-hero h1 {
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 16px;
+}
+
+.case-hero .lede {
+  font-size: 1.25rem;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.case-hero .meta {
+  font-size: 16px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.case-hero .meta strong {
+  color: var(--ink);
+}
+
+/* Big stat band */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 40px 0 8px;
+}
+
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+
+.stat .num {
+  display: block;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.stat .label {
+  display: block;
+  margin-top: 6px;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* At a glance */
+
+.glance {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin: 32px 0 8px;
+}
+
+.glance h2 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin: 0 0 16px;
+}
+
+.glance dl {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 10px 24px;
+  margin: 0;
+  font-size: 15.5px;
+}
+
+.glance dt {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.glance dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Prose */
+
+.prose {
+  max-width: var(--prose);
+  padding: 24px 0 48px;
+}
+
+.prose h2 {
+  font-size: 1.60rem;
+  letter-spacing: -0.025em;
+  margin: 56px 0 16px;
+}
+
+.prose h2 .kicker {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.prose p {
+  margin: 0 0 18px;
+  font-size: 16px;
+}
+
+.prose strong {
+  font-weight: 700;
+}
+
+.prose ul {
+  padding-left: 22px;
+  margin: 0 0 18px;
+}
+
+.prose li {
+  margin-bottom: 8px;
+}
+
+.prose blockquote {
+  margin: 24px 0;
+  padding: 16px 24px;
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--ink);
+  font-size: 1.02rem;
+}
+
+.prose blockquote p {
+  margin: 0;
+}
+
+.prose blockquote cite {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.prose .footnote {
+  font-size: 14.5px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: 28px;
+}
+
+/* Tables */
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 15px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.prose thead th {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg);
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.prose td.delta {
+  font-weight: 700;
+  color: var(--accent-ink);
+  white-space: nowrap;
+}
+
+/* Figures (for screenshots you add later) */
+
+.prose figure {
+  margin: 28px 0;
+}
+
+.prose figure img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  display: block;
+}
+
+.prose figcaption {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* Interactive embeds (Figma / FigJam) */
+
+.prose .embed {
+  margin: 32px 0;
+}
+
+.prose .embed-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.prose .embed-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .prose .embed-frame {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Prev / next pagination */
+
+.pagination {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: var(--prose);
+  margin: 0 auto;
+  padding-bottom: 64px;
+}
+
+.page-link {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+
+.page-link:hover {
+  text-decoration: none;
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+}
+
+.page-link .dir {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.page-link .title {
+  font-weight: 700;
+  font-size: 15.5px;
+}
+
+.page-link.next {
+  text-align: right;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .cards,
+  .archive {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    gap: 20px;
+    padding: 28px;
+  }
+
+  .card-media {
+    min-height: 220px;
+  }
+
+  .row {
+    padding: 22px 24px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .glance dl {
+    grid-template-columns: 1fr;
+    gap: 2px 0;
+  }
+
+  .glance dd {
+    margin-bottom: 12px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .pagination {
+    grid-template-columns: 1fr;
+  }
+
+  .page-link.next {
+    text-align: left;
+  }
+}
+
+/* ============================================================
+   Homepage 2027 redesign
+   Header band + sticky rail + blog-style cards + contact form.
+   Scoped to home-page classes so case-study pages are unaffected.
+   ============================================================ */
+
+:root {
+  --n900: #171717;
+  --n700: #404040;
+  --n600: #525252;
+  --n500: #737373;
+  --n300: #d4d4d4;
+  --n200: #e5e5e5;
+  --hand-ink: #494545;
+  /* Retired from the homepage — the design replaced teal with neutral ink on
+     a warm-grey chip. Still referenced by the contact form below. */
+  --teal: #3a7a7a;
+  --teal-hover: #33706f;
+  --teal-soft: rgba(169, 202, 202, 0.15);
+
+  /* Homepage chips: warm grey field, near-black ink. */
+  --chip-field: #F6F6F3;
+  --chip-ink: #1F1F1E;
+  --card-radius: 8px;
+  --shadow-lg: 0 4px 6px -2px rgba(0, 0, 0, 0.03), 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --font-display: "Rock Salt", cursive;
+  /* headings */
+  --font-hand: "Inter", var(--font);
+  /* substitute for Figma Hand */
+}
+
+/* ---------- Header band ---------- */
+
+.home-header {
+  padding: 56px 0 40px;
+}
+
+.home-header-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: 280px;
+  padding-right: 0;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.hh-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.hh-intro {
+  min-width: 0;
+}
+
+.hh-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--hand-ink);
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+  width: fit-content;
+}
+
+.hh-lede {
+  font-family: var(--font-hand);
+  color: var(--hand-ink);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  max-width: 34em;
+  width: fit-content;
+  margin: 0;
+}
+
+.hh-actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* "A fact about me" — animated shiny text pill.
+   Ported from Magic UI's animated-shiny-text component:
+   a translucent label with a highlight gradient clipped to the glyphs,
+   swept across by animating background-position. */
+
+.fact-btn {
+  --shiny-width: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 999px;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+}
+
+.fact-btn:hover {
+  background: #e5e5e5;
+}
+
+.fact-btn:focus-visible {
+  outline: 2px solid var(--n700);
+  outline-offset: 2px;
+}
+
+.shiny-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
+  /* Translucent so the clipped gradient behind reads through as a shimmer. */
+  color: rgba(82, 82, 82, 0.7);
+  background-image: linear-gradient(to right,
+      transparent,
+      rgba(0, 0, 0, 0.8) 50%,
+      transparent);
+  background-size: var(--shiny-width) 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shiny-text 8s infinite;
+  transition: color 0.3s ease-out;
+}
+
+.fact-btn:hover .shiny-text {
+  color: #525252;
+}
+
+.shiny-arrow {
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fact-btn:hover .shiny-arrow {
+  transform: translateX(2px);
+}
+
+@keyframes shiny-text {
+
+  0%,
+  90%,
+  100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+  }
+
+  30%,
+  60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .shiny-text,
+  .shiny-arrow {
+    animation: none;
+    transition: none;
+  }
+}
+
+.fact-text {
+  font-family: var(--font-hand);
+  color: var(--hand-ink);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 24em;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.socials a {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.socials a:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.socials img,
+.socials svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* ---------- Full-bleed dividers ---------- */
+
+.home-divider {
+  height: 1px;
+  background: var(--n200);
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.rule {
+  border: 0;
+  height: 1px;
+  background: var(--n200);
+  width: 100%;
+  margin: 8px 0 48px;
+}
+
+/* ---------- Two-column layout ---------- */
+
+.home-layout {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 40px 40px 0;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.rail {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.rail-logos {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.rail-logos img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+.rail-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.badge {
+  font-family: "Inter", var(--font);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--chip-ink);
+  background: var(--chip-field);
+  border-radius: 16px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+
+/* ---------- Blog-style work cards ---------- */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.post-card {
+  background: #fff;
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 10px -4px rgba(0, 0, 0, 0.05), 0 20px 28px -6px rgba(0, 0, 0, 0.12);
+}
+
+.post-card-link {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px 24px 32px;
+  color: inherit;
+  height: 100%;
+}
+
+.post-card-link:hover {
+  text-decoration: none;
+}
+
+.post-media {
+  height: 240px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+}
+
+.post-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Per-card tints, sampled from the design. Each matches its project's own
+   accent, so a card reads as the same colour family as the page it opens. */
+#how-it-works-onboarding .post-media {
+  background: #FCEFE9;
+}
+
+#basic-ftu-redesign .post-media {
+  background: #E9EDC9;
+}
+
+#in-product-sales-connect .post-media {
+  background: #E4F6F7;
+}
+
+
+#supplier-onboarding-agent .post-media {
+  background: #E9EDC9;
+}
+
+#altitude-design-system .post-media {
+  background: #F9F9F9;
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-tag {
+  font-family: "Inter", var(--font);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin: 0;
+}
+
+.post-headrow {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.post-title {
+  flex: 1;
+  font-family: "Inter", var(--font);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--n900);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.post-arrow {
+  flex-shrink: 0;
+  padding-top: 4px;
+  color: var(--n900);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.post-arrow svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.post-card:hover .post-arrow {
+  color: var(--accent-ink);
+  transform: translate(2px, -2px);
+}
+
+.post-desc {
+  font-family: "Inter", var(--font);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--n600);
+  margin: 0;
+}
+
+.post-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Contact form ---------- */
+
+.contact {
+  max-width: 512px;
+  padding-bottom: 8px;
+}
+
+.contact-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--hand-ink);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  margin: 0 0 48px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contact-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-family: "Inter", var(--font);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--n700);
+}
+
+.field input,
+.field textarea {
+  font-family: "Inter", var(--font);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--n900);
+  background: #fff;
+  border: 1px solid var(--n300);
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow-xs);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s ease;
+}
+
+.field textarea {
+  min-height: 154px;
+  resize: vertical;
+  padding: 10px 14px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--n500);
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--teal);
+}
+
+.contact-submit {
+  font-family: "Inter", var(--font);
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  background: var(--teal);
+  border: 1px solid var(--teal);
+  border-radius: 8px;
+  padding: 12px 20px;
+  box-shadow: var(--shadow-xs);
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s ease;
+}
+
+.contact-submit:hover {
+  background: var(--teal-hover);
+}
+
+.contact-note {
+  font-size: 14px;
+  color: var(--n600);
+  margin: 0;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 40px;
+  color: var(--n500);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ---------- Home responsive ---------- */
+
+@media (max-width: 900px) {
+  .home-header {
+    padding: 40px 0 32px;
+  }
+
+  .home-header-inner {
+    flex-direction: column;
+    gap: 28px;
+    padding: 0 24px;
+  }
+
+  .hh-avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hh-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px 28px;
+  }
+
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 32px 24px 0;
+  }
+
+  .rail {
+    position: static;
+    gap: 24px;
+  }
+
+  .rail-logos {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .rail-badges {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .post-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .post-card-link {
+    gap: 24px;
+  }
+}
+
+/* ============================================================
+   Case study 2027 — Receiver First-Time-Use Redesign
+   Figma: 2027 Portfolio / node 9697-6427
+   Scoped to cs-* classes so older case-study pages are unaffected.
+   ============================================================ */
+
+:root {
+  --olive: #7E8C0D;
+  --olive-tint: #F8F9ED;
+  --sage: #E9EDC9;
+  --rose-tint: #FFF4F4;
+  --rose-ink: #E06666;
+  --coral-ink: #EF7343;
+  --coral-tint: #FCEFEA;
+  --indigo-ink: #4841A3;
+  --indigo-tint: #F0F0F8;
+  --plum-ink: #6A2663;
+  --plum-tint: #FFF2FE;
+  --grey-tint: #FAFAFA;
+  --cs-col: 820px;
+
+  /* Per-case-study accent. Section numbers, stat tiles and method cards read
+     these, so a page can be re-themed by overriding the pair on .cs-main. */
+  --cs-accent: var(--olive);
+  --cs-accent-tint: var(--olive-tint);
+}
+
+/* Coral-themed case study (Trial User Guided Onboarding). */
+.cs-main--coral {
+  --cs-accent: var(--coral-ink);
+  --cs-accent-tint: var(--coral-tint);
+}
+
+/* Indigo-themed case study (In-Product Sales Connect). */
+.cs-main--indigo {
+  --cs-accent: var(--indigo-ink);
+  --cs-accent-tint: var(--indigo-tint);
+}
+
+/* Plum-themed case study (Supplier Onboarding). */
+.cs-main--plum {
+  --cs-accent: var(--plum-ink);
+  --cs-accent-tint: var(--plum-tint);
+}
+
+/* The Supplier Onboarding design keeps its evidence cards indigo while the rest
+   of the page runs plum, so re-point the accent pair for that subtree only. */
+.method-tree--indigo {
+  --cs-accent: var(--indigo-ink);
+  --cs-accent-tint: var(--indigo-tint);
+}
+
+/* ---------- Top nav ---------- */
+
+/* Design: 1440x80 bar, white, 1px #F5F5F5 rule, with the avatar and links
+   centred as one group — 50px avatar, 32px gap, then 20px between links. */
+.cs-nav {
+  border-bottom: 1px solid #F5F5F5;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.cs-nav-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  min-height: 80px;
+  padding: 15px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.cs-brand img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.cs-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Every item — links and the dropdown button alike — gets the same box model.
+   Mixing `display: block` links with an `inline-flex` button left the button's
+   text ~0.84px higher, which is enough at 15px to land it on a different
+   subpixel grid and make neighbouring words antialias differently. */
+.cs-nav-links a,
+.cs-nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Inter", var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  color: #525252;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cs-nav-links a:hover,
+.cs-nav-trigger:hover {
+  color: var(--n900);
+  text-decoration: none;
+}
+
+/* ---------- Projects dropdown ---------- */
+
+/* A flex container, not a block: the other four items are direct flex children
+   of .cs-nav-links, so without this the trigger would sit on this wrapper's
+   text baseline and land ~0.84px above its neighbours. */
+.cs-nav-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cs-nav-trigger {
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.cs-nav-trigger svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  transition: transform 0.18s ease;
+}
+
+.cs-nav-trigger[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+/* Sized to its longest title so each project reads as one line. */
+.cs-nav-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  min-width: 240px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--n200);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.22);
+}
+
+.cs-nav-dropdown[hidden] {
+  display: none;
+}
+
+.cs-nav-dropdown a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.cs-nav-dropdown a:hover,
+.cs-nav-dropdown a:focus-visible {
+  background: var(--cs-accent-tint);
+  color: var(--cs-accent);
+}
+
+/* The page you are already on, marked in the menu. */
+.cs-nav-dropdown a[aria-current="page"] {
+  color: var(--cs-accent);
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .cs-nav-inner {
+    padding: 12px 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+    min-height: 0;
+  }
+
+  .cs-nav-links {
+    gap: 14px;
+  }
+
+  .cs-brand img {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Too narrow for one-line titles: let them wrap and stay on screen. */
+  .cs-nav-dropdown {
+    width: auto;
+    max-width: calc(100vw - 32px);
+  }
+
+  .cs-nav-dropdown a {
+    white-space: normal;
+  }
+}
+
+/* ---------- Full-bleed banner ---------- */
+
+.cs-banner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  background: #E9EDC9;
+}
+
+.cs-banner img {
+  display: block;
+  width: 85%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  height: auto;
+}
+
+/* Photographic hero (How it works): full-bleed and cropped to the design's
+   1440x818 band. The design keeps the TOP of the 4:3 photo and trims the
+   bottom, so anchor the crop to the top rather than the default centre.
+   Scoped with a modifier so the FTU banner is untouched. */
+/* Full-bleed: run edge to edge, ignoring the page's max width and padding. */
+.cs-banner--bleed {
+  max-width: none;
+  padding: 0;
+}
+
+.cs-banner--bleed img {
+  max-width: none;
+}
+
+/* Hold every image hero to the same band height across case studies, so the
+   pages open identically. 5464x2540 is the FTU source's own shape, which sets
+   the reference. Sources that are taller get cropped into it; the supplier art
+   carries ~380px of its own background margin top and bottom, so the crop
+   trims padding rather than artwork. */
+.cs-banner--band img {
+  aspect-ratio: 5464 / 2540;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Additionally crop a tall source to the design's band. Only needed where the
+   source is not already banner-shaped (the How it works photo is 4:3). */
+.cs-banner--photo img {
+  aspect-ratio: 1440 / 818;
+  object-fit: cover;
+  object-position: 50% 0%;
+}
+
+/* ---------- Reading column ---------- */
+
+.cs-main {
+  max-width: var(--cs-col);
+  margin: 0 auto;
+  padding: 56px 24px 24px;
+  font-family: "Inter", var(--font);
+  color: var(--n900);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cs-title {
+  font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0 0 32px;
+}
+
+.cs-lede {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--n700);
+  margin: -20px 0 32px !important;
+}
+
+.cs-section {
+  margin: 0 0 56px;
+}
+
+.cs-section h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.sec-num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cs-accent);
+  letter-spacing: 0.02em;
+}
+
+.cs-main p {
+  margin: 0 0 18px;
+  color: var(--n900);
+}
+
+.cs-main ul {
+  margin: 0 0 18px;
+  padding-left: 22px;
+}
+
+.cs-main li {
+  margin-bottom: 10px;
+}
+
+.cs-main em {
+  font-style: italic;
+}
+
+/* ---------- Chips ---------- */
+
+.chip {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  border-radius: 16px;
+  padding: 4px 12px;
+  margin-bottom: 20px;
+}
+
+.chip-olive {
+  color: var(--olive);
+  background: var(--olive-tint);
+}
+
+/* Follows whatever accent the page is themed with. */
+.chip-accent {
+  color: var(--cs-accent);
+  background: var(--cs-accent-tint);
+}
+
+.chip-grey {
+  color: #585858;
+  background: #E9E9E9;
+}
+
+.chip-rose {
+  color: var(--rose-ink);
+  background: var(--rose-tint);
+}
+
+/* ---------- At a glance ---------- */
+
+.glance-card {
+  border: 1px solid var(--n200);
+  border-radius: var(--card-radius);
+  padding: 28px;
+  margin: 0 0 56px;
+}
+
+.glance-list {
+  margin: 0;
+}
+
+.glance-list dt {
+  font-weight: 700;
+  display: inline;
+}
+
+.glance-list dd {
+  display: inline;
+  margin: 0;
+}
+
+.glance-list dd::after {
+  content: "";
+  display: block;
+  height: 18px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.stat-tile {
+  background: var(--cs-accent-tint);
+  border-radius: var(--card-radius);
+  padding: 20px;
+}
+
+.stat-num {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--cs-accent);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ---------- Method tree ---------- */
+
+.method-tree {
+  margin: 28px 0;
+}
+
+.method-question {
+  max-width: 320px;
+  margin: 0 auto;
+  border: 1px solid var(--n200);
+  border-radius: var(--card-radius);
+  padding: 18px 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.method-connector {
+  height: 28px;
+  border-left: 1px dashed var(--n300);
+  width: 0;
+  margin: 0 auto;
+}
+
+.method-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.method-card {
+  background: var(--cs-accent-tint);
+  border-radius: var(--card-radius);
+  padding: 18px 20px;
+}
+
+.method-card h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cs-accent);
+}
+
+.method-card p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* ---------- Branching variant ---------- */
+
+/* The design lays this out across the full 820px column rather than the padded
+   reading measure, which is what keeps each card title on one line. Reclaim
+   .cs-main's 24px side padding to match. */
+.method-tree--branch {
+  width: calc(100% + 48px);
+  margin-left: -24px;
+}
+
+/* The methods feed UP into the question rather than hanging below it, and the
+   cards size to their content. Scoped to a modifier so the FTU tree, which
+   shares these classes, keeps its own top-down layout. */
+.method-tree--branch .method-question {
+  max-width: 387px;
+  border-color: #D4D4D4;
+  border-radius: 8px;
+  padding: 25px;
+  font-size: 17px;
+  line-height: 24px;
+}
+
+/* Scales uniformly, so the stems stay locked to the card centres below. */
+.method-links {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The design's card widths are content-driven and unequal (272/222/292 with
+   17px gutters in an 820 frame). Expressing both as ratios of the same total
+   reproduces it exactly and keeps it fluid: 17/820 = 2.0732%. */
+.method-tree--branch .method-cards {
+  grid-template-columns: 272fr 222fr 292fr;
+  gap: 2.0732%;
+}
+
+.method-tree--branch .method-card {
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.method-tree--branch .method-card h3 {
+  font-size: 17px;
+  line-height: 24px;
+}
+
+.method-tree--branch .method-card p {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--n900);
+}
+
+/* ---------- Quote + cause cards ---------- */
+
+.quote-card {
+  background: var(--grey-tint);
+  border-radius: var(--card-radius);
+  padding: 28px;
+  margin: 28px 0;
+}
+
+.quote-lead {
+  font-weight: 700;
+  margin: 0 0 10px !important;
+}
+
+.quote-card blockquote {
+  margin: 0 0 24px;
+  padding-left: 16px;
+  border-left: 3px solid var(--n900);
+  font-style: italic;
+  color: var(--n700);
+}
+
+.quote-card blockquote:last-child {
+  margin-bottom: 0;
+}
+
+/* A single pull-quote sitting in the flow rather than inside a quote card. */
+.cs-quote {
+  margin: 0 0 18px;
+  padding-left: 16px;
+  border-left: 3px solid var(--n900);
+  font-style: italic;
+  color: var(--n700);
+}
+
+.cause-card {
+  border: 1px solid var(--n200);
+  border-radius: var(--card-radius);
+  padding: 24px 28px;
+  margin: 0 0 16px;
+}
+
+.cause-card .chip {
+  margin-bottom: 12px;
+}
+
+.cause-title {
+  font-weight: 700;
+  margin: 0 0 8px !important;
+}
+
+.cause-card p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ---------- Figures ---------- */
+
+.cs-figure {
+  margin: 28px 0;
+}
+
+.cs-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--card-radius);
+}
+
+.statement-card {
+  background: var(--grey-tint);
+  border-radius: var(--card-radius);
+  padding: 28px;
+  margin: 28px 0;
+}
+
+.statement-title {
+  font-weight: 700;
+  margin: 0 0 12px !important;
+}
+
+.statement-card blockquote {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--n900);
+  font-size: 1.05rem;
+  color: var(--n700);
+}
+
+/* ---------- Concept blocks ---------- */
+
+.concept-block {
+  background: var(--grey-tint);
+  border-radius: var(--card-radius);
+  padding: 28px;
+  margin: 0 0 24px;
+}
+
+.concept-title {
+  font-weight: 700;
+  margin: 0 0 6px !important;
+}
+
+.concept-note {
+  font-style: italic;
+  color: var(--n600);
+  margin: 0 0 16px !important;
+}
+
+.concept-labels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 14px 0 10px;
+  font-style: italic;
+  color: var(--n700);
+}
+
+/* Side-by-side concept comparisons (Concept A / Concept B). */
+.concept-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  margin-top: 14px;
+}
+
+.concept-pair img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  margin-top: 0;
+}
+
+/* The dynamic payment-status widget states. */
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  align-items: start;
+  margin-top: 14px;
+}
+
+.widget-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  margin-top: 0;
+  background: #fff;
+}
+
+.concept-block img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  margin-top: 14px;
+}
+
+/* ---------- Tables ---------- */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 24px 0;
+}
+
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.cs-table th,
+.cs-table td {
+  border: 1px solid var(--n200);
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.cs-table thead th {
+  font-weight: 700;
+  background: #fff;
+}
+
+.cs-table .td-merge {
+  vertical-align: middle;
+}
+
+/* Borderless variant: the Supplier Onboarding design sets the funnel table as
+   plain aligned columns — no rules, no fills, just a bold header row. Column
+   widths are the design's 241/98/rest measured in its 820px column. */
+.cs-table--plain th,
+.cs-table--plain td {
+  border: 0;
+  padding: 7px 16px 7px 0;
+}
+
+.cs-table--plain {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.cs-table--plain thead th {
+  background: transparent;
+}
+
+.cs-table--plain col.col-measure {
+  width: 29.4%;
+}
+
+.cs-table--plain col.col-legacy {
+  width: 12%;
+}
+
+/* ---------- Prev / next ---------- */
+
+.cs-pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 56px 0 40px;
+}
+
+.pager-link {
+  border: 1px solid var(--n200);
+  border-radius: var(--card-radius);
+  padding: 18px 22px;
+  text-decoration: none;
+  color: var(--n900);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pager-link:hover {
+  text-decoration: none;
+  border-color: var(--cs-accent);
+  box-shadow: var(--shadow-xs);
+}
+
+.pager-link.next {
+  text-align: right;
+}
+
+/* A pager with only a "next" card keeps it in the right-hand column, so it
+   sits where it would if a "previous" card were present. */
+.cs-pager--single .pager-link {
+  grid-column: 2;
+}
+
+.pager-dir {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--n500);
+  margin-bottom: 6px;
+}
+
+.pager-title {
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+
+  .stat-row,
+  .method-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stacked, the branching connector has nothing to branch to. */
+  .method-links {
+    display: none;
+  }
+
+  /* Stacked, the cards go back inside the reading measure. */
+  .method-tree--branch {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .method-tree--branch .method-cards {
+    gap: 16px;
+  }
+
+  .method-tree--branch .method-question {
+    margin-bottom: 16px;
+  }
+
+  .cs-pager {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-pager--single .pager-link {
+    grid-column: 1;
+  }
+
+  .pager-link.next {
+    text-align: left;
+  }
+}
+
+@media (max-width: 620px) {
+
+  .glance-card,
+  .quote-card,
+  .concept-block,
+  .statement-card {
+    padding: 20px;
+  }
+
+  .concept-labels {
+    grid-template-columns: 1fr;
+  }
+
+  .concept-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .widget-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* ============================================================
+   "A fact about me" modal
+   Figma: 2027 Portfolio / node 9770-9701
+   Three panels shown one per click, looping back to the first.
+   ============================================================ */
+
+.fact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.fact-modal[hidden] {
+  display: none;
+}
+
+/* Blurs whatever is behind it, so the dialog reads crisp on top.
+   Pure blur — no tint, so the page behind keeps its original brightness. */
+.fact-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(255, 255, 255, 0.7);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+/* Fallback for engines without backdrop-filter: a light frost, never a dark scrim. */
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .fact-backdrop {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+
+body.fact-open {
+  overflow: hidden;
+}
+
+.fact-dialog {
+  position: relative;
+  width: min(900px, 100%);
+  max-height: calc(100vh - 48px);
+  border-radius: 24px;
+  box-shadow: 0 36px 90px -18px rgba(0, 0, 0, 0.35);
+  animation: fact-in 0.22s ease-out both;
+}
+
+@keyframes fact-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fact-dialog {
+    animation: none;
+  }
+}
+
+.fact-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #171717;
+  cursor: pointer;
+}
+
+.fact-close svg {
+  width: 27px;
+  height: 27px;
+}
+
+.fact-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.fact-close:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 2px;
+}
+
+/* ---------- Panels ---------- */
+
+.fact-panel {
+  display: flex;
+  align-items: center;
+  gap: 54px;
+  min-height: min(600px, calc(100vh - 120px));
+  padding: 72px;
+  border-radius: 24px;
+}
+
+.fact-panel[hidden] {
+  display: none;
+}
+
+.fact-panel--stacked {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 42px;
+}
+
+/* Keep centred copy to a comfortable measure instead of the full panel width. */
+.fact-panel--stacked .fact-copy {
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+.fact-copy {
+  margin: 0;
+  font-family: "Inter", var(--font);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.fact-img {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Sized from the design, where the photo fills 74.4% of the modal width — it
+   is also cropped to a wider frame (~1.83) than the source photo's 1.33, which
+   is what lets it sit that large and still leave room for the caption.
+   Percentage width + aspect-ratio so it tracks the modal at any size. */
+.fact-img--tilt {
+  /* 670px of the 900px modal = 74.4%, but this resolves against the panel's
+     content box (modal minus 40px padding each side), so 670/820 = 81.7%. */
+  width: 81.7%;
+  aspect-ratio: 670 / 366;
+  height: auto;
+  object-fit: cover;
+  border-radius: 18px;
+  transform: rotate(-4.55deg);
+}
+
+.fact-img--phone {
+  width: 233px;
+  height: auto;
+}
+
+.fact-img--wide {
+  width: 100%;
+  max-width: 570px;
+  height: auto;
+}
+
+/* Per-panel palettes, sampled from the Figma frames. */
+/* The design insets the photo ~34px from the modal top at this size, tighter
+   than the 72px the other panels use, so the enlarged photo fits alongside
+   the caption. Scoped here — the coffee panel shares --stacked but not this. */
+.fact-panel--bjj {
+  background: #E3F2FD;
+  padding: 36px 40px 44px;
+  gap: 26px;
+}
+
+.fact-panel--bjj .fact-copy {
+  color: #0D47A1;
+}
+
+.fact-panel--draw {
+  background: #fdede3;
+}
+
+.fact-panel--draw .fact-copy {
+  color: #d96f3e;
+}
+
+.fact-panel--coffee {
+  background: #fff5e6;
+}
+
+.fact-panel--coffee .fact-copy {
+  color: #8e5801;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Below the full 900px dialog width, step back down so the row layout still breathes. */
+@media (max-width: 980px) {
+  .fact-panel {
+    gap: 40px;
+    padding: 52px;
+    min-height: min(460px, calc(100vh - 120px));
+  }
+
+  .fact-copy {
+    font-size: 23px;
+  }
+
+  .fact-close {
+    top: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .fact-close svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  /* .fact-img--tilt is a percentage of the modal, so it scales on its own. */
+
+  .fact-img--phone {
+    width: 178px;
+  }
+
+  .fact-img--wide {
+    max-width: 435px;
+  }
+}
+
+@media (max-width: 620px) {
+  .fact-panel {
+    flex-direction: column;
+    text-align: center;
+    gap: 28px;
+    padding: 64px 32px 40px;
+    min-height: 0;
+  }
+
+  .fact-copy {
+    font-size: 20px;
+  }
+
+  .fact-img--phone {
+    width: 150px;
+  }
+
+  .fact-img--wide {
+    max-width: 100%;
+  }
+}
+
+/* ============================================================
+   FTU case study — widget-state captions + image lightbox
+   ============================================================ */
+
+/* Payment-status widget states: italic caption above each screenshot. */
+.widget-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.widget-state {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.widget-state figcaption {
+  order: -1;
+  margin-bottom: 12px;
+}
+
+.widget-state figcaption ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.widget-state figcaption li {
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--n700);
+  margin: 0;
+}
+
+.widget-state img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* ---------- Lightbox ---------- */
+
+.zoomable {
+  cursor: zoom-in;
+}
+
+.zoomable:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(23, 23, 23, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: zoom-out;
+}
+
+body.lb-open {
+  overflow: hidden;
+}
+
+/* Shrink-wraps the image so the close button sits on the picture's own top-right
+   corner, not on a wider invisible box. */
+.lightbox-inner {
+  position: relative;
+  max-width: 80vw;
+  max-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: lb-in 0.18s ease-out both;
+}
+
+@keyframes lb-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Size the box to the picture itself rather than to the shell: a box wider or
+   taller than the image would letterbox it and paint its own background, radius
+   and shadow around the gap. With width/height auto the element hugs the image,
+   so only the image shows. 64px of shell padding plus 44px of headroom for the
+   close button. */
+.lightbox-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 108px);
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+}
+
+.lightbox-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.lightbox-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-inner {
+    animation: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .widget-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lightbox {
+    padding: 20px;
+  }
+
+  .lightbox-inner {
+    max-width: 92vw;
+  }
+}
+
+/* Results chart: growth badges overlaid beside each bar group.
+   Positions are percentages of the 1282x768 SVG, measured from the Figma frame,
+   so they track the chart at any width. */
+
+.chart-wrap {
+  position: relative;
+  line-height: 0;
+}
+
+.chart-wrap .chart-base {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--card-radius);
+}
+
+/* Higher specificity than `.cs-figure img { width: 100% }`, and sized by
+   width so it never depends on the container's height being resolved. */
+.chart-wrap .chart-badge {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+  /* clicks fall through to the chart beneath */
+}
+
+.chart-wrap .chart-badge--1 {
+  left: 69.19%;
+  top: 11.72%;
+  width: 11.57%;
+}
+
+.chart-wrap .chart-badge--2 {
+  left: 76.60%;
+  top: 43.19%;
+  width: 11.31%;
+}
+
+.chart-wrap .chart-badge--3 {
+  left: 86.22%;
+  top: 72.70%;
+  width: 11.05%;
+}
+
+/* ============================================================
+   "How it works" — peach hero banner + laptop prototype frame
+   ============================================================ */
+
+/* The prototype needs more room than the 46rem reading column,
+   so it breaks out and centres itself. */
+/* Needs to outrank `.prose figure { margin: 28px 0 }`, otherwise the
+   margin-left:50% half of the centring trick is dropped. */
+.prose .proto-figure,
+.proto-figure {
+  width: min(calc(100vw - 48px), 1100px);
+  max-width: none;
+  margin: 36px 0 36px 50%;
+  transform: translateX(-50%);
+}
+
+.proto-figure figcaption {
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Laptop mockup ---------- */
+
+.laptop-mock {
+  filter: drop-shadow(0 22px 40px rgba(0, 0, 0, 0.22));
+}
+
+.laptop-lid {
+  background: #1f2023;
+  border-radius: 14px 14px 5px 5px;
+  padding: 12px 12px 16px;
+}
+
+.laptop-screen {
+  position: relative;
+  aspect-ratio: 1440 / 916;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Rendered at the prototype's native size and scaled to fit by script,
+   so the embed fills the screen edge to edge with no letterboxing. */
+.laptop-screen iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 916px;
+  border: 0;
+  display: block;
+  transform-origin: 0 0;
+}
+
+/* A prototype with its own frame size gets a screen shaped to match, so the
+   embed still fills it exactly rather than letterboxing inside a 1440x916. */
+.laptop-screen--1444x980 {
+  aspect-ratio: 1444 / 980;
+}
+
+.laptop-screen--1444x980 iframe {
+  width: 1444px;
+  height: 980px;
+}
+
+/* The supplier prototype's frames run taller than the window it is shown in
+   (1150 vs 855), so the embed gets an 855px-tall viewport and Figma scrolls the
+   overflow vertically rather than the laptop growing to fit the tallest screen. */
+.laptop-screen--1440x855 {
+  aspect-ratio: 1440 / 855;
+}
+
+.laptop-screen--1440x855 iframe {
+  width: 1440px;
+  height: 855px;
+}
+
+/* The poster is the first frame at its full 1150 height; anchor it to the top so
+   it shows the same slice the prototype opens on rather than a centred crop. */
+.laptop-screen--1440x855 .proto-poster {
+  object-position: top center;
+}
+
+/* Poster: the prototype's first frame, covering the screen until the embed has
+   had time to finish loading. It deliberately keeps pointer events so clicks
+   cannot reach a half-loaded player; `cursor: progress` stops that reading as
+   a dead click.
+   Needs to outrank `.cs-banner img { width: 80%; height: auto }`, which would
+   otherwise shrink the poster to 80% of the screen. */
+.laptop-screen .proto-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
+  display: block;
+  cursor: progress;
+  transition: opacity 0.35s ease;
+}
+
+/* Once it steps aside the poster must stop intercepting anything, so every
+   click reaches the prototype underneath. */
+.laptop-screen.proto-ready .proto-poster {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .laptop-screen .proto-poster {
+    transition: none;
+  }
+}
+
+/* ---------- Prototype loading toast ---------- */
+
+/* Sits at the top of the hero, centred, below the nav. */
+.proto-toast {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Magic UI's AnimatedList item springs in from its top edge (originY: 0) with
+   spring(stiffness 350, damping 40). That spring is slightly overdamped
+   (zeta ~= 1.07), so it settles in ~350ms with no bounce — an ease-out curve
+   is a faithful port, and needs no animation library. */
+.proto-toast-card {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  width: 277px;
+  min-height: 71px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 24px -8px rgba(16, 24, 40, 0.18), 0 2px 6px -2px rgba(16, 24, 40, 0.08);
+  transform-origin: top center;
+  animation: proto-toast-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.proto-toast[data-state="out"] .proto-toast-card {
+  animation: proto-toast-out 0.3s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.proto-toast[hidden] {
+  display: none;
+}
+
+@keyframes proto-toast-in {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes proto-toast-out {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Magic UI's AnimatedCircularProgressBar: r=45 in a 100-unit viewBox with a
+   10-unit stroke, the arc length driven by --stroke-percent against the
+   circumference, and a 5% gap so the two ends never meet. */
+.proto-gauge {
+  --circumference: 282.7433388230814;
+  --percent-to-px: 2.827433388230814px;
+  --gap-percent: 5;
+  --offset-factor: 0;
+  --percent-to-deg: 3.6deg;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  flex: none;
+  transform: translateZ(0);
+}
+
+.proto-gauge svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gauge-track {
+  stroke: #EAEAEA;
+  --stroke-percent-track: calc(90 - var(--stroke-percent));
+  --offset-factor-secondary: calc(1 - var(--offset-factor));
+  stroke-dasharray: calc(var(--stroke-percent-track) * var(--percent-to-px)) var(--circumference);
+  transform: rotate(calc(1turn - 90deg - (var(--gap-percent) * var(--percent-to-deg) * var(--offset-factor-secondary)))) scaleY(-1);
+  transform-origin: 50px 50px;
+}
+
+.gauge-fill {
+  stroke: #5352EC;
+  stroke-dasharray: calc(var(--stroke-percent) * var(--percent-to-px)) var(--circumference);
+  transform: rotate(calc(-90deg + var(--gap-percent) * var(--offset-factor) * var(--percent-to-deg)));
+  transform-origin: 50px 50px;
+}
+
+.proto-gauge-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  color: #404040;
+  font-variant-numeric: tabular-nums;
+}
+
+.proto-toast-title {
+  margin: 0 !important;
+  font-family: "Inter", var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #1A202C;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .proto-toast-card,
+  .proto-toast[data-state="out"] .proto-toast-card {
+    animation: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .proto-toast {
+    top: 12px;
+  }
+
+  .proto-toast-card {
+    width: auto;
+    max-width: calc(100vw - 32px);
+  }
+
+  .proto-toast-title {
+    white-space: normal;
+  }
+}
+
+/* Base is slightly wider than the lid, like a real laptop deck. */
+.laptop-base {
+  position: relative;
+  height: 14px;
+  margin: 0 -2.4%;
+  border-radius: 0 0 12px 12px;
+  background: linear-gradient(180deg, #d6d9de 0%, #b3b8bf 55%, #8d939b 100%);
+}
+
+.laptop-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13%;
+  height: 5px;
+  border-radius: 0 0 6px 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 860px) {
+  .laptop-lid {
+    padding: 8px 8px 11px;
+    border-radius: 10px 10px 4px 4px;
+  }
+
+  .laptop-base {
+    height: 10px;
+  }
+}
+
+/* "How it works" card: the photo is 4:3 in a 2.07:1 frame, so `cover` crops
+   ~67px off the top by default and clips the laptop screen. Bias the crop
+   upward so the whole screen stays in view. */
+#how-it-works-onboarding .post-media img {
+  object-position: 50% 20%;
+}
+
+/* Live prototype as the page hero (How it works), sitting in a laptop
+   mockup capped at 800px and centred in the banner band. The screen keeps
+   the prototype's native 1440x916 aspect; the iframe is rendered at native
+   size and scaled to fit by script. */
+.cs-banner--proto {
+  background: #FCEFE9;
+  max-width: none;
+  padding: 60px 80px;
+  /* Positioning context for the loading toast. */
+  position: relative;
+}
+
+/* Per-project hero tint — matched to each hero image's own background so the
+   band reads as one field rather than framing the image. */
+.cs-banner--periwinkle {
+  background: #F0F0F8;
+}
+
+.cs-banner--blush {
+  background: #FFF2FE;
+}
+
+/* The 48px inset keeps the laptop base — which sits 2.4% wider than the lid
+   — inside the viewport once the mockup stops being 800px wide. */
+.hero-proto {
+  width: min(calc(100% - 48px), 800px);
+  margin: 0 auto;
+}
+
+/* A prototype sitting in the reading column rather than a hero band. The top
+   margin leaves room for the toast, which hangs 40px above the laptop. */
+.proto-inline {
+  position: relative;
+  /* 72px above leaves room for the toast, which hangs 40px over the laptop;
+     16px below separates it from the paragraph that follows. */
+  margin: 24px 0 24px;
+}
+
+/* Matches the hero exactly: card top 40px above the laptop's top edge, centred
+   on it. In the hero that comes from the band's 60px padding minus the toast's
+   20px offset; here the laptop is the containing block, so it is direct. */
+.proto-toast--inline {
+  margin: 24px 0 24px;
+}
+
+/* ---------- Concept variations row ---------- */
+
+/* Three variations side by side on a tinted panel, matching the design: panel
+   spans the full 820px column (reclaiming .cs-main's 24px padding), 24px inset,
+   12px between tiles. */
+.variant-row {
+  width: calc(100% + 48px);
+  margin: 28px 0 24px -24px;
+  padding: 24px;
+  background: #FAFAFA;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.variant-row img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #fff;
+  border: 1px solid #E5E4E3;
+  border-radius: 4px;
+  /* Fitted to the design's measured falloff: ~23px sideways and ~55px below,
+     peaking at only ~2.7% darkening. reach = offset + blur/2, so blur 46 gives
+     the sideways reach and a 32px offset carries it to 55px underneath. */
+  box-shadow: 0 32px 46px rgba(16, 24, 40, 0.055), 0 2px 6px rgba(16, 24, 40, 0.03);
+  cursor: zoom-in;
+}
+
+@media (max-width: 860px) {
+  .variant-row {
+    width: 100%;
+    margin-left: 0;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ---------- Three-step flow ---------- */
+
+/* Same tinted panel as .variant-row, but each step carries a labelled caption.
+   Design: ~210px tiles at 3:2 with 30px gutters, amber #FEC747 flag labels. */
+.flow-row {
+  width: calc(100% + 48px);
+  margin: 28px 0 0 -24px;
+  padding: 24px;
+  background: #FAFAFA;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* image / label / caption — shared rows so the three steps stay aligned
+     even when one label wraps. */
+  grid-template-rows: auto auto auto;
+  column-gap: 30px;
+}
+
+.flow-step {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  margin: 0;
+}
+
+/* The three sources have different native aspects, so a fixed 3:2 window
+   anchored to the top keeps the labels on one line — and the top is where each
+   state actually reads. */
+.flow-step img {
+  width: 100%;
+  /* height:auto is required — the img's height attribute is a presentational
+     hint that would otherwise outrank aspect-ratio. */
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  background: #fff;
+  border: 1px solid #E5E4E3;
+  border-radius: 4px;
+  box-shadow: 0 32px 46px rgba(16, 24, 40, 0.055), 0 2px 6px rgba(16, 24, 40, 0.03);
+  cursor: zoom-in;
+  margin: 16px 0;
+}
+
+.flow-label {
+  /* All three arrows are the same length: the column width plus the 10px
+     point, which overhangs into the gutter as the design has it. Text is
+     centred; the extra right padding offsets the point so it centres on the
+     rectangle rather than the whole shape. */
+  display: block;
+  width: calc(100% + 10px);
+  align-self: start;
+  margin: 16px 0 10px;
+  padding: 5px 20px 5px 10px;
+  text-align: center;
+  background: #FEC747;
+  color: #000;
+  font-family: "Inter", var(--font);
+  /* The design's label measures ~12.4px cap-to-descender; 13px matches it and
+     keeps the longest numbered label on one line. */
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  /* Flag shape: square left edge, arrow point on the right. */
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+}
+
+/* The design's caption stem measures ~1.45px at this size — weight 500, a
+   step up from the body default. */
+.flow-step p {
+  margin: 0 !important;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--n900);
+}
+
+@media (max-width: 860px) {
+  .flow-row {
+    width: 100%;
+    margin-left: 0;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

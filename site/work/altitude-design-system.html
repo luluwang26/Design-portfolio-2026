@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Altitude Networks Design System — Lulu Wang</title>
+  <meta name="description" content="Proposing and building ANDS, Altitude Networks' first design system — design tokens, a component library, and content guidelines that keep design, code, and copy coherent.">
+  <link rel="stylesheet" href="../assets/style.css?v=76">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="how-it-works-onboarding.html">“How it works” in Guided Onboarding</a></li>
+            <li><a href="basic-ftu-redesign.html">Receiver First-Time-Use Redesign</a></li>
+            <li><a href="in-product-sales-connect.html">In-Product Sales Connect</a></li>
+            <li><a href="supplier-onboarding-agent.html">Supplier Onboarding</a></li>
+            <li><a href="altitude-design-system.html" aria-current="page">Altitude Networks Design System</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="wrap">
+
+  <article>
+    <header class="case-hero">
+      <p class="eyebrow">Case study · Altitude Networks · Design System, UI Patterns, Interaction Design, Branding</p>
+      <h1>Altitude Networks Design System (ANDS)</h1>
+      <p class="lede">Proposing and building the company's first design system — design tokens, a component library, and content guidelines that keep design, code, and copy coherent across every handoff.</p>
+      <p class="meta"><strong>UX Designer</strong> · Role: proposed the structure of ANDS and its roadmap, created the component library and design guidelines, and partnered with engineering to ship design tokens into the codebase</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">4 wks</span><span class="label">Initial planning — structure, roadmap, and stakeholder buy-in</span></div>
+        <div class="stat"><span class="num">8+ mo</span><span class="label">Ongoing build and adoption at the time of writing</span></div>
+        <div class="stat"><span class="num">½ day/wk</span><span class="label">Sustained, dedicated investment alongside product work</span></div>
+      </div>
+    </header>
+
+    <section class="glance">
+      <h2>At a glance</h2>
+      <dl>
+        <dt>Approach</dt><dd>A designer-initiated system: propose the structure and roadmap, win stakeholder buy-in, then build incrementally — tokens first, then basic components, then complex components — on a sustainable half-day-a-week cadence.</dd>
+        <dt>Scope</dt><dd>Design tokens (typography, color, icons, surface, grid and spacing, radius), a component library from buttons and inputs through filters, cards, navigation, and tables, plus design and content style guidelines.</dd>
+        <dt>Team</dt><dd>1 UX designer (me), 1 frontend developer, 1 customer success partner.</dd>
+        <dt>Tools</dt><dd>Figma for the library and documentation of visual decisions; Notion for guidelines and the roadmap.</dd>
+        <dt>Status</dt><dd>Proposed, adopted, and in active use — the full token set is complete and integrated into the front-end codebase, with the component library still growing.</dd>
+      </dl>
+    </section>
+
+    <div class="prose">
+
+      <p>At a startup, the same UI components and marketing copy get rebuilt and rewritten over and over. Seeing that repetition, I proposed creating a design system for the company — and committed half a day each week to building it. The effort was well received by all stakeholders and became ANDS: the Altitude Networks Design System.</p>
+
+      <h2><span class="kicker">01</span>Context &amp; Why a Design System</h2>
+      <p>Altitude Networks' product and marketing surfaces kept reusing the same UI patterns and copy — but without a shared source of truth, every reuse was a re-creation. Inconsistencies crept in across design, code, and content, and each handoff lost a little fidelity.</p>
+      <p><strong>A design system is the central place for documenting design decisions.</strong> It improves and sustains a team's shared understanding of visual style through design, code, and other interdisciplinary handoffs. That was the pitch: not a side project for polish, but infrastructure for coherence.</p>
+      <p>The value proposition was different for each discipline:</p>
+      <ul>
+        <li><strong>For frontend developers</strong> — a documented, reusable codebase.</li>
+        <li><strong>For graphic and UX designers</strong> — coherent visuals, UI, and interactions across the product.</li>
+        <li><strong>For copywriters</strong> — a content style guide that keeps the copy true to the brand.</li>
+      </ul>
+
+      <h2><span class="kicker">02</span>Proposal &amp; Roadmap</h2>
+      <p>I proposed the structure of ANDS and its implementation roadmap, then secured buy-in from design, engineering, and customer success. The plan deliberately fit a startup's reality: four weeks of initial planning, then an ongoing build cadence I could sustain — half a day per week — without displacing product work.</p>
+      <figure>
+        <img src="../assets/img/ands-roadmap.png" alt="ANDS implementation roadmap and the benefits of the system for developers, designers, and copywriters">
+        <figcaption>The ANDS implementation roadmap, and the system's benefits framed per discipline.</figcaption>
+      </figure>
+      <p>The sequencing mattered: tokens first (the smallest, highest-leverage decisions), then the basic components built from them, then the complex, product-specific components — so every layer stood on a documented foundation.</p>
+
+      <h2><span class="kicker">03</span>Design Tokens</h2>
+      <p>The foundation of ANDS is its token set: typography, color (primary, secondary, and semantic), icons, surface treatments, grid and spacing, and radius.</p>
+      <figure>
+        <img src="../assets/img/ands-tokens.png" alt="The initial set of ANDS design tokens — typography, surface, icons, grid and spacing, colors, and radius">
+        <figcaption>The initial set of design tokens.</figcaption>
+      </figure>
+      <p><strong>Tokens are named entities that store visual design attributes</strong> — absolute values used within components. ANDS follows a structured naming convention (inspired by Nathan Curtis' "Naming Tokens in Design Systems"):</p>
+      <blockquote><p>Domain – Component – Category – Variant – State – Mode</p></blockquote>
+      <p>For example, the token for a primary button's hover color used in the app is named <code>$flavious-button-primary-icontext-hover-ondark</code>, which maps to <code>#0167DC</code>. The convention makes every token self-describing — where it lives, what it styles, and when it applies.</p>
+      <figure>
+        <img src="../assets/img/ands-token-naming.png" alt="ANDS token naming convention and the handoff of design tokens into the front-end codebase">
+        <figcaption>The token naming system, and how tokens map into the front-end codebase.</figcaption>
+      </figure>
+      <p>I completed the entire design-token set used in our application and worked with the front-end developers to include it in the codebase — making the tokens real, not just documentation.</p>
+
+      <h2><span class="kicker">04</span>Component Library</h2>
+      <p>With tokens in place, I built the component library in Figma, starting with the basics: buttons (primary, secondary, tertiary, sizes, shapes, and groups), inputs and text areas, search, notifications across severities, filters, cards, navigation, and tables.</p>
+      <figure>
+        <img src="../assets/img/ands-basic-components.png" alt="ANDS basic components — buttons, inputs, notifications, filters, cards, navigation, and tables">
+        <figcaption>The basic component set, all built on the ANDS tokens.</figcaption>
+      </figure>
+      <p>From there, the system grew into the more complex, product-specific components — composed from the same primitives so new surfaces inherit consistency by default.</p>
+      <figure>
+        <img src="../assets/img/ands-complex-components.png" alt="ANDS complex components composed from the basic component set">
+        <figcaption>More complex components, composed from the basics.</figcaption>
+      </figure>
+
+      <h2><span class="kicker">05</span>Outcome &amp; Reflection</h2>
+      <p>ANDS was well received by all stakeholders and is still in active use and growth. The full token set is complete and shipped into the front-end codebase, the component library covers the product's core surfaces, and the content style guide keeps marketing copy on-brand.</p>
+      <p><strong>The lesson I carry from this project is that a design system at a startup succeeds on sustainability, not scale.</strong> A half-day-a-week cadence, sequenced from tokens upward, delivered a system the whole team actually uses — because it was scoped to be maintained, not just launched.</p>
+      <p class="footnote">ANDS was a self-initiated system built alongside product work at Altitude Networks, with a team of one designer, one frontend developer, and one customer success partner.</p>
+
+    </div>
+  </article>
+
+  <nav class="pagination">
+    <a class="page-link prev" href="supplier-onboarding-agent.html"><span class="dir">← Previous</span><span class="title">Supplier Onboarding</span></a>
+    <a class="page-link next" href="how-it-works-onboarding.html"><span class="dir">Next →</span><span class="title">“How it works” in Guided Onboarding</span></a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">© 2026 Lulu Wang · <a href="../index.html">Back to home</a></div>
+</footer>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

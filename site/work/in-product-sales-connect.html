@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>In-Product Sales Connect — Lulu Wang</title>
+  <meta name="description"
+    content="Building a path from self-onboarding to human help when the quarter could not wait.">
+  <link rel="stylesheet" href="../assets/style.css?v=76">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="how-it-works-onboarding.html">“How it works” in Guided Onboarding</a></li>
+            <li><a href="basic-ftu-redesign.html">Receiver First-Time-Use Redesign</a></li>
+            <li><a href="in-product-sales-connect.html" aria-current="page">In-Product Sales Connect</a></li>
+            <li><a href="supplier-onboarding-agent.html">Supplier Onboarding</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="cs-banner cs-banner--proto cs-banner--periwinkle">
+    <div class="hero-proto">
+      <div class="laptop-mock">
+        <div class="laptop-lid">
+          <div class="laptop-screen proto-fit">
+            <iframe title="Interactive prototype of the in-product Sales Connect experience"
+              src="https://embed.figma.com/proto/2l2Tjm7yYYDeJR0BUOvlQT/2027-Portfolio?node-id=10092-105220&amp;page-id=9623%3A944&amp;starting-point-node-id=10092%3A105220&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;hide-ui=1&amp;embed-host=share"
+              allowfullscreen></iframe>
+            <!-- First screenful of the prototype, held over the embed until it has loaded. -->
+            <img class="proto-poster" src="../assets/img/sales connect/Loading-proto.png" alt="" aria-hidden="true"
+              width="1600" height="1018" fetchpriority="high">
+          </div>
+        </div>
+        <div class="laptop-base"><span class="laptop-notch"></span></div>
+      </div>
+    </div>
+
+    <!-- Loading toast: springs in from the top of the hero, counts the embed in,
+         then springs back out as the prototype takes over. -->
+    <div class="proto-toast" id="proto-toast" role="status" aria-live="polite">
+      <div class="proto-toast-card">
+        <div class="proto-gauge" style="--stroke-percent: 0">
+          <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <circle class="gauge-track" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <circle class="gauge-fill" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <span class="proto-gauge-num">0</span>
+        </div>
+        <p class="proto-toast-title">Prototype is loading...</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="cs-main cs-main--indigo">
+
+    <h1 class="cs-title">In-Product Sales Connect</h1>
+    <p class="cs-lede">"Talk to a human" built into onboarding.</p>
+
+    <section class="glance-card">
+      <span class="chip chip-accent">At a glance</span>
+      <dl class="glance-list">
+        <dt>Summary:</dt>
+        <dd>The onboarding team was facing the same business problem behind several Q2 initiatives: negative net adds
+          and softness in new-unit acquisition. Longer-term, product-led onboarding improvements were already in motion,
+          but they wouldn't land fast enough to change the quarter. This project asked a more immediate question: if
+          human touch already converts better than pure self-serve onboarding, how might the product connect the right
+          new customers to sales at the moment they need help most? The answer became In-Product Sales Connect, a
+          human-help layer built into self-onboarding.</dd>
+
+        <dt>Design process:</dt>
+        <dd>Product-led onboarding research → the SMB Core Playbook on how reps work a trial → lead-routing
+          routing-latency finding → design lock and a staged A/B launch.</dd>
+
+        <dt>Solution scope:</dt>
+        <dd>Direct AP/AR trial signups (SMB). The Sales Connect offer placed in two moments — the signup flow and the
+          Get Started page. Lower mid-market and the Accountant Channel were planned future expansions.</dd>
+
+        <dt>Research:</dt>
+        <dd>~12 moderated customer interviews, dozens of recorded sales discovery calls, team review.</dd>
+
+        <dt>Design question:</dt>
+        <dd>Whether an in-product path to a human lifts connect rates and trial conversion without flooding the sales
+          and implementation teams with low-intent leads — via a phased experiment behind a feature flag with
+          holdouts.</dd>
+
+        <dt>Team:</dt>
+        <dd>1 product manager, 1 product designer, 1 researcher, 1 content designer, 2 engineers.</dd>
+      </dl>
+
+      <div class="stat-row">
+        <div class="stat-tile">
+          <span class="stat-num">~5.5%</span>
+          <span class="stat-label">In-product overall booking rate</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">~25%</span>
+          <span class="stat-label">Trial conversion among customers who complete a call</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">~50%</span>
+          <span class="stat-label">Of booked calls attended</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">01</span>Context &amp; problem</h2>
+      <p>The platform was seeing softness in net-new unit acquisition, while new direct AP trial users often needed
+        clear, fast guidance during onboarding and were unsure which setup steps to take first.</p>
+      <p><strong>The business case for human connection was already strong.</strong> Customers who didn't connect with a
+        person churned at 1.5–2× the rate of those who did. M3 retention for customers onboarded with human assistance
+        sits at 90% while only 65% for customers without assistance. At the same time, the Sales team already had a
+        mature operating model for converting trial users through fast response, discovery, demo, and welcome
+        sessions.</p>
+      <p>However, self-service onboarding lacks a bridge from "I just signed up and I'm not sure what to do" to "I can
+        talk to a product expert now." That became <strong>the design challenge: create a human-help layer inside
+          self-onboarding that would feel useful, timely, and trustworthy without turning the product into a sales
+          trap.</strong></p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">02</span>Three ways to find out why</h2>
+
+      <div class="method-tree method-tree--branch">
+        <div class="method-question">Why onboarding was posting negative net adds month over month.</div>
+
+        <svg class="method-links" viewBox="0 0 820 72" fill="none" aria-hidden="true">
+          <g stroke="#D5D5D5" stroke-width="1.5">
+            <path d="M136 31.5 H674" stroke-dasharray="4 4" />
+            <path d="M136 31.5 V66" stroke-dasharray="4 4" />
+            <path d="M400 31.5 V66" stroke-dasharray="4 4" />
+            <path d="M674 31.5 V66" stroke-dasharray="4 4" />
+            <path d="M400 31.5 V7" stroke-dasharray="4 4" />
+            <path d="M394.5 11 L400 4 L405.5 11" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+          <g fill="#D5D5D5">
+            <circle cx="136" cy="69" r="3" />
+            <circle cx="400" cy="69" r="3" />
+            <circle cx="674" cy="69" r="3" />
+          </g>
+        </svg>
+
+        <div class="method-cards">
+          <div class="method-card">
+            <h3>Talk to customers</h3>
+            <p>Sit in 12 moderated trial user interviews, synthesized independently</p>
+          </div>
+          <div class="method-card">
+            <h3>Sales calls</h3>
+            <p>Listened to dozens of recorded sales calls</p>
+          </div>
+          <div class="method-card">
+            <h3>Cross-functional workshop</h3>
+            <p>Organized and led a 15 people working session to create onboarding flow concepts</p>
+          </div>
+        </div>
+      </div>
+
+      <p>We paired moderated interviews with recently signed-up customers and dozens of recorded sales qualification and
+        discovery calls. The synthesis showed that new AP/AR customers often had real business pain and strong intent,
+        but were missing clarity on how the platform worked, how it would fit into their workflow, and what to do first
+        once they entered the product.</p>
+
+      <p><strong>One insight</strong> mattered especially for this project: <strong>customers were often convinced by
+          the platform when a salesperson demonstrated the right workflow in context.</strong> Those demos were the
+        "aha" moments that helped customers see why the platform was a good fit — especially around approval workflows,
+        bill intake, and secure payments. That made the opportunity clear: if customers were already seeking confidence,
+        structure, and fast answers, then an in-product path to a person should be part of onboarding.</p>
+
+      <figure class="cs-figure">
+        <img src="../assets/img/how it works/what customers say.png"
+          alt="Affinity board synthesising what trial customers said about AP onboarding, grouped into intent, misdirected recipients, education, account succession, one-stop shop, and ongoing usage issues.">
+      </figure>
+
+      <div class="quote-card">
+        <span class="chip chip-grey">What customers say about getting help during onboarding</span>
+
+        <blockquote>"Having access to a real person will make or break my decision. No AI chatbot."</blockquote>
+
+        <blockquote>One participant mentioned that even though she created a trial account, she wasn't aware that the
+          advanced payables product could solve these specific needs for her — education was a big gap.</blockquote>
+
+        <blockquote>"[How do I] see transactions as individual line items? How does it save me money and time? I wish
+          someone can explain it to me."</blockquote>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">03</span>Design iterations</h2>
+      <p>Concept V1 adds a new “Schedule a free call” step after sign up is completed. It paves a common path used in
+        many other products. See below.</p>
+
+      <div class="hero-proto proto-inline">
+        <div class="laptop-mock">
+          <div class="laptop-lid">
+            <div class="laptop-screen laptop-screen--1444x980 proto-fit">
+              <iframe title="Interactive prototype of the Sales Connect step added after signup"
+                src="https://embed.figma.com/proto/2l2Tjm7yYYDeJR0BUOvlQT/2027-Portfolio?node-id=10148-11557&amp;page-id=9623%3A944&amp;starting-point-node-id=10148%3A11557&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;hide-ui=1&amp;embed-host=share"
+                allowfullscreen></iframe>
+              <!-- First frame, held over the embed until it has loaded. -->
+              <img class="proto-poster" src="../assets/img/sales connect/Iterations-proto.png" alt="" aria-hidden="true"
+                width="1600" height="1086">
+            </div>
+          </div>
+          <div class="laptop-base"><span class="laptop-notch"></span></div>
+        </div>
+
+        <!-- Same loading toast as the hero, positioned against this laptop. -->
+        <div class="proto-toast" id="proto-toast-iterations" role="status" aria-live="polite">
+          <div class="proto-toast-card">
+            <div class="proto-gauge" style="--stroke-percent: 0">
+              <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <circle class="gauge-track" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <circle class="gauge-fill" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span class="proto-gauge-num">0</span>
+            </div>
+            <p class="proto-toast-title">Prototype is loading...</p>
+          </div>
+        </div>
+      </div>
+
+      <p>Concept V2 iterated on the booking step, with 3 variations. Tesler's Law states that when
+        you simplify too
+        much, you transfer some complexities to the user. Therefore, instead of asking customers to give a definite
+        answer and commit right away, showing them concrete time slots may help with easier decision-making. See
+        below.</p>
+
+      <div class="variant-row">
+        <img src="../assets/img/in-product sales connect/Welcome call-V2.png"
+          alt="Variation 1 of the booking step: four concrete time slots shown as selectable cards, with one already selected."
+          width="2882" height="2164">
+        <img src="../assets/img/in-product sales connect/Welcome call-V2.1.png"
+          alt="Variation 2 of the booking step: a call-me-now option shown above the available time slots." width="2888"
+          height="2164">
+        <img src="../assets/img/in-product sales connect/Welcome call-V2.2.png"
+          alt="Variation 3 of the booking step: a compact list of time slots stacked above the supporting detail."
+          width="2888" height="2164">
+      </div>
+
+      <p>Right then, a curveball came: we learned a critical constraint from the sales team, assigning a human agent to
+        a
+        new lead in the
+        CRM took
+        about 7 minutes through the lead-routing stack. That meant we could not honestly put a working "book now"
+        button in front of a user the moment they signed up, we had to redesign the experience. Instead of designing a
+        simple booking CTA, I designed a three-step flow:</p>
+      <ul>
+        <li>a signup moment that introduced the value of talking to a product expert.</li>
+        <li>a "matching in progress" state on the Get Started page that made the wait visible and understandable.</li>
+        <li>a "ready to schedule" state that unlocked the live booking option once routing completed.</li>
+      </ul>
+      <p>I also had to design around how the receiving sales system already worked. If the customer had an assigned
+        rep, the booking needed to land on that person's calendar; if not, it had to route to the concierge team.</p>
+      <p>The final concept was intentionally direct, it treated human contact as a normal part of getting started. You
+        can see the prototype on top of this page.</p>
+
+      <div class="flow-row">
+        <figure class="flow-step">
+          <span class="flow-label">1. Signup moment</span>
+          <img src="../assets/img/in-product sales connect/Welcome call-V3.png"
+            alt="Signup moment: a modal offering a call with a dedicated onboarding expert, shown as the account is created."
+            width="2880" height="1828">
+          <p>Introducing the value of talking to an implementation expert.</p>
+        </figure>
+        <figure class="flow-step">
+          <span class="flow-label">2. “Matching in progress” state</span>
+          <img src="../assets/img/in-product sales connect/Before 5 min-1.png"
+            alt="Matching in progress: the Get Started page showing that a representative is being matched, before routing completes."
+            width="2880" height="3416">
+          <p>On the Get Started page that made the wait visible and understandable.</p>
+        </figure>
+        <figure class="flow-step">
+          <span class="flow-label">3. “Ready to schedule” state</span>
+          <img src="../assets/img/in-product sales connect/After 5 min.png"
+            alt="Ready to schedule: the Get Started page with the live booking option unlocked once routing has completed."
+            width="2880" height="3416">
+          <p>Unlocking the live booking option once customer-to-representatives routing is
+            completed.</p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">04</span>Phased launch &amp; learnings</h2>
+      <p>This feature was designed to be learned into.</p>
+      <p>The PRD proposed a phased experiment behind a growth feature flag: start with a 50/50 A/B test and an 80%
+        holdout, then reduce the holdout, and eventually widen rollout as confidence increased.</p>
+      <p>The initial success criteria were basic but important: routing had to work as expected, and the experience
+        could not error out in production. After the team discovered the upstream latency issue we paused rollout. Then
+        we built out the updated design and rollout resumed to 50% before further widening.</p>
+      <p>The learnings were equally important:</p>
+      <ul>
+        <li>the value proposition had to be visible enough to register during onboarding.</li>
+        <li>the wait had to be explicit and trustworthy.</li>
+        <li>the offer needed to appear in more than one meaningful moment, especially on Get Started.</li>
+        <li>instrumentation needed to be end-to-end so the team could separate offer exposure, booking intent,
+          availability, booking completion, and downstream conversion.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">05</span>Key design decisions &amp; tradeoffs</h2>
+      <ol>
+        <li>Hold user intent across the wait, instead of waiting to surface the offer until the booking link was ready.
+          That meant showing the human-help message in signup, even though the user could not book immediately.</li>
+        <li>Be honest about what the system could promise. I chose to design around a truthful promise, that a product
+          expert would be matched and made available, rather than a more persuasive but less reliable one.</li>
+        <li>Place the offer in two high-value moments, but not everywhere. We surfaced it in signup and again in Get
+          Started, where returning intent naturally reappears.</li>
+        <li>Optimize for self-selection and lead quality, not maximum volume.</li>
+        <li>The team explicitly decided not to route the in-product links through the newer workflow because that would
+          introduce risk of misrouted calls. The experience sat alongside existing routing instead of replacing it.</li>
+      </ol>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">06</span>Outcome &amp; impact</h2>
+      <p>The feature created a booking funnel where none previously existed.</p>
+      <p>Results: About <strong>5.5% of users who arrive in product now book a call</strong>, rising to 7.22% among
+        users who reach the "ready to schedule" state. Roughly <strong>50% of booked calls were attended</strong>, and
+        about <strong>25% of customers who completed a call converted their trial</strong>. The waiting-state design
+        also proved its worth. 63% of users saw availability within three hours of signing up, and 44% saw more than
+        100 open slots over the next ten days. The fallback logic proved effective: about 11% of early bookings went to
+        the concierge team rather than an assigned rep, which helped protect the experience from dead ends when routing
+        was incomplete or unavailable.</p>
+      <p>For a feature designed as a fast Q2 lever, the new experience was creating valuable conversations.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">07</span>Reflection &amp; next steps</h2>
+      <p>The biggest lesson from this project was that the constraint became the design. At first, the seven-minute
+        routing delay looked like a blocker. In practice, it forced the team to design a more honest and more resilient
+        experience.</p>
+      <p>The second lesson was that human help has to feel like help. Customers in self-onboarding are not trying to
+        "talk to sales." They are trying to get their account working. Framing the experience around faster setup and
+        expert guidance, rather than around a sales action, made the interaction feel more natural and more useful.</p>
+      <p>If I were to continue iterating this design, here are the questions I'd ask:</p>
+      <ul>
+        <li>How much durable lift does this create in net-new adds and retention compared to Control once the cohort
+          matures?</li>
+        <li>Could a more specific callback promise work once the routing system can reliably assign the rep?</li>
+        <li>As product-led and AI-assisted onboarding improves, which customers should still be routed to a human by
+          design?</li>
+      </ul>
+    </section>
+
+    <nav class="cs-pager" aria-label="Case study navigation">
+      <a class="pager-link prev" href="basic-ftu-redesign.html">
+        <span class="pager-dir">← Previous</span>
+        <span class="pager-title">Receiver First-Time-Use Redesign</span>
+      </a>
+      <a class="pager-link next" href="supplier-onboarding-agent.html">
+        <span class="pager-dir">Next →</span>
+        <span class="pager-title">Supplier Onboarding</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Lightbox: click any figure image to view it at 80% of the viewport width. -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" data-lb-close></div>
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Enlarged image">
+      <button type="button" class="lightbox-close" data-lb-close aria-label="Close image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+      <img class="lightbox-img" id="lightbox-img" alt="">
+    </div>
+  </div>
+
+  <footer class="site-footer">© 2026 Lulu Wang. All rights reserved.</footer>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    // Each prototype renders at its own native frame size (1440x916 in the hero,
+    // 1444x980 in section 03). Read that size off the iframe rather than
+    // assuming it, then scale to fill the laptop screen exactly.
+    (function () {
+      var boxes = document.querySelectorAll('.proto-fit');
+      Array.prototype.forEach.call(boxes, function (box) {
+        var frame = box.querySelector('iframe');
+        if (!frame) return;
+        function fit() {
+          var native = frame.offsetWidth;           // layout width, before transform
+          if (!native) return;
+          frame.style.transform = 'scale(' + (box.clientWidth / native) + ')';
+        }
+        fit();
+        window.addEventListener('resize', fit);
+        if (window.ResizeObserver) new ResizeObserver(fit).observe(box);
+      });
+    })();
+  </script>
+
+  <script>
+    // Each prototype's poster is its own first frame, so a laptop shows the real
+    // opening screen from the moment the page paints — never Figma's blank
+    // canvas or its loading bar. The poster also swallows clicks until the
+    // embed is ready, so nobody interacts with a half-loaded player.
+    //
+    // Figma gives us nothing to wait ON: the embed posts no readiness message
+    // (verified — zero postMessages from any origin over 65s), and same-origin
+    // rules prevent watching its loading bar from out here. The iframe's load
+    // event only means the document arrived. So the handover is a timed hold.
+    //
+    // Only the hero carries a loading toast; its gauge runs on the same hold,
+    // so the ring hits 100% exactly as the prototype takes over.
+    (function () {
+      var HOLD_AFTER_LOAD_MS = 5000;
+      var EXIT_MS = 300;
+
+      var boxes = document.querySelectorAll('.proto-fit');
+      if (!boxes.length) return;
+
+      Array.prototype.forEach.call(boxes, function (box) {
+        var frame = box.querySelector('iframe');
+        var poster = box.querySelector('.proto-poster');
+        if (!frame || !poster) return;
+
+        // Prefer a toast inside this laptop's own wrapper — section 03 holds two
+        // of them, so a section-wide lookup would hand both boxes the first one.
+        // The hero's toast sits beside .hero-proto, hence the banner fallback.
+        var wrapper = box.closest('.hero-proto');
+        var scope = box.closest('.cs-banner, .cs-section');
+        var toast = (wrapper && wrapper.querySelector('.proto-toast'))
+          || (scope && scope.querySelector('.proto-toast'))
+          || null;
+        var gauge = toast && toast.querySelector('.proto-gauge');
+        var num = toast && toast.querySelector('.proto-gauge-num');
+
+        function set(pct) {
+          if (!gauge || !num) return;
+          gauge.style.setProperty('--stroke-percent', pct);
+          num.textContent = pct;
+        }
+
+        var finished = false;
+
+        function finish() {
+          if (finished) return;
+          finished = true;
+          set(100);
+          box.classList.add('proto-ready');
+          if (!toast) return;
+          toast.setAttribute('data-state', 'out');
+          setTimeout(function () { toast.setAttribute('hidden', ''); }, EXIT_MS);
+        }
+
+        // rAF paints the sweep smoothly, but a plain timer owns completion:
+        // browsers pause rAF in background tabs, and the gauge would otherwise
+        // stall mid-count and leave the prototype masked for good. Same reason
+        // the toast hides on a timer rather than animationend — under
+        // prefers-reduced-motion there is no animation to end.
+        var started = false;
+        frame.addEventListener('load', function () {
+          if (started) return;
+          started = true;
+          var t0 = performance.now();
+          (function step() {
+            if (finished) return;
+            set(Math.min(100, Math.round(((performance.now() - t0) / HOLD_AFTER_LOAD_MS) * 100)));
+            if (!finished) requestAnimationFrame(step);
+          })();
+          setTimeout(finish, HOLD_AFTER_LOAD_MS);
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // Click any content image to open it in a lightbox at 80% of the viewport width.
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      var closeBtn = lb.querySelector('.lightbox-close');
+      var lastFocus = null;
+
+      // Only the concept variations open — the prototype posters sit under a
+      // live embed and must keep passing clicks through to it.
+      var targets = document.querySelectorAll('.variant-row img, .flow-row img');
+
+      Array.prototype.forEach.call(targets, function (img) {
+        img.classList.add('zoomable');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'Enlarge image: ' + (img.alt || 'image'));
+        img.addEventListener('click', function () { open(img); });
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+        });
+      });
+
+      function open(img) {
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt || '';
+        lastFocus = document.activeElement;
+        lb.removeAttribute('hidden');
+        document.body.classList.add('lb-open');
+        closeBtn.focus();
+      }
+
+      function close() {
+        lb.setAttribute('hidden', '');
+        document.body.classList.remove('lb-open');
+        lbImg.removeAttribute('src');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      lb.addEventListener('click', function (e) {
+        if (e.target.closest('[data-lb-close]')) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (lb.hasAttribute('hidden')) return;
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); }
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

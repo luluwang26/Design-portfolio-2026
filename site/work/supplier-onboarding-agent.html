@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supplier Onboarding — Lulu Wang</title>
+  <meta name="description"
+    content="Rethinking the password wall: showing suppliers the payment first and deferring account creation until after value is delivered.">
+  <link rel="stylesheet" href="../assets/style.css?v=76">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="how-it-works-onboarding.html">“How it works” in Guided Onboarding</a></li>
+            <li><a href="basic-ftu-redesign.html">Receiver First-Time-Use Redesign</a></li>
+            <li><a href="in-product-sales-connect.html">In-Product Sales Connect</a></li>
+            <li><a href="supplier-onboarding-agent.html" aria-current="page">Supplier Onboarding</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="cs-banner cs-banner--bleed cs-banner--blush cs-banner--band">
+    <img src="../assets/img/Supplier onboarding/supplierOnboarding-lg.png"
+      alt="Supplier onboarding: the redesigned vendor flow that delivers the first payment before asking for a password."
+      width="3434" height="2020">
+  </section>
+
+  <main class="cs-main cs-main--plum">
+
+    <h1 class="cs-title">Supplier Onboarding</h1>
+    <p class="cs-lede">Rethinking the password wall.</p>
+
+    <section class="glance-card">
+      <span class="chip chip-accent">At a glance</span>
+      <dl class="glance-list">
+        <dt>Summary:</dt>
+        <dd>When a business wants to pay a supplier electronically, it invites that supplier onto the platform's
+          network. The supplier arrives with a single intent: to get paid. Yet the legacy flow asked them to create a
+          password-protected account, complete MFA, and fill out a long business profile before they ever saw the
+          payment waiting for them. This redesign flips that order — showing the incoming payment first and deferring
+          account creation until after value is delivered.</dd>
+
+        <dt>Design process:</dt>
+        <dd>Supplier onboarding funnel data deep dive → The team used AI to build several concepts → I hand crafted an
+          interactive prototype based on one concept we believe in → It remains a concept and is never shipped.</dd>
+
+        <dt>Solution scope:</dt>
+        <dd>The vendor-facing critical path from invite to first payment: landing, profile confirmation,
+          payment-method, success state, and the passwordless return model.</dd>
+
+        <dt>Design question:</dt>
+        <dd>How can we show vendors the value of our product without requiring them to hand over sensitive business
+          data and to commit to creating an account?</dd>
+
+        <dt>Team:</dt>
+        <dd>1 product manager, 1 product designer, 1 researcher, Claude.</dd>
+      </dl>
+
+      <div class="stat-row">
+        <div class="stat-tile">
+          <span class="stat-num">20+%</span>
+          <span class="stat-label">Of vendors dropped at the password step</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">50+%</span>
+          <span class="stat-label">Of vendors who landed never finished onboarding at all</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">50%</span>
+          <span class="stat-label">Funnel completion target</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">01</span>Context &amp; problem</h2>
+      <p>When a business wants to pay a supplier electronically, it invites that supplier onto the network. The
+        supplier arrives with one intent: get paid. Yet the legacy flow asked them to create a password-protected
+        account, complete multi-factor authentication, and fill out a long business profile before they ever saw the
+        payment waiting for them.</p>
+
+      <p>The audit made the core problem clear: the product was front-loading effort, credentials, sensitive data
+        before user seeing the payment, which is exactly backwards for a user whose only goal is to be paid once.</p>
+
+      <p><strong>Account creation came before any value.</strong> The flow opened with username, password, and MFA
+        setup, so vendors were asked to commit to a platform.</p>
+
+      <div class="quote-card">
+        <blockquote>"I don't want to set up ePayments. I wanna just get paid. I don't wanna set anything up, but I know
+          that I have to do it in order to get paid."</blockquote>
+      </div>
+
+      <p><strong>The flow takes 10-14 steps to reach the first payment.</strong></p>
+
+      <div class="quote-card">
+        <blockquote>"When I meant cumbersome, there was a lot of stuff that I knew I didn't need. I don't understand
+          why all this stuff is here, I'm just trying to get paid."</blockquote>
+      </div>
+
+      <p><strong>The invite email itself read as suspicious, and sensitive data requests like SSN arrived with no
+          explanation.</strong></p>
+
+      <div class="quote-card">
+        <blockquote>"I recall feeling a little nervous about whether this was legit, is it safe to provide my banking
+          information?"</blockquote>
+        <blockquote>"Being required to enter personal information like SSN just to create an account was a turn-off for
+          me."</blockquote>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">02</span>Understanding the problem space</h2>
+      <p>Before designing, I grounded the work in the body of research that already existed, then layered new evidence
+        on top of it. The pattern was remarkably consistent across years of studies.</p>
+
+      <div class="method-tree method-tree--branch method-tree--indigo">
+        <div class="method-question">How can we front-load value over cost in supplier onboarding flow?</div>
+
+        <svg class="method-links" viewBox="0 0 820 72" fill="none" aria-hidden="true">
+          <g stroke="#D5D5D5" stroke-width="1.5">
+            <path d="M136 31.5 H674" stroke-dasharray="4 4" />
+            <path d="M136 31.5 V66" stroke-dasharray="4 4" />
+            <path d="M400 31.5 V66" stroke-dasharray="4 4" />
+            <path d="M674 31.5 V66" stroke-dasharray="4 4" />
+            <path d="M400 31.5 V7" stroke-dasharray="4 4" />
+            <path d="M394.5 11 L400 4 L405.5 11" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+          <g fill="#D5D5D5">
+            <circle cx="136" cy="69" r="3" />
+            <circle cx="400" cy="69" r="3" />
+            <circle cx="674" cy="69" r="3" />
+          </g>
+        </svg>
+
+        <div class="method-cards">
+          <div class="method-card">
+            <h3>Suppliers come for payment, not for a platform.</h3>
+            <p>About 80% of vendors signed up only because a customer asked them to.</p>
+          </div>
+          <div class="method-card">
+            <h3>Trust had to be earned at every step</h3>
+            <p>Imposed choice, skepticism about phishing at play.</p>
+          </div>
+          <div class="method-card">
+            <h3>Fresh proof point that removing friction works</h3>
+            <p>A parallel prefill onboarding pilot delivered a +7% funnel conversion lift.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">03</span>Growth goals</h2>
+
+      <table class="cs-table cs-table--plain">
+        <colgroup>
+          <col class="col-measure">
+          <col class="col-legacy">
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Funnel measure</th>
+            <th scope="col">Legacy</th>
+            <th scope="col">Redesigned (target)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Overall funnel completion</td>
+            <td>30+%</td>
+            <td>50%</td>
+          </tr>
+          <tr>
+            <td>Password-step conversion</td>
+            <td>70+%</td>
+            <td>80%</td>
+          </tr>
+          <tr>
+            <td>Abandonment at password step</td>
+            <td>20+%</td>
+            <td>Removed from critical path; password deferred to the end</td>
+          </tr>
+          <tr>
+            <td>Steps to first payment</td>
+            <td>10–14</td>
+            <td>3–4</td>
+          </tr>
+          <tr>
+            <td>Business-info step time</td>
+            <td>2+ min</td>
+            <td>Under 1 min with pre-fill</td>
+          </tr>
+          <tr>
+            <td>30-day transaction rate</td>
+            <td>50+%</td>
+            <td>Maintain or improve</td>
+          </tr>
+          <tr>
+            <td>Return-visit rate</td>
+            <td>Not tracked</td>
+            <td>≥30% of completers (new metric)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">04</span>Concept prototype</h2>
+
+      <div class="hero-proto proto-inline">
+        <div class="laptop-mock">
+          <div class="laptop-lid">
+            <div class="laptop-screen laptop-screen--1440x855 proto-fit">
+              <iframe title="Interactive prototype of the redesigned supplier onboarding flow"
+                src="https://embed.figma.com/proto/2l2Tjm7yYYDeJR0BUOvlQT/2027-Portfolio?node-id=10383-18950&amp;page-id=9623%3A944&amp;starting-point-node-id=10383%3A18950&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;hide-ui=1&amp;embed-host=share"
+                allowfullscreen></iframe>
+              <!-- First frame, held over the embed until it has loaded. -->
+              <img class="proto-poster" src="../assets/img/Supplier onboarding/Loading-proto.png" alt=""
+                aria-hidden="true" width="1440" height="1150">
+            </div>
+          </div>
+          <div class="laptop-base"><span class="laptop-notch"></span></div>
+        </div>
+
+        <!-- Same loading toast as the other case-study prototypes. -->
+        <div class="proto-toast proto-toast--inline" id="proto-toast-concept" role="status" aria-live="polite">
+          <div class="proto-toast-card">
+            <div class="proto-gauge" style="--stroke-percent: 0">
+              <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <circle class="gauge-track" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <circle class="gauge-fill" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span class="proto-gauge-num">0</span>
+            </div>
+            <p class="proto-toast-title">Prototype is loading...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="cs-pager" aria-label="Case study navigation">
+      <a class="pager-link prev" href="in-product-sales-connect.html">
+        <span class="pager-dir">← Previous</span>
+        <span class="pager-title">In-Product Sales Connect</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">© 2026 Lulu Wang. All rights reserved.</footer>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    // The prototype renders at its own native frame size (1440x1150). Read that
+    // size off the iframe rather than assuming it, then scale to fill the laptop
+    // screen exactly.
+    (function () {
+      var boxes = document.querySelectorAll('.proto-fit');
+      Array.prototype.forEach.call(boxes, function (box) {
+        var frame = box.querySelector('iframe');
+        if (!frame) return;
+        function fit() {
+          var native = frame.offsetWidth;           // layout width, before transform
+          if (!native) return;
+          frame.style.transform = 'scale(' + (box.clientWidth / native) + ')';
+        }
+        fit();
+        window.addEventListener('resize', fit);
+        if (window.ResizeObserver) new ResizeObserver(fit).observe(box);
+      });
+    })();
+  </script>
+
+  <script>
+    // The poster is the prototype's own first frame, so the laptop shows the real
+    // opening screen from the moment the page paints — never Figma's blank canvas
+    // or its loading bar. The poster also swallows clicks until the embed is
+    // ready, so nobody interacts with a half-loaded player.
+    //
+    // Figma gives us nothing to wait ON: the embed posts no readiness message and
+    // same-origin rules prevent watching its loading bar from out here. The
+    // iframe's load event only means the document arrived. So the handover is a
+    // timed hold, and the toast gauge runs on that same hold so the ring hits
+    // 100% exactly as the prototype takes over.
+    (function () {
+      var HOLD_AFTER_LOAD_MS = 5000;
+      var EXIT_MS = 300;
+
+      var boxes = document.querySelectorAll('.proto-fit');
+      if (!boxes.length) return;
+
+      Array.prototype.forEach.call(boxes, function (box) {
+        var frame = box.querySelector('iframe');
+        var poster = box.querySelector('.proto-poster');
+        if (!frame || !poster) return;
+
+        var wrapper = box.closest('.hero-proto');
+        var scope = box.closest('.cs-banner, .cs-section');
+        var toast = (wrapper && wrapper.querySelector('.proto-toast'))
+          || (scope && scope.querySelector('.proto-toast'))
+          || null;
+        var gauge = toast && toast.querySelector('.proto-gauge');
+        var num = toast && toast.querySelector('.proto-gauge-num');
+
+        function set(pct) {
+          if (!gauge || !num) return;
+          gauge.style.setProperty('--stroke-percent', pct);
+          num.textContent = pct;
+        }
+
+        var finished = false;
+
+        function finish() {
+          if (finished) return;
+          finished = true;
+          set(100);
+          box.classList.add('proto-ready');
+          if (!toast) return;
+          toast.setAttribute('data-state', 'out');
+          setTimeout(function () { toast.setAttribute('hidden', ''); }, EXIT_MS);
+        }
+
+        // rAF paints the sweep smoothly, but a plain timer owns completion:
+        // browsers pause rAF in background tabs, and the gauge would otherwise
+        // stall mid-count and leave the prototype masked for good. Same reason
+        // the toast hides on a timer rather than animationend — under
+        // prefers-reduced-motion there is no animation to end.
+        var started = false;
+        frame.addEventListener('load', function () {
+          if (started) return;
+          started = true;
+          var t0 = performance.now();
+          (function step() {
+            if (finished) return;
+            set(Math.min(100, Math.round(((performance.now() - t0) / HOLD_AFTER_LOAD_MS) * 100)));
+            if (!finished) requestAnimationFrame(step);
+          })();
+          setTimeout(finish, HOLD_AFTER_LOAD_MS);
+        });
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

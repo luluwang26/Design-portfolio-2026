@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check Remediation — Lulu Wang</title>
+  <meta name="description" content="A self-service workflow that lets AP customers rescue returned paper checks in-product — fix the address, reissue, and see it resolved — instead of letting the payment quietly fail.">
+  <link rel="stylesheet" href="../assets/style.css?v=76">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="how-it-works-onboarding.html">“How it works” in Guided Onboarding</a></li>
+            <li><a href="basic-ftu-redesign.html">Receiver First-Time-Use Redesign</a></li>
+            <li><a href="in-product-sales-connect.html">In-Product Sales Connect</a></li>
+            <li><a href="supplier-onboarding-agent.html">Supplier Onboarding</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="wrap">
+
+  <article>
+    <header class="case-hero">
+      <p class="eyebrow">Case study · B2B Payments · Returned-Check Remediation</p>
+      <h1>Check Remediation: Helping Customers Rescue Returned Checks Before They Fail</h1>
+      <p class="lede">An end-to-end, self-service workflow that lets AP customers fix returned paper checks — almost always a wrong address — directly in the product, instead of letting the payment quietly fail.</p>
+      <p class="meta"><strong>Lead Product Designer</strong> · Role: design audit, research synthesis, end-to-end workflow design, cross-functional alignment with Product and Engineering, and a phased launch</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">+20%</span><span class="label">Lift in check remediation rate (18.3% → 22%) from the awareness phase alone</span></div>
+        <div class="stat"><span class="num">~2.5×</span><span class="label">In-workflow remediation vs. portfolio average (~52% vs. ~21%)</span></div>
+        <div class="stat"><span class="num">2 phases</span><span class="label">Awareness layer shipped in January; end-to-end workflow at GA in April</span></div>
+      </div>
+    </header>
+
+    <section class="glance">
+      <h2>At a glance</h2>
+      <dl>
+        <dt>Approach</dt><dd>Legacy audit → customer-call and journey-map synthesis → engineering alignment on address-validation return codes → a Figma concept built on a single remediation drawer → a phased ship (awareness layer, then the end-to-end workflow at GA).</dd>
+        <dt>Scope</dt><dd>Self-service remediation of returned paper checks for AP customers — surfacing the failure, correcting the vendor address, and voiding-and-reissuing in one guided flow.</dd>
+        <dt>Inputs</dt><dd>A customer call, the payment-lifecycle journey map, support-call patterns and operational escalations, and Google address-validation behavior mapped per return code.</dd>
+        <dt>Validated</dt><dd>Whether an opinionated, in-product recovery flow lifts check remediation versus passive email notifications and neutral void/reissue options.</dd>
+        <dt>Rollout</dt><dd>The awareness and notification layer shipped on web in January; the end-to-end check-remediation workflow reached general availability in April.</dd>
+      </dl>
+    </section>
+
+    <div class="prose">
+
+      <p>I designed an end-to-end, self-service workflow that lets accounts-payable customers fix returned paper checks — almost always caused by a wrong vendor address — directly in the product, instead of letting the payment quietly fail. The feature reached general availability and delivered a measurable, durable lift in check recovery.</p>
+
+      <h2><span class="kicker">01</span>Context &amp; Problem</h2>
+      <p>The platform's AP customers process an enormous volume of payments every year, and the real measure of success was never the volume of payments sent — it was whether those payments actually reached their destination reliably and on time. For an AP customer and their vendor, every payment is high-stakes and is read as a signal about whether the platform can be trusted. When a check is returned and nothing is done, the damage is financial, operational, and reputational for both sides.</p>
+      <p>This work focuses on one specific, high-frequency failure: the returned check. A returned check is a <em>remediable</em> payment — one that hits an issue while in-flight but can still be fixed and completed once the underlying problem is corrected. Paper checks remain a major disbursement rail for AP, and when one bounces back undelivered, the customer is left holding a failed payment, an unpaid vendor, and no obvious way to make it right.</p>
+      <p>The design challenge was to turn that silent, support-dependent failure into a confident, self-service recovery.</p>
+
+      <h2><span class="kicker">02</span>Design Audit of the Legacy Experience</h2>
+      <p>The legacy experience failed customers with returned checks in three connected ways.</p>
+      <p><strong>It was passive.</strong> When a check came back, customers were informed mainly through emails and the occasional operational outreach, with no self-service mechanism to actually resolve the issue once they noticed it. The product told you the check had failed, then left you to chase a fix through support.</p>
+      <p><strong>It was not opinionated.</strong> The platform gave equal visual and functional weight to "void and credit" (give up on the payment) and "void and reissue" (fix the address and complete the payment), so customers had to interpret and decide on their own at the worst possible moment. A cross-functional journey map found that this region of the product — void and reissue, void and credit, and disbursement returns — formed a recurring pain cycle, where customers:</p>
+      <blockquote><p>"…often feel reactive rather than empowered, especially around fraud holds, void eligibility, or returned payments."</p></blockquote>
+      <p>The same analysis showed these were systemic issues cited by both customers and agents, not isolated edge cases.</p>
+      <p><strong>It created uncertainty after the fact.</strong> Because there was no clear, persistent status, customers couldn't always tell what had happened to a payment or whether their fix had taken hold. One AP customer, recounting a failed payment, captured the lingering worry directly:</p>
+      <blockquote><p>"I just wanted to make sure that a check wasn't sent out. So I don't know if it was shut off."</p></blockquote>
+      <p>The product had asked her to act without showing her the outcome.</p>
+
+      <h2><span class="kicker">03</span>Understanding the Problem Space</h2>
+      <p>To ground the redesign, I attended a customer call to hear the problem in a customer's own words, then triangulated that against the payment journey-map research, support-call patterns, and operational escalations.</p>
+      <p>A consistent root cause emerged: a returned check is almost always an address problem, and the check can't be reissued successfully until the vendor's address is corrected first. As one customer-facing specialist described the correct sequence — "when you're voiding and reissuing it, you want to make sure that your team is updating the vendor's address first" — and would "first suggest confirming the address is correct directly with the vendor." The same pattern showed up repeatedly in support guidance:</p>
+      <blockquote><p>"[A returned check] is usually because of the wrong address. So you would just void the check, put it back in your account, and then you can update the vendor address, and then from there, reissue it."</p></blockquote>
+      <p>That insight had a direct design consequence: check remediation couldn't be a single "reissue" button. It had to walk the customer through a priority order — fix the address first, then reissue — exactly the order experts followed manually.</p>
+      <p>To make the address fix trustworthy rather than a guess, I worked with engineering to align on how the Google address-validation API behaved for every return code. We walked each user story against the possible outcomes — valid, corrected, missing, unconfirmed, warning, and exception — so the experience would respond consistently when an address was undeliverable or incomplete, instead of only handling the happy path. On the engineering side, this mapped to a remediation key returned per issue type: a returned check returns a specific enum that the front end maps to the right call to action, such as "fix address," with the drawer rendering dynamic content based on that key.</p>
+
+      <h2><span class="kicker">04</span>Design Process</h2>
+      <p>I approached the work as a staged, cross-functional build rather than one big release.</p>
+      <ul>
+        <li>I audited the legacy notification and remediation experience for returned checks and mapped the action it required: correct the address, then void and reissue.</li>
+        <li>I attended a customer call and synthesized it with journey-map research and support patterns to confirm the core sequence of fixing the vendor address before reissuing the check.</li>
+        <li>I partnered with engineering to align each Google address-validation return code to a user story, so the flow had a defined behavior for every exception, not just the clean case.</li>
+        <li>I created the concept flows in Figma, centered on a single global remediation drawer tailored to the returned-check journey.</li>
+        <li>The PM, design, and engineering then spent a full day sitting together to walk through the flows end to end, catching logic gaps and edge cases early — before they became expensive to fix in code.</li>
+        <li>We shipped in phases: a notification and awareness layer first (web, January), followed by the end-to-end check-remediation workflow at general availability (April).</li>
+      </ul>
+
+      <h2><span class="kicker">05</span>User Test &amp; Insights</h2>
+      <p>The strongest validation came from triangulating the customer call, the journey-map data, and operational reality rather than from a single test. Three insights shaped the design.</p>
+      <p><strong>The blocker was trust and clarity, not capability.</strong> Customers weren't failing to understand that a check had bounced; they were left unsure whether their action had worked — as the "I don't know if it was shut off" moment showed. A successful design had to make the outcome unmistakable.</p>
+      <p><strong>Customers wanted the fix to live in one place.</strong> The journey map showed people feeling reactive and disempowered, bouncing between voids, reissues, and credits with no single guided path. That argued for consolidating awareness and action: a non-dismissable banner above the Payments Out grid, a renamed "Needs Attention" filter (previously "Failed Payments"), in-line error icons, and a single "Fix Now" entry point for the returned check.</p>
+      <p><strong>The fix had a natural order the product had been ignoring.</strong> Because resolving a returned check reliably meant "update the address, then reissue," the flow needed to embed the address edit inside the remediation step rather than sending customers off to a separate vendor screen and hoping they returned.</p>
+
+      <h2><span class="kicker">06</span>Key Design Decisions &amp; Tradeoffs</h2>
+      <p><strong>I made the product opinionated about fixing, not just voiding.</strong> The defining decision was to stop treating "void and credit" and "void and reissue" as equal choices and instead guide customers toward fixing the address and completing the payment — the first time the product had taken a point of view on remediation. The tradeoff was the risk of appearing to steer customers, so I kept the alternative fully available and plainly labeled, framing the exit as "I don't want to reissue this payment" rather than burying it. The goal was a clear default, not a forced path.</p>
+      <p><strong>I embedded the address fix inside a single remediation drawer.</strong> Rather than a bare "reissue" action, I designed a global remediation drawer that enforces the expert sequence: validate and update the vendor's address, and only then void and reissue the check. The tradeoff was real complexity — a single user action had to orchestrate several consecutive operations — but it collapsed a multi-screen, error-prone chore into one coherent task.</p>
+      <p><strong>I ran address validation automatically and made a strong suggestion, not a hard block.</strong> The drawer runs Google address validation automatically and, when something is off, makes a strong, explicit recommendation and asks the customer to confirm — rather than either silently allowing a bad address or hard-blocking the customer. The tradeoff is that a strong suggestion can't guarantee deliverability the way a hard block would, but blocking would have trapped legitimate edge cases, such as a valid address the API couldn't confirm. Aligning every return code to a defined user story with engineering was what made this middle path safe to ship.</p>
+      <p><strong>I made the resolved state explicit and persistent.</strong> To answer the "I don't know if it worked" problem directly, the design surfaces a clear post-action state — a persistent "Fixed on [date]" indicator and a "Reissue pending" status — so customers can see that their address fix registered and the check is on its way again. The tradeoff, flagged openly as a project risk, was that raising awareness of fixable checks could increase payment-related support contacts in the short term; we accepted that as the cost of customers finally seeing and acting on returned checks they previously missed.</p>
+
+      <h2><span class="kicker">07</span>Outcome &amp; Next Steps</h2>
+      <p>The feature shipped, and the results for check remediation were strong. The awareness phase alone — released in January, focused on surfacing returned checks and creating urgency — moved the check remediation rate up 20%, from 18.3% to 22%, versus the prior-half baseline. The end-to-end, opinionated workflow then reached general availability in April.</p>
+      <p>Once the guided workflow was live, in-flow check remediation performed roughly twice as well as the portfolio average — about 52% in-workflow versus roughly 21% across the portfolio — contributing to the recovery of payments that would otherwise have failed off-platform.</p>
+
+      <table>
+        <thead><tr><th>Measure</th><th>Before</th><th>After</th></tr></thead>
+        <tbody>
+          <tr><td>Check remediation rate</td><td>18.3%</td><td class="delta">22% (awareness phase, March)</td></tr>
+          <tr><td>Guided check workflow vs. portfolio</td><td>~21% portfolio</td><td class="delta">~52% in-workflow</td></tr>
+        </tbody>
+      </table>
+
+      <p>The next steps were already scoped from the end-to-end rollout: handling invalid user permissions so only users who can void are guided to do so, and instrumenting the precise reasons a check reissue fails — including residual address exceptions — so we can keep closing the gap.</p>
+      <p>Looking back, the most important reframing was simple: a returned check isn't a dead end, it's a moment to earn trust. By being opinionated about the fix, embedding the address correction where the problem surfaced, and making the resolution visible, the design turned one of AP's most frustrating, support-heavy moments into something customers could confidently handle themselves.</p>
+      <p class="footnote">This case study is lightly anonymized for portfolio use. The figures above are drawn from the project's measured results around general availability.</p>
+
+    </div>
+  </article>
+
+  <nav class="pagination">
+    <a class="page-link prev" href="enterprise-supplier-search.html"><span class="dir">← Previous</span><span class="title">Enterprise Supplier Search</span></a>
+    <a class="page-link next" href="supplier-onboarding-agent.html"><span class="dir">Next →</span><span class="title">Supplier Onboarding Agent</span></a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">© 2026 Lulu Wang · <a href="../index.html">Back to home</a></div>
+</footer>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

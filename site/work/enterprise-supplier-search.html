@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How enterprise suppliers show up in search results</title>
+  <meta name="description" content="Redesigning enterprise supplier search around one angle — trust — so AP users can commit money to a supplier with confidence, evidence, and no surprises.">
+  <link rel="stylesheet" href="../assets/style.css?v=76">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="how-it-works-onboarding.html">“How it works” in Guided Onboarding</a></li>
+            <li><a href="basic-ftu-redesign.html">Receiver First-Time-Use Redesign</a></li>
+            <li><a href="in-product-sales-connect.html">In-Product Sales Connect</a></li>
+            <li><a href="supplier-onboarding-agent.html">Supplier Onboarding</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="wrap">
+
+  <article>
+    <header class="case-hero">
+      <p class="eyebrow">Case study · Supplier Search</p>
+      <h1>How enterprise suppliers show up in search results</h1>
+      <p class="lede">Redesigning supplier search around a single angle — trust — so AP users have enough confidence, evidence, and predictability to commit money to a supplier without hesitation or regret.</p>
+      <p class="meta"><strong>Lead Product Designer</strong> · Role: design audit, research synthesis, concept design, unmoderated usability testing, and experiment framing</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">40%</span><span class="label">Of card-accepting suppliers were visible in search</span></div>
+        <div class="stat"><span class="num">60%</span><span class="label">Selection rate even on exact-match results — a trust gap, not just discovery</span></div>
+        <div class="stat"><span class="num">+20–25%</span><span class="label">Targeted lift in connection opt-ins</span></div>
+      </div>
+    </header>
+
+    <section class="glance">
+      <h2>At a glance</h2>
+      <dl>
+        <dt>Approach</dt><dd>Design audit → synthesis of prior and new research → multiple concept directions → an unmoderated Maze test → a sequenced, three-experiment rollout plan.</dd>
+        <dt>Scope</dt><dd>Enterprise supplier search for AP users — the in-flow moment of finding and connecting to the right supplier, usually during bill creation.</dd>
+        <dt>Inputs</dt><dd>The original problem framing, historical AP network research, a newer network-search study, survey data, and an unmoderated Maze concept test.</dd>
+        <dt>Validated</dt><dd>Whether payment-method transparency, stronger trust cues, and consolidated supplier entities reduce ambiguity and improve confident connection — without harming search success.</dd>
+        <dt>Direction</dt><dd>Three sequenced no-harm experiments — payment-method visibility, a premium supplier card, and duplicate / payment-center consolidation — with program goals of 85% searchable card-enabled payment centers and a ~20–25% opt-in lift.</dd>
+      </dl>
+    </section>
+
+    <div class="prose">
+
+      <p>I redesigned enterprise supplier search around a single design angle: building trust. The goal wasn't just to help AP users find the right supplier, but to give them enough confidence, evidence, and predictability to commit money to that supplier without hesitation or regret.</p>
+
+      <h2><span class="kicker">01</span>Context &amp; Problem</h2>
+      <p>Enterprise suppliers were strategically important to the network, but only 40% of card-accepting suppliers were visible in search. The more revealing number: even when an exact match appeared, users selected it only 60% of the time. That gap between "found it" and "chose it" told me the core problem wasn't discoverability — it was trust. Users could see the right answer and still hesitate to act on it.</p>
+      <p><strong>Trust was fragile in another way too.</strong> Supplier payment preferences could change after connection, which produced confusion and costly opt-outs. So the experience was breaking trust on both ends: it failed to earn confidence before the decision, and it created surprise after it.</p>
+      <p>The project sat at the intersection of product UX, network quality, and payments infrastructure. The challenge was to help AP users answer two high-stakes, trust-driven questions in one moment: is this truly the right supplier, and can I trust what will happen to the payment if I connect? Everything I designed laddered up to those two questions.</p>
+
+      <h2><span class="kicker">02</span>Design Audit of the Legacy Experience</h2>
+      <p>I audited the legacy experience through a trust lens, and it failed on three fronts: trust in the results, trust in the decision, and trust in the outcome.</p>
+      <p><strong>Trust in the results was broken by noise.</strong> Users encountered duplicates, stale records, and matches that seemed unrelated to what they typed.</p>
+      <blockquote><p>"I'll put in a person's name or LLC and it'll come up with something that doesn't seem to be related."</p></blockquote>
+      <blockquote><p>"Get rid of the duplicates. I do not know which of the sometime 2 or 4 choices (of the same vendor) to pick."</p></blockquote>
+      <p>When a list contradicts itself, users stop believing any single result.</p>
+      <p><strong>Trust in the decision was broken by missing evidence.</strong> The interface didn't give users enough proof to act confidently. In survey work, 30% of users didn't feel confident making in-network connections, and 37% rated result quality as only acceptable, poor, or very poor. The interface asked for a financial commitment without supplying the evidence that commitment deserved.</p>
+      <p><strong>Trust in the outcome was broken by surprise.</strong> Search results looked identical across payment types, but some suppliers later routed through a card-based flow users hadn't expected. One escalation captured the breach of trust precisely:</p>
+      <blockquote><p>"We are setting up clients as check or ePay and having them revert to VC after the fact."</p></blockquote>
+      <p>The legacy experience asked users to make a financial decision without giving them confidence, context, or control. As one participant put it:</p>
+      <blockquote><p>"You don't guess with money."</p></blockquote>
+      <p>That line became my north star: every decision in search had to feel earned, not guessed.</p>
+
+      <h2><span class="kicker">03</span>Understanding the Problem Space</h2>
+      <p>I grounded the work in prior research before designing anything, specifically to understand what builds and erodes trust during supplier search — reviewing the original problem framing, historical AP network research, and a newer network-search study. The synthesis surfaced three patterns, each of them a lever for trust.</p>
+      <p><strong>Trust has to be earned quickly, in-flow.</strong> 67% of respondents set up vendors during bill creation, so the experience had to build confidence inside an already time-pressured workflow. There was no separate, low-stakes moment to win the user over; trust had to be established in seconds.</p>
+      <p><strong>Trust comes from proof, not metadata volume.</strong> The fields that drove confidence were vendor name, remittance address, verified status, and email domain. Number of connections mattered far less. Users didn't want more information; they wanted the right evidence that this was a legitimate, correct supplier.</p>
+      <p><strong>Trust depends on a clean, authoritative entity.</strong> Enterprise supplier matching had a data problem as much as a UI problem. Duplicate orgs, alias names, and fragmented payment centers created multiple "correct-looking" results. Ambiguity is the enemy of trust, so resolving the entity itself was foundational.</p>
+
+      <h2><span class="kicker">04</span>Design Process</h2>
+      <p>I treated this as a problem of progressively building and validating trust rather than shipping one redesign.</p>
+      <p><strong>Audit, then research.</strong> I mapped where trust broke down — in the results, in the decision, and in the outcome — then pulled prior research forward to separate trust signals that felt useful from signals that actually drove decisions.</p>
+      <p><strong>Concept, then validate.</strong> I created multiple concept directions, then ran an unmoderated Maze test on the search-card concepts to evaluate whether the changes genuinely reduced ambiguity and raised confidence before recommending broader investment.</p>
+      <p>Finally, I translated the work into three experiments, each targeting a distinct dimension of trust so the team could learn its way forward without a risky big-bang redesign:</p>
+      <ul>
+        <li><strong>Experiment 1 — Trust in the outcome.</strong> Make payment method visible in search results to eliminate post-connection surprise and establish a more rail-neutral understanding of supplier search.</li>
+        <li><strong>Experiment 2 — Trust in the decision.</strong> Introduce a premium supplier card with stronger trust cues such as verification, clearer supplier identity, and brand signals.</li>
+        <li><strong>Experiment 3 — Trust in the results.</strong> Consolidate duplicate entities into a single authoritative supplier result through aliases and payment-center grouping.</li>
+      </ul>
+
+      <h2><span class="kicker">05</span>User Test &amp; Insights</h2>
+      <p>The Maze test validated which concept directions were worth carrying forward, but the strongest insights came from triangulating it with existing qualitative and survey research. Across all of it, trust was the recurring theme.</p>
+      <p><strong>Trust, not preference, was the blocker.</strong> Users weren't rejecting search because they disliked it; they rejected it because the stakes felt too high for the certainty the interface provided.</p>
+      <blockquote><p>"How do I know that I am sending money to the correct [place]?"</p></blockquote>
+      <p><strong>Trust requires search to behave like search.</strong> Participants described the input as "finicky," expected it to work more like Google, and asked for fewer duplicates, more flexible matching, and more up-to-date supplier information. A tool that mishandles a name doesn't feel trustworthy enough to handle money.</p>
+      <p><strong>Not all trust signals are equal.</strong> Users said vendor name, address, verified status, and email domain mattered most, while connection count was far less persuasive. This became pivotal, because it challenged an early hypothesis and pushed the final concept toward the cues that genuinely built confidence rather than the ones that merely looked impressive.</p>
+
+      <h2><span class="kicker">06</span>Key Decisions &amp; Tradeoffs</h2>
+      <p><strong>Predictability over short-term clicks, because surprise destroys trust.</strong> I recommended surfacing payment method directly in search results, even though the team worried it might reduce connection opt-ins. A connection made under false expectations erodes trust permanently, while transparency builds a relationship that lasts. The tradeoff was framing this as a no-harm experiment first, not a guaranteed conversion win.</p>
+      <p><strong>"Better proof" over "more information," because trust is about evidence.</strong> Early hypotheses explored adding more result attributes, including connection counts. The research showed users cared far more about identity validation than network popularity, so I emphasized verified status, clearer supplier identity, email domain, and a logo treatment for premium suppliers, while de-emphasizing weaker cues. Trust came from the right proof, not the most data.</p>
+      <p><strong>Duplicate cleanup as a trust feature, not backend hygiene.</strong> The most meaningful move was recognizing that a cleaner result list is itself a trust signal. Consolidating aliases and grouping related entities into one authoritative result reduced noise, made the best supplier obvious, and gave enterprise suppliers a coherent identity. The tradeoff was complexity: consolidation carried risks around payment routing, legal exposure, and mixed payment preferences, so the experience had to handle edge cases rather than assume every duplicate could safely merge.</p>
+
+      <h2><span class="kicker">07</span>Outcome &amp; Next Steps</h2>
+      <p>The outcome wasn't a single screen. It was a clearer, trust-centered strategy for enterprise supplier search: build confidence by reducing surprise, strengthening the right trust signals, and making the supplier entity itself authoritative.</p>
+      <p>Rather than one large redesign, I packaged the work into three measurable experiments with explicit success criteria. At the program level, the team set goals to make 85% of card-enabled payment centers searchable and improve connection opt-ins by roughly 20–25%, while monitoring no-harm outcomes such as disconnects and search success.</p>
+      <p>The next step was to validate each layer of trust in sequence:</p>
+      <ul>
+        <li>Test payment-method transparency to confirm it builds understanding without depressing search success.</li>
+        <li>Validate the premium supplier card to learn which trust signals most effectively increase confidence.</li>
+        <li>Expand aliasing and payment-center grouping carefully, with safeguards for mixed-preference and multi-entity edge cases.</li>
+      </ul>
+      <p>Looking back, the most valuable reframing was this: the problem was never that users couldn't find suppliers. It was that the product hadn't yet earned enough trust for users to confidently choose them. Once I anchored the design on building trust, every decision had a clear test: does this make the user more confident putting their money on the line?</p>
+      <p class="footnote">This case study is lightly anonymized for portfolio use. The percentages above are drawn from the project's research and program targets, and the three experiments describe the recommended path forward rather than shipped results.</p>
+
+    </div>
+  </article>
+
+  <nav class="pagination">
+    <a class="page-link prev" href="basic-ftu-redesign.html"><span class="dir">← Previous</span><span class="title">Basic First-Time-Use Redesign</span></a>
+    <a class="page-link next" href="supplier-onboarding-agent.html"><span class="dir">Next →</span><span class="title">Supplier Onboarding</span></a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">© 2026 Lulu Wang · <a href="../index.html">Back to home</a></div>
+</footer>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

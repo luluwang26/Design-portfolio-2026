@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Receiver First-Time-Use Redesign — Lulu Wang</title>
+  <meta name="description"
+    content="Clarifying payment status, offering best next steps, and introducing product value to new receivers after they sign up.">
+  <link rel="stylesheet" href="../assets/style.css?v=76">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rock+Salt&display=swap"
+    rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="how-it-works-onboarding.html">“How it works” in Guided Onboarding</a></li>
+            <li><a href="basic-ftu-redesign.html" aria-current="page">Receiver First-Time-Use Redesign</a></li>
+            <li><a href="in-product-sales-connect.html">In-Product Sales Connect</a></li>
+            <li><a href="supplier-onboarding-agent.html">Supplier Onboarding</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="cs-banner cs-banner--bleed">
+    <img src="../assets/img/ftu/ftu-lg.png"
+      alt="Before and after of the receiver Get Started page. Before: unclear next steps, no payment status, and a random product feature. After: clear payment status and expectations, clear next steps, and personalized product offerings.">
+  </section>
+
+  <main class="cs-main">
+
+    <h1 class="cs-title">Receiver First-Time-Use Redesign</h1>
+
+    <section class="glance-card">
+      <span class="chip chip-olive">At a glance</span>
+      <dl class="glance-list">
+        <dt>Problem:</dt>
+        <dd>Receivers come to the platform with a very narrow first job to be done: get paid by a customer. At the time,
+          the platform had millions of receiver accounts, but only a small fraction were transacting, and most
+          transacting receivers stopped using the platform after three months.</dd>
+
+        <dt>Design process:</dt>
+        <dd>Design audit → qualitative + survey research → concept in Figma → concept testing → iteration and design
+          lock
+          → launch-ready UX.</dd>
+
+        <dt>Scope:</dt>
+        <dd>From the moment a customer receives a sign up email to the moment when the fund lands in their linked bank.
+        </dd>
+
+        <dt>Research:</dt>
+        <dd>A 10-participant qualitative study and a 1,056-respondent survey plus a 10-participant concept testing.</dd>
+
+        <dt>Hypothesis:</dt>
+        <dd>By redesigning the receiver dashboard to clarify payment status, offer best next steps and explain product
+          value, we will improve receiver activation and retention.</dd>
+
+        <dt>Team:</dt>
+        <dd>1 product manager, 1 product designer, 2 researchers, 1 content designer, 2 engineers.</dd>
+      </dl>
+
+      <div class="stat-row">
+        <div class="stat-tile">
+          <span class="stat-num">+30%</span>
+          <span class="stat-label">Invoices created vs. the legacy flow</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">+22%</span>
+          <span class="stat-label">Initial TPV (Total Payment Value) vs. the legacy flow</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">+21%</span>
+          <span class="stat-label">Incremental TPV vs. the legacy flow</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">01</span>Context &amp; problem</h2>
+      <p>The platform is a B2B payment network where payors pay receivers, and receivers are asked by payors (their
+        customers) to create a free account in order to get paid. The platform had millions of receiver accounts, but
+        only a small fraction were transacting and most transacting receivers stopped using the platform after three
+        months.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">02</span>Three ways to find out why</h2>
+      <p>The first step I took was to go through the receiver experience myself. I created a payor account on our
+        testing
+        platform to pay a fictional receiver. I screenshotted my experience and mapped the journey along the way.</p>
+      <p>Meanwhile, I partnered with a researcher to look at the problem from both directions. On the qualitative side,
+        we ran a 10-participant study on the receiver journey from signup to first payment: 5 SMBs and 5 independent
+        contractors who had signed up or gotten paid within the prior 30 days. On the quantitative side, we surveyed
+        recently signed-up receivers and received 1,056 responses across solo operators, micro-businesses, SMBs, and a
+        smaller set of larger firms.</p>
+      <p>I also worked with our customer experience team and sales to look for blockers, such as bank verification
+        failure causing payment delay.</p>
+
+      <div class="method-tree">
+        <div class="method-question">Why receiver activation and retention rates are so low?</div>
+        <div class="method-connector" aria-hidden="true"></div>
+        <div class="method-cards">
+          <div class="method-card">
+            <h3>Talk to customers</h3>
+            <p>Qual: 10 interviews;<br>Quant: survey (1,056 responses)</p>
+          </div>
+          <div class="method-card">
+            <h3>Map customer journey</h3>
+            <p>Elevate the Peak, fill the Pit, mark the Transition, reorder.</p>
+          </div>
+          <div class="method-card">
+            <h3>Look for edge cases</h3>
+            <p>From CX support tickets and from talking to Sales.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <span class="chip chip-grey">User quotes</span>
+
+        <p class="quote-lead">Payment uncertainty created real emotional drag.</p>
+        <blockquote>"When I meant cumbersome, there was like a lot of stuff that I knew I didn't need… I don't
+          understand
+          why all this stuff is here, I'm just trying to get paid."</blockquote>
+
+        <p class="quote-lead">Timing clarity mattered more than feature discovery.</p>
+        <blockquote>"The biggest challenges are, timing, understanding when a payment is going to be made… It's nice to
+          see a due date but that doesn't mean that that is when we will receive payment."</blockquote>
+
+        <p class="quote-lead">The payment process itself wasn't intuitive.</p>
+        <blockquote>"I had gotten a notification on my phone that I have an invoice… I didn't know exactly what that
+          meant."</blockquote>
+      </div>
+
+      <div class="cause-card">
+        <span class="chip chip-rose">Root cause #1</span>
+        <p class="cause-title">Receivers don't know what value the platform offers.</p>
+        <p>A majority of survey respondents said they signed up because a customer asked them to.</p>
+      </div>
+
+      <div class="cause-card">
+        <span class="chip chip-rose">Root cause #2</span>
+        <p class="cause-title">No single source-of-truth for payment status, causing them to ask "Where is my money?"
+        </p>
+        <p>The biggest sources of friction were uncertainty about payment timing, confusion about whether action was
+          required, and a lack of clarity about what the platform was doing on the user's behalf.</p>
+      </div>
+
+      <div class="cause-card">
+        <span class="chip chip-rose">Root cause #3</span>
+        <p class="cause-title">Receivers are uncertain about what actions to take after signing up.</p>
+        <p>Some receivers thought they were receiving a one-time payment and were done.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">03</span>Project scope</h2>
+      <p>We decided to redesign the "Get Started" page, where new receivers land to check payment status after signing
+        up.</p>
+
+      <figure class="cs-figure">
+        <img src="../assets/img/ftu/ftu-journey map.png"
+          alt="Customer journey mapped against psych level: entry points and signup jump to a Peak, setup and identity verification drop to a Pit, adding a bank recovers, and the Get Started page is marked as the moment to redesign.">
+      </figure>
+
+      <div class="statement-card">
+        <p class="statement-title">Problem Statement</p>
+        <blockquote>How may we clarify payment status, offer best next steps and introduce product value to new
+          receivers
+          after they sign up?</blockquote>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">04</span>Design to match real world use cases</h2>
+      <p>Here is how things work in a real world scenario:</p>
+      <ul>
+        <li>A receiver is asked to create an account to get paid. They sign up, then inform the payor of their PNI
+          (Payment Network ID); the payor connects with them via PNI, creates a bill (from an existing invoice or not)
+          and schedules a payment to the receiver.</li>
+        <li>After adding a bank, there could be a bank verification process that asks the receiver to enter a random
+          deposit amount, which requires at least 24h of wait.</li>
+        <li>Once the bank is successfully connected, the receiver needs to find their PNI and send it to their payor.
+          The
+          payor needs to first connect with the receiver.</li>
+        <li>Right after, if the payor creates a bill, an invoice for this payment will be created and automatically show
+          up in the receiver's Inbox. If the payor schedules a payment, more rich metadata such as <em>Amount, Payor
+            name, Estimated delivery date</em> can be shown on the frontend.</li>
+        <li>However, if the payor didn't take action, the receiver can nudge the payor by sending them an invoice about
+          the expected payment in-product to kick start the payment process. The payor will receive the invoice in their
+          Inbox and turn it into a bill from there.</li>
+      </ul>
+
+      <p><strong>Multiple layers of variables create the complexity.</strong></p>
+      <p>First, whether there's an in-flight payment changes what to show. Receivers with an incoming payment are
+        concerned with when and where the fund will land. Receivers with no in-flight payment wonder how to kick start
+        the payment process.</p>
+      <p>Another layer of complexity is whether an invoice of the in-flight payment was created. When the payor creates
+        a
+        bill on their end and schedules a payment, it is ideal to have a digital invoice that matches the incoming
+        payment. This invoice unlocks capabilities such as adding a custom discount or calculating taxes later. We may
+        want to recommend they create an invoice in-product if no such invoice exists.</p>
+      <p>Other variables affecting the design include the preferred receiving method (ACH or instant transfer), bank
+        verification (success or failure), bank add method (via Plaid or manual), identification verification, etc. I
+        created a matrix to visualize this complexity.</p>
+
+      <figure class="cs-figure">
+        <img src="../assets/img/ftu/ftu-logic-diagram.png"
+          alt="Receiver first-time-use experience logic: a decision tree branching on bank verification success, network connection with the customer, whether a payment is scheduled, and whether the receiver takes Instant Transfer.">
+      </figure>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">05</span>Concepts by sections</h2>
+
+      <p>We designed a tutorial section to explain product offerings and "how-tos" (Root cause #1).</p>
+
+      <div class="concept-block">
+        <div class="concept-labels"><span>Concept A</span><span>Concept B</span></div>
+        <div class="concept-pair">
+          <img src="../assets/img/ftu/ftu-concept-A.png"
+            alt="Concept A: a row of video tutorial cards covering the payment process, updating payment methods, and invoicing.">
+          <img src="../assets/img/ftu/ftu-concept-B.png"
+            alt="Concept B: a single hero video paired with a list of common questions about the payment process and network.">
+        </div>
+      </div>
+
+      <p>A "Payment status widget" that answers the "Where is my money?" question (Root cause #2).</p>
+
+      <div class="concept-block">
+        <div class="widget-grid">
+          <figure class="widget-state">
+            <figcaption>
+              <ul>
+                <li>1 payment on the way</li>
+                <li>Receiving via Instant Transfer</li>
+              </ul>
+            </figcaption>
+            <img src="../assets/img/ftu/ftu-payment-widget-1.png"
+              alt="Payment status card for one payment on the way, with a Get Paid Instantly option.">
+          </figure>
+
+          <figure class="widget-state">
+            <figcaption>
+              <ul>
+                <li>1 payment on the way</li>
+                <li>Receiving via ACH</li>
+              </ul>
+            </figcaption>
+            <img src="../assets/img/ftu/ftu-payment-widget-2.png"
+              alt="The same payment status card without the instant transfer option.">
+          </figure>
+
+          <figure class="widget-state">
+            <figcaption>
+              <ul>
+                <li>No payment on the way</li>
+                <li>No invoice in Inbox</li>
+              </ul>
+            </figcaption>
+            <img src="../assets/img/ftu/ftu-payment-widget-3.png"
+              alt="What's Next card prompting the receiver to invoice their customer to start the payment process.">
+          </figure>
+
+          <figure class="widget-state">
+            <figcaption>
+              <ul>
+                <li>No payment on the way</li>
+                <li>1 invoice in Inbox</li>
+              </ul>
+            </figcaption>
+            <img src="../assets/img/ftu/ftu-payment-widget-4.png"
+              alt="What's Next card showing an invoice created on the receiver's behalf, with a link to view it.">
+          </figure>
+
+          <figure class="widget-state">
+            <figcaption>
+              <ul>
+                <li>Payments delivered</li>
+              </ul>
+            </figcaption>
+            <img src="../assets/img/ftu/ftu-payment-widget-5.png" alt="Card confirming two payments were delivered.">
+          </figure>
+
+          <figure class="widget-state">
+            <figcaption>
+              <ul>
+                <li>Payments in flight</li>
+              </ul>
+            </figcaption>
+            <img src="../assets/img/ftu/ftu-payment-widget-6.png" alt="Card showing two payments are on the way.">
+          </figure>
+
+          <figure class="widget-state">
+            <figcaption>
+              <ul>
+                <li>Empty state</li>
+              </ul>
+            </figcaption>
+            <img src="../assets/img/ftu/ftu-payment-widget-7.png" alt="Empty state: no payments right now.">
+          </figure>
+        </div>
+      </div>
+
+      <p>A "Get the most out of your account" section to recommend next best actions (Root cause #3).</p>
+
+      <div class="concept-block">
+        <div class="concept-labels"><span>Concept A</span><span>Concept B</span></div>
+        <div class="concept-pair">
+          <img src="../assets/img/ftu/ftu-get%20the%20most%20of%20account-concept-A.png"
+            alt="Concept A: next best actions listed vertically with a promotional card for card payments beside it.">
+          <img src="../assets/img/ftu/ftu-get%20the%20most%20of%20account-concept-B.png"
+            alt="Concept B: the same actions arranged in a two-column grid of tappable rows.">
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">06</span>User tests</h2>
+      <p>To validate the direction, I partnered with a researcher and tested the concept with 10 participants: 7 new
+        receiver customers and 3 prospects. Participants generally responded positively to the overall direction. The
+        redesigned experience felt clearer and more useful than the legacy flow, and users better understood where to go
+        for payment information.</p>
+
+      <div class="concept-block">
+        <p class="concept-title">What we showed to the users during a test.</p>
+        <div class="concept-labels"><span>Concept A</span><span>Concept B</span></div>
+        <div class="concept-pair">
+          <img src="../assets/img/ftu/ftu-usertest-concept-A.png"
+            alt="Concept A: the Get Started page leading with the payment card and a next-steps list.">
+          <img src="../assets/img/ftu/ftu-usertest-concept-B.png"
+            alt="Concept B: the same page reordered, with recommended actions in a two-column grid and a tutorial block below.">
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Concept A (user flow)</th>
+              <th>Concept B (alternative UI)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Scenario 1.</strong> A payment is on the way by the time the user lands on the "Get Started"
+                page.</td>
+              <td>Welcome screen → Navigation walkthrough → Get Started page → Get to know us → Get the most out of your
+                account</td>
+              <td rowspan="3" class="td-merge">A different "Get Started" page UI. Otherwise the same as in Concept A.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Scenario 2.</strong> No payment on the way, sign up invitation email only, no existing invoice
+                created on user's behalf.</td>
+              <td>Get Started page → Invoicing flow</td>
+            </tr>
+            <tr>
+              <td><strong>Scenario 3.</strong> No payment on the way, sign up invitation email only, 1 invoice created
+                on
+                user's behalf.</td>
+              <td>Get Started page → Invoices page</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">07</span>Key decisions &amp; tradeoffs</h2>
+      <p>Here's what we hoped to learn from the user test.</p>
+
+      <div class="table-wrap">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>"Product offerings" section</th>
+              <th>Payment status widget</th>
+              <th>Best next steps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What are the most valuable offerings to receivers?</td>
+              <td>Do we want to show invoice and bank account info here?</td>
+              <td>What actions have the least friction to take?</td>
+            </tr>
+            <tr>
+              <td>What topics are of most interest to receivers?</td>
+              <td>Will users want to see the Instant Transfer option if it is available?</td>
+              <td>What features should receivers learn about?</td>
+            </tr>
+            <tr>
+              <td>What is the preferred way to learn? Video, article, or others?</td>
+              <td>What other info do they care about?</td>
+              <td>Do users prefer vertical or horizontal layout of the recommended actions?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul>
+        <li>The biggest decision was to make the overview experience answer "how and when will I get paid?" before
+          trying
+          to teach anything else. The research was clear that surfacing invoicing, network benefits, and upsell
+          messaging
+          too early made the experience feel noisier, not more valuable. So we pushed the product tour to optional and
+          later.</li>
+        <li>Modernize without destabilizing. The redesign also moved the experience onto the design system.</li>
+        <li>Due to the cost of video tutorial creation, we dropped it for the initial launch.</li>
+      </ul>
+
+      <p>The testing also exposed several important gaps.</p>
+      <ul>
+        <li>Trust was still fragile: participants often researched the platform before accepting the invite, or wanted
+          reassurance that the invitation was legitimate.</li>
+        <li>The network story was still too abstract: people didn't naturally understand "network" as a practical
+          benefit
+          unless it was tied to their actual payment workflow.</li>
+        <li>Some language was still vague or intimidating: "Advanced" sounded expensive or overly complex. "Arrival
+          date"
+          didn't reliably communicate when money would actually hit the bank account.</li>
+        <li>The test also showed that optionality mattered. Seven of ten participants thought the walkthrough made
+          sense,
+          but not all wanted to go through it, and six of ten preferred the alternate Concept B layout because it felt
+          more logically ordered and easier to learn from.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">08</span>Iteration &amp; design lock</h2>
+      <p>I used the concept-test findings to tighten the design before launch.</p>
+      <ul>
+        <li>Adopted the stronger layout direction from Concept B.</li>
+        <li>Made payment status and "what happens next" language more explicit.</li>
+        <li>Clarified bank-verification messaging so users understood that delays could be normal.</li>
+        <li>Reduced ambiguity around card pricing and payment-option implications.</li>
+        <li>Treated walkthrough content as supportive, not mandatory, so users could stay focused on the main task.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">09</span>Launch &amp; results</h2>
+      <p>The redesign was measured head-to-head against the legacy first-time-use flow, and we saw lift across both
+        activation behavior and TPV (Total Payment Volume). Charts are for illustration purposes only.</p>
+
+      <figure class="cs-figure">
+        <div class="chart-wrap">
+          <img class="chart-base" src="../assets/img/ftu/ftu-results-chart.svg"
+            alt="Grouped bar chart comparing legacy and redesigned flows: invoices created +30%, initial TPV +22%, and incremental TPV +21%.">
+          <img class="chart-badge chart-badge--1" src="../assets/img/ftu/ftu-increase-1.png" alt="" aria-hidden="true">
+          <img class="chart-badge chart-badge--2" src="../assets/img/ftu/ftu-increase-2.png" alt="" aria-hidden="true">
+          <img class="chart-badge chart-badge--3" src="../assets/img/ftu/ftu-increase-3.png" alt="" aria-hidden="true">
+        </div>
+      </figure>
+
+      <p>The strongest takeaway for me was that comprehension changed behavior: once receivers could more clearly see
+        how
+        and when they would get paid, more of them created invoices, completed the flow, and moved more money through
+        the
+        platform.</p>
+      <p>The redesign also created a longer-lasting product insight: improving first-time understanding wasn't just a
+        usability win, it became a growth lever. The invoicing flow later became a major paid-tier entry point and
+        contributed meaningfully to paid-tier acquisition and receivable TPV, reinforcing that trust and clarity at the
+        first-use moment can compound well beyond onboarding.</p>
+    </section>
+
+    <nav class="cs-pager" aria-label="Case study navigation">
+      <a class="pager-link prev" href="how-it-works-onboarding.html">
+        <span class="pager-dir">← Previous</span>
+        <span class="pager-title">“How it works” in Guided Onboarding</span>
+      </a>
+      <a class="pager-link next" href="in-product-sales-connect.html">
+        <span class="pager-dir">Next →</span>
+        <span class="pager-title">In-product sales connect</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">© 2026 Lulu Wang. All rights reserved.</footer>
+
+  <!-- Lightbox: click any figure image to view it at 80% of the viewport width. -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" data-lb-close></div>
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Enlarged image">
+      <button type="button" class="lightbox-close" data-lb-close aria-label="Close image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+      <img class="lightbox-img" id="lightbox-img" alt="">
+    </div>
+  </div>
+
+  <script>
+    // Click any content image to open it in a lightbox at 80% of the viewport width.
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      var closeBtn = lb.querySelector('.lightbox-close');
+      var lastFocus = null;
+
+      // Every image in the article body, but not the nav avatar or icons.
+      var targets = document.querySelectorAll('.cs-banner img, .cs-main img:not(.chart-badge)');
+
+      Array.prototype.forEach.call(targets, function (img) {
+        img.classList.add('zoomable');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'Enlarge image: ' + (img.alt || 'image'));
+        img.addEventListener('click', function () { open(img); });
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+        });
+      });
+
+      function open(img) {
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt || '';
+        lastFocus = document.activeElement;
+        lb.removeAttribute('hidden');
+        document.body.classList.add('lb-open');
+        closeBtn.focus();
+      }
+
+      function close() {
+        lb.setAttribute('hidden', '');
+        document.body.classList.remove('lb-open');
+        lbImg.removeAttribute('src');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      lb.addEventListener('click', function (e) {
+        if (e.target.closest('[data-lb-close]')) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (lb.hasAttribute('hidden')) return;
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); }
+      });
+    })();
+  </script>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

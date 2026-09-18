@@ -1863,6 +1863,19 @@ a:hover {
   line-height: 1.6;
 }
 
+/* Category line above the title — the same tag each homepage card shows, set in
+   the same type as .post-tag so the card and its page read as one project.
+   Scoped under .cs-main to outrank `.cs-main p`, which would otherwise impose
+   its own colour and 18px bottom margin. */
+.cs-main .cs-tag {
+  font-family: "Inter", var(--font);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin: 0 0 12px;
+}
+
 .cs-title {
   font-size: clamp(1.9rem, 3.4vw, 2.4rem);
   line-height: 1.2;

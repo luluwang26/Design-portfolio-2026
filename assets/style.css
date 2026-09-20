@@ -1349,6 +1349,16 @@ a:hover {
   background: #F9F9F9;
 }
 
+/* The ANDS sheets are tall portraits; anchoring the crop to the top shows the
+   header of the token sheet rather than a slice from its middle. */
+#altitude-design-system .post-media img {
+  object-position: top center;
+}
+
+#prompt-bank-add-first .post-media {
+  background: #FFF4F4;
+}
+
 .post-content {
   display: flex;
   flex-direction: column;
@@ -1609,6 +1619,10 @@ a:hover {
   --indigo-tint: #F0F0F8;
   --plum-ink: #6A2663;
   --plum-tint: #FFF2FE;
+  --azure-ink: #0F77F8;
+  --azure-tint: #E7F1FE;
+  --amber-ink: #D68D31;
+  --amber-tint: #FEF1E1;
   --grey-tint: #FAFAFA;
   --cs-col: 820px;
 
@@ -1634,6 +1648,68 @@ a:hover {
 .cs-main--plum {
   --cs-accent: var(--plum-ink);
   --cs-accent-tint: var(--plum-tint);
+}
+
+/* Rose-themed case study (Prompt Bank Add First). */
+.cs-main--rose {
+  --cs-accent: var(--rose-ink);
+  --cs-accent-tint: var(--rose-tint);
+}
+
+/* Azure-themed case study (Altitude Networks Design System). */
+.cs-main--azure {
+  --cs-accent: var(--azure-ink);
+  --cs-accent-tint: var(--azure-tint);
+}
+
+/* Amber-themed case study (Prompt Bank Add First). */
+.cs-main--amber {
+  --cs-accent: var(--amber-ink);
+  --cs-accent-tint: var(--amber-tint);
+}
+
+/* Two-column section body. The design uses two different splits: an even pair
+   for the benefits diagram (388/394 with a 31px gutter in its 820 column) and
+   a narrower left for the token screenshot (288/484 with a 41px gutter). */
+.cs-split {
+  display: grid;
+  align-items: start;
+  margin: 0 0 18px;
+}
+
+.cs-split--even {
+  grid-template-columns: 388fr 394fr;
+  column-gap: 31px;
+}
+
+.cs-split--narrow-left {
+  grid-template-columns: 288fr 484fr;
+  column-gap: 41px;
+}
+
+.cs-split > figure,
+.cs-split > div {
+  margin: 0;
+  min-width: 0;
+}
+
+.cs-split img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cs-split p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+
+  .cs-split--even,
+  .cs-split--narrow-left {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
 }
 
 /* The Supplier Onboarding design keeps its evidence cards indigo while the rest
@@ -2995,6 +3071,27 @@ body.lb-open {
 /* The supplier prototype's frames run taller than the window it is shown in
    (1150 vs 855), so the embed gets an 855px-tall viewport and Figma scrolls the
    overflow vertically rather than the laptop growing to fit the tallest screen. */
+/* Both prototypes here are portrait, so a landscape window at the site's usual
+   laptop proportion lets Figma scroll the overflow rather than the laptop
+   stretching to the tallest screen. */
+.laptop-screen--1512x960 {
+  aspect-ratio: 1512 / 960;
+}
+
+.laptop-screen--1512x960 iframe {
+  width: 1512px;
+  height: 960px;
+}
+
+.laptop-screen--1280x815 {
+  aspect-ratio: 1280 / 815;
+}
+
+.laptop-screen--1280x815 iframe {
+  width: 1280px;
+  height: 815px;
+}
+
 .laptop-screen--1440x855 {
   aspect-ratio: 1440 / 855;
 }
@@ -3248,6 +3345,18 @@ body.lb-open {
   background: #FFF2FE;
 }
 
+.cs-banner--rose {
+  background: #FFF4F4;
+}
+
+.cs-banner--azure {
+  background: #E7F1FE;
+}
+
+.cs-banner--peach {
+  background: #FEF1E1;
+}
+
 /* The 48px inset keeps the laptop base — which sits 2.4% wider than the lid
    — inside the viewport once the mockup stops being 800px wide. */
 .hero-proto {
@@ -3276,6 +3385,19 @@ body.lb-open {
 /* Three variations side by side on a tinted panel, matching the design: panel
    spans the full 820px column (reclaiming .cs-main's 24px padding), 24px inset,
    12px between tiles. */
+/* Competitor screenshots, four across on the same panel .variant-row uses.
+   Compound selector so it outranks .variant-row's own 3-column rule, which
+   would otherwise win on source order. */
+.variant-row.comp-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 720px) {
+  .variant-row.comp-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .variant-row {
   width: calc(100% + 48px);
   margin: 28px 0 24px -24px;

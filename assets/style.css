@@ -1041,14 +1041,55 @@ a:hover {
   gap: 80px;
 }
 
-.hh-avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
+/* Portrait in an organic blob, with the same blob drawn as an outline and
+   offset down-left. Geometry is the design's 197x198 frame, expressed as
+   percentages so it scales: the photo blob sits at (5.06, 0) and is 191.94 x
+   191.78; the outline sits at (0, 6.22) at the same size. */
+.hh-avatar-wrap {
+  position: relative;
   flex-shrink: 0;
-  display: flex;
-  justify-content: center;
+  width: 197px;
+  aspect-ratio: 197 / 198;
+}
+
+/* The photo box runs 206.95 tall (as in the design) so object-fit crops it the
+   same way; the mask then trims it to the 191.78-tall blob at the top. */
+.hh-avatar {
+  position: absolute;
+  left: 2.569%;
+  top: 0;
+  width: 97.431%;
+  height: 104.518%;
+  object-fit: cover;
+  display: block;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 191.939 191.776' preserveAspectRatio='none'%3E%3Cpath d='M179.557 40.1124C196.154 65.6189 194.665 100.846 183.352 127.168C172.039 153.455 150.867 170.838 127.354 181.409C103.877 191.946 78.0594 195.635 55.7525 186.873C33.4103 178.11 14.6144 156.896 5.64199 129.9C-3.29493 102.939 -2.37286 70.1952 13.9051 44.7951C30.2185 19.3595 61.9233 1.23172 95.1175 0.0610441C128.276 -1.10963 162.96 14.6413 179.557 40.1124Z'/%3E%3C/svg%3E") 0 0 / 100% 92.669% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 191.939 191.776' preserveAspectRatio='none'%3E%3Cpath d='M179.557 40.1124C196.154 65.6189 194.665 100.846 183.352 127.168C172.039 153.455 150.867 170.838 127.354 181.409C103.877 191.946 78.0594 195.635 55.7525 186.873C33.4103 178.11 14.6144 156.896 5.64199 129.9C-3.29493 102.939 -2.37286 70.1952 13.9051 44.7951C30.2185 19.3595 61.9233 1.23172 95.1175 0.0610441C128.276 -1.10963 162.96 14.6413 179.557 40.1124Z'/%3E%3C/svg%3E") 0 0 / 100% 92.669% no-repeat;
+}
+
+.hh-avatar-outline {
+  position: absolute;
+  left: 0;
+  top: 3.143%;
+  width: 97.431%;
+  height: 96.857%;
+  overflow: visible;
+  fill: none;
+  stroke: #474306;
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+/* A mask clips everything its element paints, focus ring included, so the
+   ring for the (lightbox-enabled) photo is drawn on the wrapper instead. */
+/* Scoped under the wrapper to outrank the later .zoomable:focus-visible rule. */
+.hh-avatar-wrap .hh-avatar:focus-visible {
+  outline: none;
+}
+
+.hh-avatar-wrap:has(.hh-avatar:focus-visible) {
+  outline: 2px solid var(--olive);
+  outline-offset: 6px;
+  border-radius: 12px;
 }
 
 .hh-intro {
@@ -1547,9 +1588,8 @@ a:hover {
     padding: 0 24px;
   }
 
-  .hh-avatar {
-    width: 120px;
-    height: 120px;
+  .hh-avatar-wrap {
+    width: 124px;
   }
 
   .hh-actions {

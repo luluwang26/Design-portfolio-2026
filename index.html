@@ -7,7 +7,7 @@
   <title>Lulu Wang — Product Designer</title>
   <meta name="description"
     content="Lulu Wang is a Lead Product Designer who turns research into shipped, measured product wins — onboarding, activation, and network experiences in B2B payments.">
-  <link rel="stylesheet" href="assets/style.css?v=84">
+  <link rel="stylesheet" href="assets/style.css?v=94">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -22,7 +22,7 @@
   <header class="home-header">
     <div class="home-header-inner">
       <div class="hh-avatar-wrap">
-        <img class="hh-avatar" src="assets/img/Lulu photo.png" alt="Lulu Wang">
+        <img class="hh-avatar" src="assets/img/Lulu photo.png?v=2" alt="Lulu Wang">
         <!-- Same blob as the photo mask, drawn as an outline and offset down-left. -->
         <svg class="hh-avatar-outline" viewBox="0 0 191.939 191.776" preserveAspectRatio="none" aria-hidden="true">
           <path vector-effect="non-scaling-stroke"
@@ -31,9 +31,10 @@
       </div>
       <div class="hh-intro">
         <h1 class="hh-title">Nice to meet you! I'm Lulu.</h1>
-        <p class="hh-lede">I'm a Lead Product Designer at a B2B payments platform working across Growth, Search and
-          Network. I turn what I learn into moments and experiences that ship as measured experiments that improve
-          comprehension, learnability and trust.</p>
+        <p class="hh-lede">I design trust into money movement. I'm a Staff Product Designer with a Finance + HCI background,
+          where my work doubled payment remediation and made sure vendors were verified before money moved. These days
+          I'm focused on AI agents moving money, and my rule is simple: the AI never guesses with money. I design where
+          smart systems meet human judgment.</p>
       </div>
       <div class="hh-actions">
         <button type="button" class="fact-btn" id="fact-btn" aria-haspopup="dialog" aria-controls="fact-modal">
@@ -105,51 +106,25 @@
 
       <section class="work-grid" id="work">
 
-        <article class="post-card" id="how-it-works-onboarding">
-          <a class="post-card-link" href="work/how-it-works-onboarding.html">
-            <div class="post-media"><img src="assets/img/how it works/howitworks-hero-sm.png"
-                alt="Guided AP onboarding — the &quot;How it works&quot; welcome screen on a laptop"></div>
+        <article class="post-card" id="trust-in-search">
+          <a class="post-card-link" href="work/trust-in-search.html">
+            <div class="post-media"><img src="assets/img/Trust in search/poster-hero.jpg"
+                alt="Adding a vendor from an uploaded invoice: the assistant finds a likely network match and shows the evidence for it"></div>
             <div class="post-content">
-              <p class="post-tag">Subscriber Onboarding · Growth · 0 → 1</p>
+              <p class="post-tag">Vendor Search · Network Growth · A/B test</p>
               <div class="post-headrow">
-                <h3 class="post-title">“How it works” in Guided Onboarding</h3>
+                <h3 class="post-title">Trust in “Who am I paying?”</h3>
                 <span class="post-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="7" y1="17" x2="17" y2="7" />
                     <polyline points="7 7 17 7 17 17" />
                   </svg></span>
               </div>
-              <p class="post-desc">New customers signed up believing the platform could help, but many never saw enough
-                value to stay. A short, skippable walkthrough teaches the product before asking anyone to configure it —
-                turning onboarding from a checklist into a path.</p>
+              <p class="post-desc">Accounts Payable users struggled to trust the vendors shown in network search, forcing
+                manual checks before a first payment. AI-assisted identity matching shows the evidence behind each match.</p>
               <div class="post-badges">
-                <span class="badge">5–7× setup completion</span>
-                <span class="badge">83% finish the tour</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <article class="post-card" id="basic-ftu-redesign">
-          <a class="post-card-link" href="work/basic-ftu-redesign.html">
-            <div class="post-media"><img src="assets/img/ftu/ftu-sm.png"
-                alt="Receiver First-Time-Use redesign, onboarding experience"></div>
-            <div class="post-content">
-              <p class="post-tag">Receiver Onboarding · Network Growth · A/B test</p>
-              <div class="post-headrow">
-                <h3 class="post-title">Receiver First-Time-Use Redesign</h3>
-                <span class="post-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                  </svg></span>
-              </div>
-              <p class="post-desc">New receivers came to the platform to get paid, but the first-time experience
-                answered everything except how and when. Rebuilding it around "where's my money?", payment status
-                first, education phased, turned confusion into transactions.</p>
-              <div class="post-badges">
-                <span class="badge">+30% invoices created</span>
-                <span class="badge">+22% initial TPV</span>
+                <span class="badge">3+ experiments</span>
+                <span class="badge">50%+ success rate target</span>
               </div>
             </div>
           </a>
@@ -180,28 +155,6 @@
           </a>
         </article>
 
-        <article class="post-card" id="prompt-bank-add-first">
-          <a class="post-card-link" href="work/prompt-bank-add-first.html">
-            <div class="post-media"><img src="assets/img/prompt bank add first/Hero.png" alt="Control versus variant of the set-up guide: equal-weight tiles on the left, a guided &quot;Start here&quot; step on the right"></div>
-            <div class="post-content">
-              <p class="post-tag">Subscriber Onboarding · Growth · A/B test</p>
-              <div class="post-headrow">
-                <h3 class="post-title">Prompt Bank Add First</h3>
-                <span class="post-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                  </svg></span>
-              </div>
-              <p class="post-desc">A guided path to the one action that unlocks value. Ten equally weighted tiles gave new users no path; a &ldquo;Start here&rdquo; section pinned to the top of onboarding made the one action that unlocks activation unmistakable.</p>
-              <div class="post-badges">
-                <span class="badge">5+% more banks added</span>
-                <span class="badge">10+% more orgs converted</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
         <article class="post-card" id="supplier-onboarding-agent">
           <a class="post-card-link" href="work/supplier-onboarding-agent.html">
             <div class="post-media"><img
@@ -227,23 +180,26 @@
           </a>
         </article>
 
-        <article class="post-card" id="altitude-design-system">
-          <a class="post-card-link" href="work/altitude-design-system.html">
-            <div class="post-media"><img src="assets/img/ANDS/ANDS-honmepage card hero.png" alt="Altitude Networks Design System — the ANDS component library"></div>
+        <article class="post-card" id="basic-ftu-redesign">
+          <a class="post-card-link" href="work/basic-ftu-redesign.html">
+            <div class="post-media"><img src="assets/img/ftu/ftu-sm.png"
+                alt="Receiver First-Time-Use redesign, onboarding experience"></div>
             <div class="post-content">
-              <p class="post-tag">Design System · Altitude Networks · 0 → 1</p>
+              <p class="post-tag">Receiver Onboarding · Network Growth · A/B test</p>
               <div class="post-headrow">
-                <h3 class="post-title">Altitude Networks Design System</h3>
+                <h3 class="post-title">Receiver First-Time-Use Redesign</h3>
                 <span class="post-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="7" y1="17" x2="17" y2="7" />
                     <polyline points="7 7 17 7 17 17" />
                   </svg></span>
               </div>
-              <p class="post-desc">Proposing and building the company&rsquo;s first design system &mdash; tokens, a component library, and content guidelines that keep design, code and copy coherent across every handoff.</p>
+              <p class="post-desc">New receivers came to the platform to get paid, but the first-time experience
+                answered everything except how and when. Rebuilding it around "where's my money?", payment status
+                first, education phased, turned confusion into transactions.</p>
               <div class="post-badges">
-                <span class="badge">Tokens shipped to code</span>
-                <span class="badge">Half a day a week</span>
+                <span class="badge">+30% invoices created</span>
+                <span class="badge">+22% initial TPV</span>
               </div>
             </div>
           </a>

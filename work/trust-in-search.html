@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trust in “Who am I paying?” — Lulu Wang</title>
+  <meta name="description" content="AI-assisted vendor identity matching.">
+  <link rel="stylesheet" href="../assets/style.css?v=94">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png?v=2" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="trust-in-search.html" aria-current="page">Trust in “Who am I paying?”</a></li>
+            <li><a href="in-product-sales-connect.html">In-Product Sales Connect</a></li>
+            <li><a href="supplier-onboarding-agent.html">Supplier Onboarding</a></li>
+            <li><a href="basic-ftu-redesign.html">Receiver First-Time-Use Redesign</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="cs-banner cs-banner--bleed cs-banner--stone">
+    <div class="feature-video feature-video--hero">
+      <div class="feature-video-frame">
+        <video src="../assets/img/Trust in search/new design v3.mp4"
+          poster="../assets/img/Trust in search/poster-hero.jpg" muted playsinline preload="none" data-autoplay
+          aria-label="Adding a vendor from an uploaded invoice: the assistant finds a likely network match and shows the evidence for it."></video>
+      </div>
+      <button type="button" class="play-toggle" data-label="feature video" aria-label="Play feature video">
+        <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+          <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <main class="cs-main cs-main--stone">
+
+    <p class="cs-tag">Vendor Search · Network Growth · A/B test</p>
+    <h1 class="cs-title">Trust in “Who am I paying?”</h1>
+    <p class="cs-lede cs-lede--strong">AI-assisted vendor identity matching</p>
+
+    <section class="glance-card">
+      <span class="chip chip-accent">At a glance</span>
+      <dl class="glance-list">
+        <dt>Summary:</dt>
+        <dd>Accounts Payable (AP) users struggle to trust the entities shown in network search, forcing manual
+          verification and delayed first payment. We interviewed 8 users and found 3 ways to improve trust in new
+          vendor add experience.</dd>
+
+        <dt>Design process:</dt>
+        <dd>Framing the question → 5 moderated test → 3 design prototypes → Synthesis and iteration → 3 experiments
+          launched for directional hypothesis validation.</dd>
+
+        <dt>Team:</dt>
+        <dd>1 product manager, 1 product designer, 1 front-end engineer, 1 back-end engineer.</dd>
+      </dl>
+
+      <div class="stat-row stat-row--two">
+        <div class="stat-tile">
+          <span class="stat-num">3+ experiments</span>
+          <span class="stat-label">to validate initial hypothesis</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">50%+</span>
+          <span class="stat-label">targeted search success rate lift</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">01</span>Context &amp; Problem</h2>
+      <p>The users are Accounts Payable (AP) specialists, bookkeepers, and finance staff who pay vendors on a recurring
+        basis. When AP users add a new vendor, they struggle to trust the entities shown in network search, forcing
+        manual verification and delayed first payment. This leads to low search success rate, which is defined as number
+        of search sessions yielding selection / total number of search sessions. What must the card communicate and
+        which signals earn trust?</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">02</span>Research &amp; Learnings</h2>
+      <p>The unmoderated Maze test surfaced clear, consistent behaviors that defined the design space.</p>
+      <p>For the test, we gave participants a task: “You need to pay your vendor, Boston Tea, $800.00 by Feb 28th,
+        locate, add, and confirm the correct vendor.” What we measured: Selection confidence (opinion scale),
+        comprehension of the terminologies such as “connections” and “virtual card”, and open-ended expectations and
+        decision criteria.</p>
+
+      <div class="learning-cards">
+        <div class="learning-card">
+          <span class="chip chip-learning">Learning #1</span>
+          <p class="learning-title">They actively distrust vendor listings, and have learned to compensate.</p>
+          <p>When asked whether they ever have difficulty finding the correct vendor to pay, four of five said yes, citing
+            concrete reasons: duplicate listings with different email addresses, accounts created by staff who have since
+            left, and information that's simply outdated or doesn't match what their contact provided.</p>
+        </div>
+        <div class="learning-card">
+          <span class="chip chip-learning">Learning #2</span>
+          <p class="learning-title">They treat connection count as a trust heuristic.</p>
+          <p>When asked what else they'd want to know before deciding, a participant revealed the mental model:
+            “<em>The number of connections. So often we have multiple choices to select and try to go with the one with the
+            most connections if there are multiples.</em>”</p>
+        </div>
+        <div class="learning-card">
+          <span class="chip chip-learning">Learning #3</span>
+          <p class="learning-title">They want freshness, not just accuracy.</p>
+          <p>Several users described a verification ritual, confirming by email that the account is still active and that the
+            vendor still prefers ePayments. One user wanted a way to “<em>prompt [the vendor] to update their information if
+            we know something is out of date</em>.”</p>
+        </div>
+        <div class="learning-card">
+          <span class="chip chip-learning">Learning #4</span>
+          <p class="learning-title">Multi-modal entry points to vendor add flow</p>
+          <p>Often times APs will drop an invoice or W-9 of the vendor instead of manually typing vendor info to add a
+            vendor.</p>
+        </div>
+        <div class="learning-card">
+          <span class="chip chip-learning">Learning #5</span>
+          <p class="learning-title">Vendor policy in place</p>
+          <p>Larger AP teams have vendor identity policy in place that requires W-9 collection before payment.</p>
+        </div>
+      </div>
+
+      <p>Here's a list of data points our users prefer to see in order to validate a new vendor.</p>
+      <ul>
+        <li>Account last updated data.</li>
+        <li>Account created date.</li>
+        <li># of connections/customers.</li>
+        <li>Vendor preferred payment method.</li>
+        <li>A way to verify vendor by first and last name (esp. contractors).</li>
+        <li>A way to verify vendor by searching by Tax ID.</li>
+      </ul>
+
+      <figure class="cs-figure cs-figure--bleed">
+        <img src="../assets/img/Trust in search/Research.png"
+          alt="Maze test synthesis board: sticky notes grouped by question — expected next step, understanding of the card's data points, difficulty finding the right vendor, most useful information, and useful-but-missing data."
+          width="2522" height="1480">
+      </figure>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">03</span>Constraints</h2>
+      <p>The card had to operate inside the existing add-vendor flow, where a user searches, the business address
+        auto-fills, and they proceed toward paying a bill.</p>
+      <p>The card also had to work with the data the network actually has — connection counts, payment method (virtual
+        card), business name and address — and represent each in plain language for non-technical finance users.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">04</span>Design Concepts</h2>
+
+      <p>The first round added all useful vendor data points for APs to review. Key decisions made:</p>
+      <ul>
+        <li>Showing the data proven by users to be useful for verification.</li>
+        <li>Adding an AI feedback question to improve once live.</li>
+        <li>Adding a confidence score icon on the card itself for quick judgment.</li>
+      </ul>
+      <div class="feature-video feature-video--panel">
+        <div class="feature-video-frame">
+          <video src="../assets/img/Trust in search/new design v1.mp4"
+            poster="../assets/img/Trust in search/poster-v1.jpg" muted playsinline preload="none"
+            aria-label="Round 1: a vendor details drawer lists every match signal with a confidence level."></video>
+        </div>
+        <button type="button" class="play-toggle" data-label="round 1 video" aria-label="Play round 1 video">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+
+      <p>For the second round, I included document drop entry point experience. Key decisions made:</p>
+      <ul>
+        <li>Adding “document drop” as the main entry point. In the future, the system can monitor and pull directly
+          from Inbox for new invoices.</li>
+        <li>Don't guess with money. Giving user the power to make final call on which vendor to select.</li>
+      </ul>
+      <div class="feature-video feature-video--panel">
+        <div class="feature-video-frame">
+          <video src="../assets/img/Trust in search/new design v2.mp4"
+            poster="../assets/img/Trust in search/poster-v2.jpg" muted playsinline preload="none"
+            aria-label="Round 2: dropping an invoice starts the search — the assistant reads it and looks for a matching vendor."></video>
+        </div>
+        <button type="button" class="play-toggle" data-label="round 2 video" aria-label="Play round 2 video">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+
+      <p>For the 3rd round, instead of asking user to open a drawer to verify all data points, I make them appear
+        directly in the chat area.</p>
+      <div class="feature-video feature-video--panel">
+        <div class="feature-video-frame">
+          <video src="../assets/img/Trust in search/new design v3.mp4"
+            poster="../assets/img/Trust in search/poster-v3.jpg" muted playsinline preload="none"
+            aria-label="Round 3: the match and its evidence appear directly in the chat, with options to use the vendor or request a W-9."></video>
+        </div>
+        <button type="button" class="play-toggle" data-label="round 3 video" aria-label="Play round 3 video">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">05</span>Experiments Launched &amp; Next Steps</h2>
+      <p>Unfortunately, this project was cut short before we could launch an A/B test with the legacy vendor add flow. We
+        ended up launching 3 incremental experiments on the legacy experience to validate the direction.</p>
+      <p>After the 3rd round of iteration, I referred back to our interview notes on vendor validation workflow, and
+        confirmed with users that 1. To avoid paying to the wrong bank, they will ask the vendor to provide payment
+        method info, if it is not present on the invoice already. 2. If the vendor info recently changed, they will
+        update their existing record for this vendor. Based on this feedback, I plan to add an optional step for APs to
+        reach out to vendors for bank info, as well as updating the last step to show the full and most updated vendor
+        data, reduce anxiety on what has changed.</p>
+      <p>Open questions to carry forward:</p>
+      <ul>
+        <li>What's the clearest way to express “connections” so it's universally understood, not just by power users?</li>
+        <li>How do we present virtual card so it builds confidence for users who've never used it?</li>
+        <li>Which freshness signal (“added date”, “last active”, vendor-update prompt) most improves trust without adding
+          clutter?</li>
+        <li>How do we serve individual contractors, who don't search well by company name today?</li>
+      </ul>
+
+      <figure class="cs-figure cs-figure--bleed">
+        <img src="../assets/img/Trust in search/experiments.png"
+          alt="The three incremental experiments run on the legacy add-vendor flow, each with its hypothesis, control and test variants."
+          width="3350" height="882">
+      </figure>
+    </section>
+
+    <nav class="cs-pager cs-pager--single" aria-label="Case study navigation">
+      <a class="pager-link next" href="in-product-sales-connect.html">
+        <span class="pager-dir">Next →</span>
+        <span class="pager-title">In-Product Sales Connect</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">© 2026 Lulu Wang. All rights reserved.</footer>
+
+  <!-- Lightbox: declared before the script that wires it up. -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" data-lb-close></div>
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Enlarged image">
+      <button type="button" class="lightbox-close" data-lb-close aria-label="Close image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+      <img class="lightbox-img" id="lightbox-img" alt="">
+    </div>
+  </div>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    // The research board is dense, so click it to view at 80% of the viewport.
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      if (!lb || !lbImg) return;
+      var closeBtn = lb.querySelector('.lightbox-close');
+      var lastFocus = null;
+
+      var targets = document.querySelectorAll('.cs-figure img');
+      Array.prototype.forEach.call(targets, function (img) {
+        img.classList.add('zoomable');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'Enlarge image: ' + (img.alt || 'image'));
+        img.addEventListener('click', function () { open(img); });
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+        });
+      });
+
+      function open(img) {
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt || '';
+        lastFocus = document.activeElement;
+        lb.removeAttribute('hidden');
+        document.body.classList.add('lb-open');
+        closeBtn.focus();
+      }
+
+      function close() {
+        lb.setAttribute('hidden', '');
+        document.body.classList.remove('lb-open');
+        lbImg.removeAttribute('src');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      lb.addEventListener('click', function (e) {
+        if (e.target.closest('[data-lb-close]')) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (lb.hasAttribute('hidden')) return;
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); }
+      });
+    })();
+  </script>
+
+  <script>
+    // Feature videos, after Mercury's marketing site: each rests on a still frame
+    // and plays inline, muted. One button toggles play and pause and its label
+    // follows suit; clicking the video does the same. Only one runs at a time.
+    //
+    // Hero videos (data-autoplay) start on their own when the page loads, unless
+    // the visitor's system asks for reduced motion. Nothing loops: when a video
+    // finishes, load() resets it to its still (the poster) and the button goes
+    // back to Play. That reset is why autoplay is started here rather than by the
+    // autoplay attribute, which would make load() set it running again.
+    (function () {
+      var players = document.querySelectorAll('.feature-video');
+      var videos = document.querySelectorAll('.feature-video video');
+      var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      Array.prototype.forEach.call(players, function (box) {
+        var video = box.querySelector('video');
+        var btn = box.querySelector('.play-toggle');
+        if (!video || !btn) return;
+        var label = btn.getAttribute('data-label') || 'video';
+
+        function sync() {
+          var playing = !video.paused && !video.ended;
+          btn.setAttribute('data-state', playing ? 'playing' : 'paused');
+          btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + label);
+        }
+
+        function start() {
+          Array.prototype.forEach.call(videos, function (v) {
+            if (v !== video && !v.paused) v.pause();
+          });
+          var attempt = video.play();
+          if (attempt && attempt.catch) attempt.catch(sync);
+        }
+
+        function toggle() {
+          if (video.paused) { start(); } else { video.pause(); }
+        }
+
+        btn.addEventListener('click', toggle);
+        video.addEventListener('click', toggle);
+        video.addEventListener('play', sync);
+        video.addEventListener('pause', sync);
+        video.addEventListener('ended', function () {
+          video.load();
+          sync();
+        });
+        sync();
+
+        if (video.hasAttribute('data-autoplay') && !reduceMotion) start();
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

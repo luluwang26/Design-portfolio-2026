@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Trust in “Who am I paying?” — Lulu Wang</title>
   <meta name="description" content="AI-assisted vendor identity matching.">
-  <link rel="stylesheet" href="../assets/style.css?v=94">
+  <link rel="stylesheet" href="../assets/style.css?v=95">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
@@ -101,9 +101,9 @@
       <h2><span class="sec-num">01</span>Context &amp; Problem</h2>
       <p>The users are Accounts Payable (AP) specialists, bookkeepers, and finance staff who pay vendors on a recurring
         basis. When AP users add a new vendor, they struggle to trust the entities shown in network search, forcing
-        manual verification and delayed first payment. This leads to low search success rate, which is defined as number
-        of search sessions yielding selection / total number of search sessions. What must the card communicate and
-        which signals earn trust?</p>
+        manual verification and delayed first payment. This leads to low search success rate, which is defined as the
+        share of searches where the person paying bills (the AP clerk) picks a vendor from the first page of results.
+        <strong>What must the vendor card communicate and which signals earn trust?</strong></p>
     </section>
 
     <section class="cs-section">
@@ -247,25 +247,29 @@
       <h2><span class="sec-num">05</span>Experiments Launched &amp; Next Steps</h2>
       <p>Unfortunately, this project was cut short before we could launch an A/B test with the legacy vendor add flow. We
         ended up launching 3 incremental experiments on the legacy experience to validate the direction.</p>
+      <ol>
+        <li><strong>Payment details</strong>. Hypothesis: We believe showing payment details on the cards of VC vendors
+          will raise search success rate, because users can confirm it's the right vendor without leaving the results.
+          Test: cards with payment details vs. without.</li>
+        <li><strong>Specific trust signals vs. a generic badge</strong>. Hypothesis: We believe specific signals, such as
+          last active date and number of connections, will raise search success rate more than a generic “Verified
+          vendor” badge. They show users why a vendor can be trusted, not just that it can. Test: “Verified vendor”
+          badge vs. specific signal tags.</li>
+        <li><strong>Confidence score with a reason</strong>. Hypothesis: We believe a confidence score on the vendor card,
+          with a short reason why it's likely the right vendor, will make users more confident in their pick and raise
+          search success rate. Test: cards with the score and reason vs. without.</li>
+      </ol>
       <p>After the 3rd round of iteration, I referred back to our interview notes on vendor validation workflow, and
         confirmed with users that 1. To avoid paying to the wrong bank, they will ask the vendor to provide payment
         method info, if it is not present on the invoice already. 2. If the vendor info recently changed, they will
         update their existing record for this vendor. Based on this feedback, I plan to add an optional step for APs to
         reach out to vendors for bank info, as well as updating the last step to show the full and most updated vendor
         data, reduce anxiety on what has changed.</p>
-      <p>Open questions to carry forward:</p>
-      <ul>
-        <li>What's the clearest way to express “connections” so it's universally understood, not just by power users?</li>
-        <li>How do we present virtual card so it builds confidence for users who've never used it?</li>
-        <li>Which freshness signal (“added date”, “last active”, vendor-update prompt) most improves trust without adding
-          clutter?</li>
-        <li>How do we serve individual contractors, who don't search well by company name today?</li>
-      </ul>
 
       <figure class="cs-figure cs-figure--bleed">
-        <img src="../assets/img/Trust in search/experiments.png"
+        <img src="../assets/img/Trust in search/experiments.png?v=3"
           alt="The three incremental experiments run on the legacy add-vendor flow, each with its hypothesis, control and test variants."
-          width="3350" height="882">
+          width="3642" height="962">
       </figure>
     </section>
 

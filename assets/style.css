@@ -2059,7 +2059,8 @@ a:hover {
   color: var(--n900);
 }
 
-.cs-main ul {
+.cs-main ul,
+.cs-main ol {
   margin: 0 0 18px;
   padding-left: 22px;
 }

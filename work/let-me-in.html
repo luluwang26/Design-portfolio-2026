@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fraud risk and customer trust: “Let me in” — Lulu Wang</title>
+  <meta name="description"
+    content="Effective identity verification for employees of existing accounts.">
+  <link rel="stylesheet" href="../assets/style.css?v=98">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rock+Salt&display=swap"
+    rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png?v=2" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="trust-in-search.html">Trust in “Who am I paying?”</a></li>
+            <li><a href="let-me-in.html" aria-current="page">Fraud risk and customer trust: “Let me in”</a></li>
+            <li><a href="supplier-onboarding-agent.html">Supplier Onboarding</a></li>
+            <li><a href="basic-ftu-redesign.html">Answering “Where is my money?”</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="cs-banner cs-banner--bleed cs-banner--periwinkle cs-banner--lmi">
+    <div class="feature-video feature-video--hero feature-video--lmi">
+      <div class="feature-video-frame">
+        <video src="../assets/img/Let me in/new experience.mp4" poster="../assets/img/Let me in/poster-hero.jpg" muted
+          playsinline preload="none" data-autoplay
+          aria-label="The new experience: an employee of a company that already has a Payd account signs up, is recognised as an employee, and receives their first payment."></video>
+      </div>
+      <button type="button" class="play-toggle" data-label="feature video" aria-label="Play feature video">
+        <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+          <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <main class="cs-main cs-main--indigo">
+
+    <p class="cs-tag">Receiver Onboarding · Identity &amp; Fraud · Risk &amp; Compliance</p>
+    <h1 class="cs-title">Fraud risk and customer trust: “Let me in”</h1>
+    <p class="cs-lede cs-lede--strong">Effective identity verification for employees of existing accounts.</p>
+
+    <section class="glance-card">
+      <span class="chip chip-accent">At a glance</span>
+      <dl class="glance-list">
+        <dt>Summary:</dt>
+        <dd>Employees of companies already on our network were blocked from getting paid because they couldn't log in
+          to their company's existing account, so many created duplicates instead. I mapped where the system could step
+          in, took 3 options to Risk and Compliance, and designed the one we could ship with minimal engineering:
+          recognize the employee at the duplicate check, release their first payment, and let the account's admins
+          approve them as a member.</dd>
+
+        <dt>Design process:</dt>
+        <dd>Legacy experience audit → Listen to Gong calls on customer complaints → Redesign onboarding flow for this
+          user group → Consult Risk and Compliance team → Iteration &amp; final design</dd>
+
+        <dt>Team:</dt>
+        <dd>1 product manager, 1 product designer, 1 Risk consultant, 1 Compliance consultant, 2 engineers.</dd>
+
+        <dt>Outcome:</dt>
+        <dd>Experiment running against legacy; results pending.</dd>
+      </dl>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">01</span>Context &amp; problem</h2>
+      <p>When an employee of a company who already has an account with us tries to sign up a new account to get paid,
+        we block the creation of the duplicate account and ask the employee to log in with their company’s existing
+        account. Often times, this employee doesn’t have access to the log in credentials so they can’t get paid,
+        causing customer complaints.</p>
+      <p>The creation of new Basic Receivable (BR) organizations for existing Virtual Card (VC) suppliers leads to:</p>
+      <ul>
+        <li>Network Inefficiency: Duplicate organizations create a “noisy network,” which degrades the effectiveness of
+          autoconnection and search, confusing users while damaging vendor data integrity.</li>
+        <li>Revenue Leakage: For existing VC suppliers, duplicate BRs cause significant Total Payment Volume (TPV)
+          leakage and introduce reconciliation and trust risks.</li>
+        <li>User Urgency vs. Access: Users often opt to create a new account instead of claiming an existing one because
+          their primary goal is to get paid quickly, but they are unable to immediately log in to the system-identified
+          existing organization.</li>
+      </ul>
+      <p><strong>A desired outcome is to quickly verify the employee’s identity and relationship with the existing VC
+          account while keeping bad actors out, and safely add them as a member to the account.</strong></p>
+
+      <p>Here is the legacy experience.</p>
+      <div class="feature-video feature-video--panel feature-video--lmi">
+        <div class="feature-video-frame">
+          <video src="../assets/img/Let me in/legacy experience.mp4" poster="../assets/img/Let me in/poster-legacy.jpg"
+            muted playsinline preload="none"
+            aria-label="The legacy experience: the employee signs up, is shown the company's existing account, and ends up in a new account that can't receive virtual card payments."></video>
+        </div>
+        <button type="button" class="play-toggle" data-label="legacy experience video"
+          aria-label="Play legacy experience video">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+
+      <figure class="cs-figure cs-figure--bleed">
+        <img src="../assets/img/Let me in/web/flow-legacy.png"
+          alt="Legacy flow: the new vendor either logs in to the existing account or creates a new account that can't receive virtual card payments."
+          width="4096" height="733">
+      </figure>
+
+      <div class="branch">
+        <div class="branch-root">BR is creating a duplicate of existing account that’s enrolled in Virtual Card program
+          (receive all payments via VC).</div>
+        <div class="branch-leaves">
+          <div class="branch-leaf">
+            <p class="branch-title">It is a dup of an existing regular/non-VC org</p>
+            <p>Our system blocks this user until identity verified.</p>
+          </div>
+          <div class="branch-leaf branch-leaf--focus">
+            <p class="branch-title">It is a dup of an existing Virtual Card org</p>
+            <p>How can we allow this user group to get paid via VC rails while minimizing fraud risks?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">02</span>When &amp; how should we intervene?</h2>
+      <p>I started by auditing the existing flow. Here are some concepts that are good to know:</p>
+      <ul>
+        <li>Payment can only be sent between two connected nodes in the payment networks.</li>
+        <li>Each node can accept payment via a bank account for ACH, a physical address for check, or an email address
+          for Virtual Card remit info.</li>
+        <li>Each node has a Payment Network ID (PNI) which is the most accurate identifier of a node in the network.</li>
+        <li>Vendor data is an ever changing creature, bank account, address, email can be changed but not updated in our
+          network, therefore they can not be used as a source-of-truth.</li>
+        <li>Ways to validate a vendor indeed belongs to a company include (but are not limited to): Bank account
+          matching, invoice matching, PNI matching, account mask validation.</li>
+        <li>If the BR signs up from the marketing site directly, we can’t trace who their payor is so their newly
+          created BR account is not connected to the AP hence no payment flow would happen. If the BR signs up from the
+          AP’s invite email then they’ll be auto-connected upon acceptance.</li>
+      </ul>
+      <p>The team brainstormed dozens of ways to allow the BR obtain the VC remit info without moving mountains of the
+        existing pipeline, and 3 options stood out.</p>
+
+      <figure class="cs-figure cs-figure--bleed">
+        <img src="../assets/img/Let me in/web/flow-option 1.png"
+          alt="Option 1: when the AP adds the vendor, the system detects an employee of a virtual card organization, auto-connects them and enrolls the vendor in virtual card."
+          width="4096" height="1012">
+      </figure>
+      <figure class="cs-figure cs-figure--bleed">
+        <img src="../assets/img/Let me in/web/flow-option 2.png"
+          alt="Option 2: when the new vendor is blocked as a duplicate, a confirmed employee can receive the first pending payment without ID verification, and is encouraged to verify for future payments."
+          width="4096" height="1086">
+      </figure>
+      <figure class="cs-figure cs-figure--bleed">
+        <img src="../assets/img/Let me in/web/flow-option 3.png"
+          alt="Option 3: a new ID verification capability proves the vendor's relationship with the existing business within minutes, granting admin access to the virtual card account."
+          width="4096" height="1248">
+      </figure>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">03</span>Risk Triage</h2>
+      <p>The PM and I showed our 3 options to the company’s Risk team and Compliance team for feedback. We were told
+        the Compliance team was not concerned as no Personally Identifiable Information (PII) was at risk.</p>
+      <p>However, Risk flagged potential risk of losing the first payment if the BR is fraudulent. The decision fell
+        back on our product team to balance the risk we are comfortable to take to gain the trust from over tens of
+        thousands of users each month.</p>
+      <p><strong>We ended up choosing option 2 to run as an experiment against legacy, while exploring external
+          resource on a vendor identity verification solution.</strong></p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">04</span>Design concepts</h2>
+      <p>Here are the changes we made in the new design:</p>
+      <ul>
+        <li>New content for the 2nd CTA informing BR that their payment is here.</li>
+        <li>A confirmation step with clear explanation on next steps is added.</li>
+        <li>New payment widget leading BR to their payment.</li>
+      </ul>
+      <p>On the back-end, the Eng team also need to implement:</p>
+      <ul>
+        <li>Check business relationship once a duplicate account is detected, based on result dynamically show the
+          content for the 2nd CTA on De-Dup step.</li>
+        <li>Route the latest pending payment to the VC org to this BR org.</li>
+        <li>Send email informing admins of existing VC org about the payment and ask for their approval.</li>
+      </ul>
+      <p>This solution gives the employees of an existing VC account a way to receive their 1st payment while they
+        verify themselves. The admins of the existing account will receive an email informing them a new member
+        requests to join, and decide to accept or reject. In general, the risk is worth the better user experience for
+        this unique user group.</p>
+      <p>See the new experience on top of this page.</p>
+
+      <figure class="cs-figure cs-figure--bleed cs-figure--outlined">
+        <img src="../assets/img/Let me in/De-dup-Legacy.png"
+          alt="The de-dup step, before and after: the second option changes from creating a new account anyway to receiving one payment and verifying identity to receive future payments."
+          width="2880" height="2436">
+      </figure>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">05</span>What I’ve learned</h2>
+      <ol>
+        <li><strong>Ask what you're actually protecting.</strong> The legacy gate guarded an account login, but the real
+          exposure was a single first payment. Once we named that, the question changed from “how do we verify
+          everyone?” to “how much risk on one payment is worth the trust of tens of thousands of users a month?”</li>
+        <li><strong>Risk is a product decision</strong>. Risk and Compliance gave us the facts: no PII exposed, but
+          possible loss of a first payment. The call on what risk to accept was ours. Bringing 3 options with the
+          trade-offs laid out (fraud risk, engineering effort, user experience) turned a review into a decision.</li>
+        <li><strong>Ship the smallest change that tests the bet, and keep the search on for a solution</strong>. Option 2
+          was new wording and one confirmation step on an existing screen, so we could learn from real users while the
+          bigger fix is explored. The existing account's admins approve new members, because they know who works there;
+          the system doesn't have to guess.</li>
+      </ol>
+    </section>
+
+    <nav class="cs-pager" aria-label="Case study navigation">
+      <a class="pager-link prev" href="trust-in-search.html">
+        <span class="pager-dir">← Previous</span>
+        <span class="pager-title">Trust in “Who am I paying?”</span>
+      </a>
+      <a class="pager-link next" href="supplier-onboarding-agent.html">
+        <span class="pager-dir">Next →</span>
+        <span class="pager-title">Supplier Onboarding</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">© 2026 Lulu Wang. All rights reserved.</footer>
+
+  <!-- Lightbox: click any figure image to view it at 80% of the viewport width. -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" data-lb-close></div>
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Enlarged image">
+      <button type="button" class="lightbox-close" data-lb-close aria-label="Close image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+      <img class="lightbox-img" id="lightbox-img" alt="">
+    </div>
+  </div>
+
+  <script>
+    // Click any content image to open it in a lightbox at 80% of the viewport width.
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      var closeBtn = lb.querySelector('.lightbox-close');
+      var lastFocus = null;
+
+      // Every image in the article body, but not the nav avatar or icons.
+      var targets = document.querySelectorAll('.cs-banner img, .cs-main img:not(.chart-badge)');
+
+      Array.prototype.forEach.call(targets, function (img) {
+        img.classList.add('zoomable');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'Enlarge image: ' + (img.alt || 'image'));
+        img.addEventListener('click', function () { open(img); });
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+        });
+      });
+
+      function open(img) {
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt || '';
+        lastFocus = document.activeElement;
+        lb.removeAttribute('hidden');
+        document.body.classList.add('lb-open');
+        closeBtn.focus();
+      }
+
+      function close() {
+        lb.setAttribute('hidden', '');
+        document.body.classList.remove('lb-open');
+        lbImg.removeAttribute('src');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      lb.addEventListener('click', function (e) {
+        if (e.target.closest('[data-lb-close]')) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (lb.hasAttribute('hidden')) return;
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); }
+      });
+    })();
+  </script>
+
+  <script>
+    // Feature videos, after Mercury's marketing site: each rests on a still frame
+    // and plays inline, muted. One button toggles play and pause and its label
+    // follows suit; clicking the video does the same. Only one runs at a time.
+    //
+    // Hero videos (data-autoplay) start on their own when the page loads, unless
+    // the visitor's system asks for reduced motion. Nothing loops: when a video
+    // finishes, load() resets it to its still (the poster) and the button goes
+    // back to Play. That reset is why autoplay is started here rather than by the
+    // autoplay attribute, which would make load() set it running again.
+    (function () {
+      var players = document.querySelectorAll('.feature-video');
+      var videos = document.querySelectorAll('.feature-video video');
+      var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      Array.prototype.forEach.call(players, function (box) {
+        var video = box.querySelector('video');
+        var btn = box.querySelector('.play-toggle');
+        if (!video || !btn) return;
+        var label = btn.getAttribute('data-label') || 'video';
+
+        function sync() {
+          var playing = !video.paused && !video.ended;
+          btn.setAttribute('data-state', playing ? 'playing' : 'paused');
+          btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + label);
+        }
+
+        function start() {
+          Array.prototype.forEach.call(videos, function (v) {
+            if (v !== video && !v.paused) v.pause();
+          });
+          var attempt = video.play();
+          if (attempt && attempt.catch) attempt.catch(sync);
+        }
+
+        function toggle() {
+          if (video.paused) { start(); } else { video.pause(); }
+        }
+
+        btn.addEventListener('click', toggle);
+        video.addEventListener('click', toggle);
+        video.addEventListener('play', sync);
+        video.addEventListener('pause', sync);
+        video.addEventListener('ended', function () {
+          video.load();
+          sync();
+        });
+        sync();
+
+        if (video.hasAttribute('data-autoplay') && !reduceMotion) start();
+      });
+    })();
+  </script>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+
+    <!-- Cloudflare Web Analytics -->
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "bb018103d6134490886ee10538300744"}'
+    ></script>
+    <!-- End Cloudflare Web Analytics -->
+  </body>
+
+</html>

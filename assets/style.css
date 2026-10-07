@@ -1394,11 +1394,7 @@ a:hover {
 }
 
 #let-me-in .post-media {
-  background: #EEEDF7;
-}
-
-#let-me-in .post-media img {
-  object-fit: contain;
+  background: #F0F0F8;
 }
 
 
@@ -1426,7 +1422,13 @@ a:hover {
   background: #EBE7E3;
 }
 
-#trust-in-search .post-media img {
+/* Card stills for Trust in search and Let me in: a single screen, 200px tall
+   and centred in the 240px band, so 20px of the tint shows above and below. */
+#trust-in-search .post-media img,
+#let-me-in .post-media img {
+  width: auto;
+  max-width: 100%;
+  height: calc(100% - 40px);
   object-fit: contain;
 }
 

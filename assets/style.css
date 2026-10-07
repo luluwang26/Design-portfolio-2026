@@ -1374,7 +1374,7 @@ a:hover {
 }
 
 #basic-ftu-redesign .post-media {
-  background: #E9EDC9;
+  background: #FCEFEA;
 }
 
 #in-product-sales-connect .post-media {
@@ -1399,7 +1399,7 @@ a:hover {
 
 
 #supplier-onboarding-agent .post-media {
-  background: #E9EDC9;
+  background: #FFF2FE;
 }
 
 #altitude-design-system .post-media {
@@ -1422,10 +1422,12 @@ a:hover {
   background: #EBE7E3;
 }
 
-/* Card stills for Trust in search and Let me in: a single screen, 200px tall
-   and centred in the 240px band, so 20px of the tint shows above and below. */
+/* Card stills: a single screen, 200px tall and centred in the 240px band, so
+   20px of the card's tint shows above and below. */
 #trust-in-search .post-media img,
-#let-me-in .post-media img {
+#let-me-in .post-media img,
+#supplier-onboarding-agent .post-media img,
+#basic-ftu-redesign .post-media img {
   width: auto;
   max-width: 100%;
   height: calc(100% - 40px);
@@ -3429,6 +3431,12 @@ body.lb-open {
 
 /* Per-project hero tint — matched to each hero image's own background so the
    band reads as one field rather than framing the image. */
+/* "Where is my money?" takes the How it works palette: a #FCEFE9 band under
+   the coral accent (.cs-main--coral). */
+.cs-banner--coral {
+  background: #FCEFE9;
+}
+
 .cs-banner--periwinkle {
   background: #F0F0F8;
 }

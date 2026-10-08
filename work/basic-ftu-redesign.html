@@ -7,7 +7,7 @@
   <title>Answering “Where is my money?” — Lulu Wang</title>
   <meta name="description"
     content="Clarifying payment status, offering best next steps, and introducing product value to new receivers after they sign up.">
-  <link rel="stylesheet" href="../assets/style.css?v=100">
+  <link rel="stylesheet" href="../assets/style.css?v=102">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -47,9 +47,23 @@
     </div>
   </header>
 
-  <section class="cs-banner cs-banner--bleed cs-banner--coral">
-    <img src="../assets/img/ftu/ftu-lg-coral.png"
-      alt="Before and after of the receiver Get Started page. Before: unclear next steps, no payment status, and a random product feature. After: clear payment status and expectations, clear next steps, and personalized product offerings.">
+  <section class="cs-banner cs-banner--bleed cs-banner--coral cs-banner--ftu">
+    <div class="feature-video feature-video--hero feature-video--ftu">
+      <div class="feature-video-frame">
+        <video src="../assets/img/ftu/new FTU.mp4" poster="../assets/img/ftu/poster-hero.jpg" muted playsinline
+          preload="none" data-autoplay
+          aria-label="The new first-time experience: a receiver opens the payment email, signs up, adds a bank, and lands on a Get Started page that shows where their payment is."></video>
+      </div>
+      <button type="button" class="play-toggle" data-label="feature video" aria-label="Play feature video">
+        <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+          <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+        </svg>
+      </button>
+    </div>
   </section>
 
   <main class="cs-main cs-main--coral">
@@ -465,6 +479,12 @@
         <li>Reduced ambiguity around card pricing and payment-option implications.</li>
         <li>Treated walkthrough content as supportive, not mandatory, so users could stay focused on the main task.</li>
       </ul>
+
+      <figure class="cs-figure">
+        <img src="../assets/img/ftu/web/ftu-before and after.png"
+          alt="Before and after of the receiver Get Started page. Before: unclear next steps, no payment status, and a random product feature. After: clear payment status and expectations, clear next steps, and personalized product offerings."
+          width="4096" height="1922">
+      </figure>
     </section>
 
     <section class="cs-section">
@@ -565,6 +585,61 @@
         if (lb.hasAttribute('hidden')) return;
         if (e.key === 'Escape') { close(); return; }
         if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); }
+      });
+    })();
+  </script>
+
+  <script>
+    // Feature videos, after Mercury's marketing site: each rests on a still frame
+    // and plays inline, muted. One button toggles play and pause and its label
+    // follows suit; clicking the video does the same. Only one runs at a time.
+    //
+    // Hero videos (data-autoplay) start on their own when the page loads, unless
+    // the visitor's system asks for reduced motion. Nothing loops: when a video
+    // finishes, load() resets it to its still (the poster) and the button goes
+    // back to Play. That reset is why autoplay is started here rather than by the
+    // autoplay attribute, which would make load() set it running again.
+    (function () {
+      var players = document.querySelectorAll('.feature-video');
+      var videos = document.querySelectorAll('.feature-video video');
+      var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      Array.prototype.forEach.call(players, function (box) {
+        var video = box.querySelector('video');
+        var btn = box.querySelector('.play-toggle');
+        if (!video || !btn) return;
+        var label = btn.getAttribute('data-label') || 'video';
+
+        function sync() {
+          var playing = !video.paused && !video.ended;
+          btn.setAttribute('data-state', playing ? 'playing' : 'paused');
+          btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + label);
+        }
+
+        function start() {
+          Array.prototype.forEach.call(videos, function (v) {
+            if (v !== video && !v.paused) v.pause();
+          });
+          var attempt = video.play();
+          if (attempt && attempt.catch) attempt.catch(sync);
+        }
+
+        function toggle() {
+          if (video.paused) { start(); } else { video.pause(); }
+        }
+
+        btn.addEventListener('click', toggle);
+        video.addEventListener('click', toggle);
+        video.addEventListener('play', sync);
+        video.addEventListener('pause', sync);
+        video.addEventListener('ended', function () {
+          video.load();
+          sync();
+        });
+        sync();
+
+        if (video.hasAttribute('data-autoplay') && !reduceMotion) start();
       });
     })();
   </script>

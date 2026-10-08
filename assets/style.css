@@ -1425,12 +1425,19 @@ a:hover {
 /* Card stills: a single screen, 200px tall and centred in the 240px band, so
    20px of the card's tint shows above and below. */
 #trust-in-search .post-media img,
-#let-me-in .post-media img,
-#supplier-onboarding-agent .post-media img,
-#basic-ftu-redesign .post-media img {
+#let-me-in .post-media img {
   width: auto;
   max-width: 100%;
   height: calc(100% - 40px);
+  object-fit: contain;
+}
+
+/* The two wider screens are set by width instead: 280px, centred both ways. */
+#supplier-onboarding-agent .post-media img,
+#basic-ftu-redesign .post-media img {
+  width: 280px;
+  max-width: calc(100% - 40px);
+  height: auto;
   object-fit: contain;
 }
 
@@ -4031,4 +4038,41 @@ body.lb-open {
 .cs-figure--outlined img {
   border: 1px solid #CFCFCF;
   border-radius: 8px;
+}
+
+/* ---------- Where is my money? hero video ---------- */
+
+/* The recording runs at the design's 818px in a 556px band. Its content sits
+   6.00-90.65% across, left of centre, so the whole frame is nudged 24px
+   (2.93%) right to centre the content, as in the design. The play control
+   sits 23px left of the content, level with its bottom (92.97% down). */
+.cs-banner--ftu {
+  padding: 28px 0;
+}
+
+.feature-video--hero.feature-video--ftu {
+  width: min(818px, 92%);
+  transform: translateX(2.93%);
+}
+
+.feature-video--ftu .feature-video-frame {
+  aspect-ratio: 3402 / 2076;
+  background: #FCEDE7;
+}
+
+.feature-video--ftu .play-toggle {
+  left: calc(6% - 63px);
+  bottom: 7.03%;
+}
+
+@media (max-width: 900px) {
+  .feature-video--hero.feature-video--ftu {
+    transform: none;
+  }
+
+  .feature-video--ftu .play-toggle {
+    left: 12px;
+    bottom: 12px;
+    background: rgba(57, 57, 57, 0.55);
+  }
 }

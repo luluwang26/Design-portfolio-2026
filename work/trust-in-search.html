@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Trust in “Who am I paying?” — Lulu Wang</title>
   <meta name="description" content="AI-assisted vendor identity matching.">
-  <link rel="stylesheet" href="../assets/style.css?v=102">
+  <link rel="stylesheet" href="../assets/style.css?v=103">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
@@ -109,10 +109,14 @@
     <section class="cs-section">
       <h2><span class="sec-num">02</span>Research &amp; Learnings</h2>
       <p>The unmoderated Maze test surfaced clear, consistent behaviors that defined the design space.</p>
-      <p>For the test, we gave participants a task: “You need to pay your vendor, Boston Tea, $800.00 by Feb 28th,
-        locate, add, and confirm the correct vendor.” What we measured: Selection confidence (opinion scale),
-        comprehension of the terminologies such as “connections” and “virtual card”, and open-ended expectations and
-        decision criteria.</p>
+      <p>We gave participants one task: “You need to pay your vendor, Boston Tea, $800.00 by February 28. Find them,
+        add them, and confirm you’ve chosen the right vendor.”</p>
+      <p>We measured three things:</p>
+      <ol>
+        <li>Confidence: how sure they felt about their choice, rated on a scale.</li>
+        <li>Comprehension: whether they understood terms like “connections” and “virtual card”.</li>
+        <li>Decision criteria: what they expected to see, and what they relied on to decide, in their own words.</li>
+      </ol>
 
       <div class="learning-cards">
         <div class="learning-card">
@@ -170,19 +174,23 @@
       <h2><span class="sec-num">03</span>Constraints</h2>
       <p>The card had to operate inside the existing add-vendor flow, where a user searches, the business address
         auto-fills, and they proceed toward paying a bill.</p>
-      <p>The card also had to work with the data the network actually has — connection counts, payment method (virtual
-        card), business name and address — and represent each in plain language for non-technical finance users.</p>
+      <p>The card also had to work with the data the network actually has: connection counts, payment method (virtual
+        card), business name and address, and represent each in plain language for non-technical finance users.</p>
     </section>
 
     <section class="cs-section">
       <h2><span class="sec-num">04</span>Design Concepts</h2>
 
-      <p>The first round added all useful vendor data points for APs to review. Key decisions made:</p>
-      <ul>
-        <li>Showing the data proven by users to be useful for verification.</li>
-        <li>Adding an AI feedback question to improve once live.</li>
-        <li>Adding a confidence score icon on the card itself for quick judgment.</li>
-      </ul>
+      <p>The first round put every data point users had asked for in front of the AP, so they could judge a match
+        without leaving the flow. Key decisions:</p>
+      <ol>
+        <li><span class="lead">Show what users said they rely on.</span> Only data points our research showed people use
+          to verify a vendor made it onto the card.</li>
+        <li><span class="lead">Ask for feedback on the match.</span> A short question lets users tell the AI whether it
+          picked the right vendor, so matching improves once live.</li>
+        <li><span class="lead">Add a confidence score to the card.</span> An at-a-glance signal of how strong the match
+          is, for a quick first judgment.</li>
+      </ol>
       <div class="feature-video feature-video--panel">
         <div class="feature-video-frame">
           <video src="../assets/img/Trust in search/new design v1.mp4"
@@ -200,12 +208,14 @@
         </button>
       </div>
 
-      <p>For the second round, I included document drop entry point experience. Key decisions made:</p>
-      <ul>
-        <li>Adding “document drop” as the main entry point. In the future, the system can monitor and pull directly
-          from Inbox for new invoices.</li>
-        <li>Don't guess with money. Giving user the power to make final call on which vendor to select.</li>
-      </ul>
+      <p>The second round added a new way in: dropping a document. Research showed APs often start from an invoice or
+        W-9 rather than typing vendor details by hand, so the flow now starts there. Key decisions:</p>
+      <ol>
+        <li><span class="lead">Make “drop a document” the main entry point.</span> Users drop an invoice and the system
+          finds the vendor from it. Later, it could pull new invoices straight from the user’s inbox.</li>
+        <li><span class="lead">Don’t guess with money.</span> The system suggests the most likely vendor, but the user
+          always makes the final choice.</li>
+      </ol>
       <div class="feature-video feature-video--panel">
         <div class="feature-video-frame">
           <video src="../assets/img/Trust in search/new design v2.mp4"
@@ -223,13 +233,15 @@
         </button>
       </div>
 
-      <p>For the 3rd round, instead of asking user to open a drawer to verify all data points, I make them appear
-        directly in the chat area. 2 critical elements are shown in the vendor card:</p>
+      <p>In the third round, I moved the verification details out of a separate drawer and into the chat itself, so
+        users don’t have to open anything to check a match. Each vendor card shows two kinds of evidence:</p>
       <ol>
-        <li>General data points we used to verify every vendor.</li>
-        <li>Proprietary data points that tell a story about this vendor.</li>
+        <li><span class="lead">Standard identity checks:</span> details used to verify any vendor, such as address, Tax
+          ID and the last digits of the bank account.</li>
+        <li><span class="lead">Network signals only we have:</span> details that tell this vendor’s story, such as how
+          many companies in the network pay them, when the account was created and when it was last active.</li>
       </ol>
-      <p>Together we push the most confident vendor to the front, but give user the power to make the final decision.</p>
+      <p>The most likely match appears first, but the user always makes the final call.</p>
       <div class="feature-video feature-video--panel">
         <div class="feature-video-frame">
           <video src="../assets/img/Trust in search/new design v3.mp4"
@@ -264,18 +276,27 @@
           with a short reason why it's likely the right vendor, will make users more confident in their pick and raise
           search success rate. Test: cards with the score and reason vs. without.</li>
       </ol>
-      <p>After the 3rd round of iteration, I referred back to our interview notes on vendor validation workflow, and
-        confirmed with users that 1. To avoid paying to the wrong bank, they will ask the vendor to provide payment
-        method info, if it is not present on the invoice already. 2. If the vendor info recently changed, they will
-        update their existing record for this vendor. Based on this feedback, I plan to add an optional step for APs to
-        reach out to vendors for bank info, as well as updating the last step to show the full and most updated vendor
-        data, reduce anxiety on what has changed.</p>
-
       <figure class="cs-figure cs-figure--bleed">
         <img src="../assets/img/Trust in search/experiments.png?v=3"
           alt="The three incremental experiments run on the legacy add-vendor flow, each with its hypothesis, control and test variants."
           width="3642" height="962">
       </figure>
+
+      <p>After the third round, I went back to our interview notes on how APs validate vendors and confirmed two habits
+        with users:</p>
+      <ol>
+        <li><span class="lead">They collect bank details after the bill is approved.</span> If the invoice doesn’t
+          include payment information, they ask the vendor for it at that point, so they don’t pay the wrong
+          account.</li>
+        <li><span class="lead">They keep vendor records up to date.</span> When a vendor’s details change, they update
+          the existing record rather than adding a new one.</li>
+      </ol>
+      <p>That shaped two next steps:</p>
+      <ul>
+        <li>An optional step to request bank details from the vendor, inside the flow.</li>
+        <li>A final review screen that shows the vendor’s full, latest details, with what has changed, so users aren’t
+          left wondering.</li>
+      </ul>
     </section>
 
     <nav class="cs-pager cs-pager--single" aria-label="Case study navigation">

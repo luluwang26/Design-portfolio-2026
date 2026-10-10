@@ -4076,3 +4076,8 @@ body.lb-open {
     background: rgba(57, 57, 57, 0.55);
   }
 }
+
+/* Semibold lead-in for list items (Trust in search design notes). */
+.cs-main .lead {
+  font-weight: 600;
+}

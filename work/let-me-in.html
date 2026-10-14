@@ -7,7 +7,7 @@
   <title>Fraud risk and customer trust: “Let me in” — Lulu Wang</title>
   <meta name="description"
     content="Effective identity verification for employees of existing accounts.">
-  <link rel="stylesheet" href="../assets/style.css?v=103">
+  <link rel="stylesheet" href="../assets/style.css?v=105">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -99,23 +99,25 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">01</span>Context &amp; problem</h2>
-      <p>When an employee of a company who already has an account with us tries to sign up a new account to get paid,
-        we block the creation of the duplicate account and ask the employee to log in with their company’s existing
-        account. Often times, this employee doesn’t have access to the log in credentials so they can’t get paid,
-        causing customer complaints.</p>
-      <p>The creation of new Basic Receivable (BR) organizations for existing Virtual Card (VC) suppliers leads to:</p>
+      <h2><span class="sec-num">01</span>Where it got hard</h2>
+      <p>When an employee of a company that already has an account with us tries to sign up to get paid, we block the
+        duplicate account and ask them to log in with their company’s existing account. Often they don’t have the
+        credentials, so they can’t get paid. They complain (we heard it on Gong calls), and many create the duplicate
+        anyway.</p>
+      <p>Duplicates of existing Virtual Card (VC) suppliers hurt the whole network:</p>
       <ul>
-        <li>Network Inefficiency: Duplicate organizations create a “noisy network,” which degrades the effectiveness of
-          autoconnection and search, confusing users while damaging vendor data integrity.</li>
-        <li>Revenue Leakage: For existing VC suppliers, duplicate BRs cause significant Total Payment Volume (TPV)
-          leakage and introduce reconciliation and trust risks.</li>
-        <li>User Urgency vs. Access: Users often opt to create a new account instead of claiming an existing one because
-          their primary goal is to get paid quickly, but they are unable to immediately log in to the system-identified
-          existing organization.</li>
+        <li><span class="lead">Network inefficiency:</span> duplicate organizations create a “noisy network,” which
+          degrades autoconnection and search, confusing users while damaging vendor data integrity.</li>
+        <li><span class="lead">Revenue leakage:</span> for existing VC suppliers, duplicate Basic Receivable (BR)
+          accounts cause significant Total Payment Volume (TPV) leakage and introduce reconciliation and trust
+          risks.</li>
+        <li><span class="lead">User urgency vs. access:</span> users create a new account instead of claiming the
+          existing one because their goal is to get paid quickly, and they can’t log in to the organization the system
+          found.</li>
       </ul>
-      <p><strong>A desired outcome is to quickly verify the employee’s identity and relationship with the existing VC
-          account while keeping bad actors out, and safely add them as a member to the account.</strong></p>
+      <p><span class="lead">The buried tension: the gate guarded an account login, but the real exposure was a single
+          first payment.</span> Once we named that, the question changed from “how do we verify everyone?” to “how much
+        risk on one payment is worth the trust of tens of thousands of users a month?”</p>
 
       <p>Here is the legacy experience.</p>
       <div class="feature-video feature-video--panel feature-video--lmi">
@@ -159,24 +161,46 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">02</span>When &amp; how should we intervene?</h2>
-      <p>Here are some concepts that are good to know:</p>
+      <h2><span class="sec-num">02</span>The decision I made, and why</h2>
+      <p>I chose the smallest option we could ship: recognize the employee at the duplicate check, release their first
+        payment, and let the existing account’s admins approve them as a member.</p>
+      <p><span class="lead">Why:</span> the PM and I took three options to Risk and Compliance. Compliance cleared it, as
+        no personally identifiable information (PII) was at risk. Risk quantified the exposure: possible loss of one first
+        payment if the user is fraudulent. The call on what risk to accept was ours, and the trust of tens of thousands
+        of users a month outweighed it. Risk is a product decision. Admins approve membership because they know who works
+        there; the system doesn’t have to guess.</p>
+      <p>The constraint that shaped it: payments only flow between connected accounts in the network, and vendor data
+        (bank, address, email) changes too often to be a source of truth. So the change had to work at the moment of the
+        duplicate check, inside the existing pipeline.</p>
+      <p>What changed in the design:</p>
       <ul>
-        <li>Payment can only be sent between two connected nodes in the payment networks.</li>
-        <li>Each node can accept payment via a bank account for ACH, a physical address for check, or an email address
-          for Virtual Card remit info.</li>
-        <li>Each node has a Payment Network ID (PNI) which is the most accurate identifier of a node in the network.</li>
-        <li>Vendor data is an ever changing creature, bank account, address, email can be changed but not updated in our
-          network, therefore they can not be used as a source-of-truth.</li>
-        <li>Ways to validate a vendor indeed belongs to a company include (but are not limited to): Bank account
-          matching, invoice matching, PNI matching, account mask validation.</li>
-        <li>If the BR signs up from the marketing site directly, we can’t trace who their payor is so their newly
-          created BR account is not connected to the AP hence no payment flow would happen. If the BR signs up from the
-          AP’s invite email then they’ll be auto-connected upon acceptance.</li>
+        <li>New content for the 2nd option on the duplicate-check step, telling the user their payment is here.</li>
+        <li>A confirmation step that clearly explains what happens next.</li>
+        <li>A new payment widget leading the user to their payment.</li>
       </ul>
-      <p>The team brainstormed dozens of ways to allow the BR obtain the VC remit info without moving mountains of the
-        existing pipeline, and 3 options stood out.</p>
+      <p>On the back end, engineering needed to check the business relationship once a duplicate is detected, route the
+        latest pending payment for the VC organization to the new account, and email the existing account’s admins to
+        ask for their approval.</p>
+      <figure class="cs-figure cs-figure--bleed cs-figure--outlined">
+        <img src="../assets/img/Let me in/De-dup-Legacy.png"
+          alt="The de-dup step, before and after: the second option changes from creating a new account anyway to receiving one payment and verifying identity to receive future payments."
+          width="2880" height="2436">
+      </figure>
+    </section>
 
+    <section class="cs-section">
+      <h2><span class="sec-num">03</span>What I tried and dropped</h2>
+      <ul>
+        <li><span class="lead">Dozens of options, down to three.</span> The team brainstormed dozens of ways to get the
+          user their payment without moving mountains in the existing pipeline. Three stood out; I chose option 2 over the
+          two bigger rebuilds.</li>
+        <li><span class="lead">The “verify everyone” framing.</span> Dropped once we named the real exposure: one first
+          payment, not the whole account.</li>
+        <li><span class="lead">An external identity-verification vendor.</span> Explored but not chosen for this
+          release; it’s still an open option for the bigger fix.</li>
+      </ul>
+      <p>Shipping the smallest change that tests the bet meant new wording and one confirmation step on an existing
+        screen, so we could learn from real users while the bigger fix is explored.</p>
       <figure class="cs-figure cs-figure--bleed">
         <img src="../assets/img/Let me in/web/flow-option 1.png"
           alt="Option 1: when the AP adds the vendor, the system detects an employee of a virtual card organization, auto-connects them and enrolls the vendor in virtual card."
@@ -195,58 +219,11 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">03</span>Risk Triage</h2>
-      <p>The PM and I showed our 3 options to the company’s Risk team and Compliance team for feedback. We were told
-        the Compliance team was not concerned as no Personally Identifiable Information (PII) was at risk.</p>
-      <p>However, Risk flagged potential risk of losing the first payment if the BR is fraudulent. The decision fell
-        back on our product team to balance the risk we are comfortable to take to gain the trust from over tens of
-        thousands of users each month.</p>
-      <p><strong>We ended up choosing option 2 to run as an experiment against legacy, while exploring external
-          resource on a vendor identity verification solution.</strong></p>
-    </section>
-
-    <section class="cs-section">
-      <h2><span class="sec-num">04</span>Design concepts</h2>
-      <p>Here are the changes we made in the new design:</p>
-      <ul>
-        <li>New content for the 2nd CTA informing BR that their payment is here.</li>
-        <li>A confirmation step with clear explanation on next steps is added.</li>
-        <li>New payment widget leading BR to their payment.</li>
-      </ul>
-      <p>On the back-end, the Eng team also need to implement:</p>
-      <ul>
-        <li>Check business relationship once a duplicate account is detected, based on result dynamically show the
-          content for the 2nd CTA on De-Dup step.</li>
-        <li>Route the latest pending payment to the VC org to this BR org.</li>
-        <li>Send email informing admins of existing VC org about the payment and ask for their approval.</li>
-      </ul>
-      <p>This solution gives the employees of an existing VC account a way to receive their 1st payment while they
-        verify themselves. The admins of the existing account will receive an email informing them a new member
-        requests to join, and decide to accept or reject. In general, the risk is worth the better user experience for
-        this unique user group.</p>
-      <p>See the new experience on top of this page.</p>
-
-      <figure class="cs-figure cs-figure--bleed cs-figure--outlined">
-        <img src="../assets/img/Let me in/De-dup-Legacy.png"
-          alt="The de-dup step, before and after: the second option changes from creating a new account anyway to receiving one payment and verifying identity to receive future payments."
-          width="2880" height="2436">
-      </figure>
-    </section>
-
-    <section class="cs-section">
-      <h2><span class="sec-num">05</span>What I’ve learned</h2>
-      <ol>
-        <li><strong>Ask what you're actually protecting.</strong> The legacy gate guarded an account login, but the real
-          exposure was a single first payment. Once we named that, the question changed from “how do we verify
-          everyone?” to “how much risk on one payment is worth the trust of tens of thousands of users a month?”</li>
-        <li><strong>Risk is a product decision</strong>. Risk and Compliance gave us the facts: no PII exposed, but
-          possible loss of a first payment. The call on what risk to accept was ours. Bringing 3 options with the
-          trade-offs laid out (fraud risk, engineering effort, user experience) turned a review into a decision.</li>
-        <li><strong>Ship the smallest change that tests the bet, and keep the search on for a solution</strong>. Option 2
-          was new wording and one confirmation step on an existing screen, so we could learn from real users while the
-          bigger fix is explored. The existing account's admins approve new members, because they know who works there;
-          the system doesn't have to guess.</li>
-      </ol>
+      <h2><span class="sec-num">04</span>What changed</h2>
+      <p><span class="lead">Behaviour, by design:</span> employees get their first payment while they verify themselves,
+        and the existing account’s admins get an approval email instead of a support ticket. See the new experience at
+        the top of this page.</p>
+      <p><span class="lead">Numbers:</span> the experiment is running against legacy, and results are pending.</p>
     </section>
 
     <nav class="cs-pager" aria-label="Case study navigation">

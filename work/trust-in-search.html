@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Trust in “Who am I paying?” — Lulu Wang</title>
   <meta name="description" content="AI-assisted vendor identity matching.">
-  <link rel="stylesheet" href="../assets/style.css?v=103">
+  <link rel="stylesheet" href="../assets/style.css?v=105">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
@@ -77,9 +77,6 @@
           verification and delayed first payment. We tested concepts with 5 users and found 3 ways to improve trust in new
           vendor add experience.</dd>
 
-        <dt>Design process:</dt>
-        <dd>Framing the question → 5 moderated test → 3 design prototypes → Synthesis and iteration → 3 experiments
-          launched for directional hypothesis validation.</dd>
 
         <dt>Team:</dt>
         <dd>1 product manager, 1 product designer, 1 front-end engineer, 1 back-end engineer.</dd>
@@ -98,12 +95,14 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">01</span>Context &amp; Problem</h2>
+      <h2><span class="sec-num">01</span>Where it got hard</h2>
+      <blockquote class="cs-quote">“The number of connections. So often we have multiple choices to select and try to
+        go with the one with the most connections if there are multiples.”</blockquote>
       <p>Our users are accounts payable (AP) specialists, bookkeepers and finance staff who pay vendors regularly. When
         they add a new vendor, they search our payment network for that vendor, but they often don’t trust the matches
         they see. So they verify each vendor by hand, and the first payment is delayed.</p>
       <p>That shows up as a low search success rate: the share of searches where the user picks a vendor from the first
-        page of results.</p>
+        page of results. The network had the data to earn their trust; the vendor card showed none of it.</p>
       <p><span class="lead">What must the vendor card show, and which signals earn trust?</span></p>
 
       <figure class="cs-figure cs-figure--bleed">
@@ -111,19 +110,11 @@
           alt="Legacy vendor search UI: the Add a vendor flow lists matching vendors as near-identical cards, each marked Verified vendor, with a details drawer showing network connections, member-since date and Payment Network ID."
           width="1640" height="1000">
       </figure>
-    </section>
 
-    <section class="cs-section">
-      <h2><span class="sec-num">02</span>Research &amp; Learnings</h2>
-      <p>The unmoderated Maze test surfaced clear, consistent behaviors that defined the design space.</p>
-      <p>We gave participants one task: “You need to pay your vendor, Boston Tea, $800.00 by February 28. Find them,
-        add them, and confirm you’ve chosen the right vendor.”</p>
-      <p>We measured three things:</p>
-      <ol>
-        <li>Confidence: how sure they felt about their choice, rated on a scale.</li>
-        <li>Comprehension: whether they understood terms like “connections” and “virtual card”.</li>
-        <li>Decision criteria: what they expected to see, and what they relied on to decide, in their own words.</li>
-      </ol>
+      <p>To find out, we gave participants one task: “You need to pay your vendor, Boston Tea, $800.00 by February 28.
+        Find them, add them, and confirm you’ve chosen the right vendor.” We measured how confident they felt in their
+        choice, whether they understood terms like “connections” and “virtual card”, and, in their own words, what they
+        relied on to decide.</p>
 
       <div class="learning-cards">
         <div class="learning-card">
@@ -162,7 +153,7 @@
 
       <p>Here's a list of data points our users prefer to see in order to validate a new vendor.</p>
       <ul>
-        <li>Account last updated data.</li>
+        <li>Account last updated date.</li>
         <li>Account created date.</li>
         <li># of connections/customers.</li>
         <li>Vendor preferred payment method.</li>
@@ -178,77 +169,27 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">03</span>Constraints</h2>
-      <p>The card had to operate inside the existing add-vendor flow, where a user searches, the business address
-        auto-fills, and they proceed toward paying a bill.</p>
-      <p>The card also had to work with the data the network actually has: connection counts, payment method (virtual
-        card), business name and address, and represent each in plain language for non-technical finance users.</p>
-    </section>
-
-    <section class="cs-section">
-      <h2><span class="sec-num">04</span>Design Concepts</h2>
-
-      <p>The first round put every data point users had asked for in front of the AP, so they could judge a match
-        without leaving the flow. Key decisions:</p>
+      <h2><span class="sec-num">02</span>The decision I made, and why</h2>
+      <p>Three decisions, one thesis:</p>
       <ol>
-        <li><span class="lead">Show what users said they rely on.</span> Only data points our research showed people use
-          to verify a vendor made it onto the card.</li>
-        <li><span class="lead">Ask for feedback on the match.</span> A short question lets users tell the AI whether it
-          picked the right vendor, so matching improves once live.</li>
-        <li><span class="lead">Add a confidence score to the card.</span> An at-a-glance signal of how strong the match
-          is, for a quick first judgment.</li>
+        <li><span class="lead">Only evidence users actually rely on goes on the vendor card.</span> Every data point had
+          to earn its place in research.</li>
+        <li><span class="lead">Show the evidence where the decision happens.</span> Verification moved out of a separate
+          drawer and into the chat itself, so users don’t have to open anything to check a match.</li>
+        <li><span class="lead">The system suggests; the user always makes the final call.</span> The most likely match
+          appears first, but nothing is chosen for them.</li>
       </ol>
-      <div class="feature-video feature-video--panel">
-        <div class="feature-video-frame">
-          <video src="../assets/img/Trust in search/new design v1.mp4"
-            poster="../assets/img/Trust in search/poster-v1.jpg" muted playsinline preload="none"
-            aria-label="Round 1: a vendor details drawer lists every match signal with a confidence level."></video>
-        </div>
-        <button type="button" class="play-toggle" data-label="round 1 video" aria-label="Play round 1 video">
-          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
-          </svg>
-          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
-            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
-            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
-          </svg>
-        </button>
-      </div>
-
-      <p>The second round added a new way in: dropping a document. Research showed APs often start from an invoice or
-        W-9 rather than typing vendor details by hand, so the flow now starts there. Key decisions:</p>
-      <ol>
-        <li><span class="lead">Make “drop a document” the main entry point.</span> Users drop an invoice and the system
-          finds the vendor from it. Later, it could pull new invoices straight from the user’s inbox.</li>
-        <li><span class="lead">Don’t guess with money.</span> The system suggests the most likely vendor, but the user
-          always makes the final choice.</li>
-      </ol>
-      <div class="feature-video feature-video--panel">
-        <div class="feature-video-frame">
-          <video src="../assets/img/Trust in search/new design v2.mp4"
-            poster="../assets/img/Trust in search/poster-v2.jpg" muted playsinline preload="none"
-            aria-label="Round 2: dropping an invoice starts the search — the assistant reads it and looks for a matching vendor."></video>
-        </div>
-        <button type="button" class="play-toggle" data-label="round 2 video" aria-label="Play round 2 video">
-          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
-          </svg>
-          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
-            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
-            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
-          </svg>
-        </button>
-      </div>
-
-      <p>In the third round, I moved the verification details out of a separate drawer and into the chat itself, so
-        users don’t have to open anything to check a match. Each vendor card shows two kinds of evidence:</p>
+      <p><span class="lead">Why:</span> trust comes from specific signals, not badges, and the AI never guesses with
+        money. The card also had to fit inside the existing add-vendor flow and work with the data the network actually
+        has (connection counts, payment method, business name and address), in plain language for non-technical finance
+        users.</p>
+      <p>Each vendor card shows two kinds of evidence:</p>
       <ol>
         <li><span class="lead">Standard identity checks:</span> details used to verify any vendor, such as address, Tax
           ID and the last digits of the bank account.</li>
         <li><span class="lead">Network signals only we have:</span> details that tell this vendor’s story, such as how
           many companies in the network pay them, when the account was created and when it was last active.</li>
       </ol>
-      <p>The most likely match appears first, but the user always makes the final call.</p>
       <div class="feature-video feature-video--panel">
         <div class="feature-video-frame">
           <video src="../assets/img/Trust in search/new design v3.mp4"
@@ -268,9 +209,64 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">05</span>Experiments Launched &amp; Next Steps</h2>
-      <p>Unfortunately, this project was cut short before we could launch an A/B test with the legacy vendor add flow. We
-        ended up launching 3 incremental experiments on the legacy experience to validate the direction.</p>
+      <h2><span class="sec-num">03</span>What I tried and dropped</h2>
+      <ul>
+        <li><span class="lead">The kitchen-sink card.</span> Round 1 put every data point users had asked for in front of
+          the AP. I cut it back to the signals research showed people actually use.</li>
+        <li><span class="lead">The verification drawer.</span> Round 1 hid the evidence behind a “details” drawer. By
+          round 3 it was gone, and the evidence sat in the chat.</li>
+        <li><span class="lead">A generic “Verified vendor” badge.</span> Instead of assuming it worked, we tested it
+          against specific trust signals.</li>
+        <li><span class="lead">The full A/B test against legacy.</span> The project was cut short before it could run, so
+          we pivoted to three smaller experiments on the legacy flow.</li>
+      </ul>
+      <p>Round 1: every useful data point, a confidence score on the card, and a feedback question so matching could
+        improve once live, but the evidence lived in a drawer.</p>
+      <div class="feature-video feature-video--panel">
+        <div class="feature-video-frame">
+          <video src="../assets/img/Trust in search/new design v1.mp4"
+            poster="../assets/img/Trust in search/poster-v1.jpg" muted playsinline preload="none"
+            aria-label="Round 1: a vendor details drawer lists every match signal with a confidence level."></video>
+        </div>
+        <button type="button" class="play-toggle" data-label="round 1 video" aria-label="Play round 1 video">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+
+      <p>Round 2: a new way in. APs often start from an invoice or W-9 rather than typing vendor details, so dropping a
+        document became the main entry point; later, the system could pull new invoices straight from the user’s
+        inbox.</p>
+      <div class="feature-video feature-video--panel">
+        <div class="feature-video-frame">
+          <video src="../assets/img/Trust in search/new design v2.mp4"
+            poster="../assets/img/Trust in search/poster-v2.jpg" muted playsinline preload="none"
+            aria-label="Round 2: dropping an invoice starts the search — the assistant reads it and looks for a matching vendor."></video>
+        </div>
+        <button type="button" class="play-toggle" data-label="round 2 video" aria-label="Play round 2 video">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">04</span>What changed</h2>
+      <p><span class="lead">Behaviour:</span> users could judge a match without leaving the flow, and the feedback
+        question lets matching improve once live.</p>
+      <p><span class="lead">Numbers, stated as targets:</span> a 50%+ lift in search success rate. To be plain about
+        status: the big A/B test never ran. We launched three incremental experiments on the legacy flow for
+        directional validation:</p>
       <ol>
         <li><strong>Payment details</strong>. Hypothesis: We believe showing payment details on the cards of VC vendors
           will raise search success rate, because users can confirm it's the right vendor without leaving the results.

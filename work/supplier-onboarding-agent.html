@@ -7,7 +7,7 @@
   <title>Supplier Onboarding — Lulu Wang</title>
   <meta name="description"
     content="Rethinking the password wall: showing suppliers the payment first and deferring account creation until after value is delivered.">
-  <link rel="stylesheet" href="../assets/style.css?v=103">
+  <link rel="stylesheet" href="../assets/style.css?v=105">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
@@ -113,14 +113,14 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">01</span>Context &amp; problem</h2>
+      <h2><span class="sec-num">01</span>Where it got hard</h2>
+      <p><span class="lead">20%+ of vendors dropped at the password step alone, and 50%+ of everyone who landed never
+          finished onboarding.</span></p>
       <p>When a business wants to pay a supplier electronically, it invites that supplier onto the network. The
-        supplier arrives with one intent: get paid. Yet the legacy flow asked them to create a password-protected
-        account, complete multi-factor authentication, and fill out a long business profile before they ever saw the
-        payment waiting for them.</p>
-
-      <p>The audit made the core problem clear: the product was front-loading effort, credentials, sensitive data
-        before user seeing the payment, which is exactly backwards for a user whose only goal is to be paid once.</p>
+        supplier arrives with one intent: collect a payment that’s waiting. Yet the legacy flow asked them to create a
+        password-protected account, complete multi-factor authentication, and fill out a long business profile before
+        they ever saw the money. Front-loading effort, credentials and sensitive data before value is exactly backwards
+        for a user whose only goal is to be paid.</p>
 
       <p><strong>Account creation came before any value.</strong> The flow opened with username, password, and MFA
         setup, so vendors were asked to commit to a platform.</p>
@@ -149,10 +149,12 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">02</span>Understanding the problem space</h2>
-      <p>Before designing, I grounded the work in the body of research that already existed, then layered new evidence
-        on top of it. The pattern was remarkably consistent across years of studies.</p>
-
+      <h2><span class="sec-num">02</span>The decision I made, and why</h2>
+      <p>Flip the order: payment first, account creation after value is delivered. The password leaves the critical
+        path, steps to first payment drop from 10–14 to 3–4, the business-info step goes from 2+ minutes to under 1 with
+        pre-fill, and returning is passwordless.</p>
+      <p><span class="lead">Why:</span> suppliers come for payment, not for a platform; trust had to be earned at every
+        step; and a pre-fill pilot had already proved that removing friction works.</p>
       <div class="method-tree method-tree--branch">
         <div class="method-question">How can we front-load value over cost in supplier onboarding flow?</div>
 
@@ -187,11 +189,57 @@
           </div>
         </div>
       </div>
+
+      <div class="hero-proto proto-inline">
+        <div class="laptop-mock">
+          <div class="laptop-lid">
+            <div class="laptop-screen laptop-screen--1440x855 proto-fit">
+              <iframe title="Interactive prototype of the redesigned supplier onboarding flow"
+                src="https://embed.figma.com/proto/2l2Tjm7yYYDeJR0BUOvlQT/2027-Portfolio?node-id=10699-117586&amp;page-id=9623%3A944&amp;starting-point-node-id=10699%3A117586&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;hide-ui=1&amp;embed-host=share"
+                allowfullscreen></iframe>
+              <!-- First frame, held over the embed until it has loaded. -->
+              <img class="proto-poster" src="../assets/img/Supplier onboarding/concept-proto-poster.png" alt=""
+                aria-hidden="true" width="1440" height="855">
+            </div>
+          </div>
+          <div class="laptop-base"><span class="laptop-notch"></span></div>
+        </div>
+
+        <!-- Same loading toast as the other case-study prototypes. -->
+        <div class="proto-toast proto-toast--inline" id="proto-toast-concept" role="status" aria-live="polite">
+          <div class="proto-toast-card">
+            <div class="proto-gauge" style="--stroke-percent: 0">
+              <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <circle class="gauge-track" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <circle class="gauge-fill" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span class="proto-gauge-num">0</span>
+            </div>
+            <p class="proto-toast-title">Prototype is loading...</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">03</span>Growth goals</h2>
+      <h2><span class="sec-num">03</span>What I tried and dropped</h2>
+      <ul>
+        <li><span class="lead">Several AI-generated concepts.</span> The team used AI to build several concepts fast. We
+          dropped all but the one we believed in, and I hand-crafted it into the interactive prototype above.</li>
+        <li><span class="lead">The legacy gauntlet.</span> Username, password, MFA and a long business profile came off
+          the critical path; the password is deferred to the end.</li>
+        <li><span class="lead">The full vision, as shipped work.</span> It never shipped; the organization didn’t pick it
+          up. The thinking is the exhibit.</li>
+      </ul>
+    </section>
 
+    <section class="cs-section">
+      <h2><span class="sec-num">04</span>What changed</h2>
+      <p>This is vision work, so these are targets, not results: funnel completion from 30%+ to 50%, password-step
+        abandonment removed from the critical path, and a return-visit rate of at least 30% of completers, a metric that
+        didn’t exist before. In the prototype, vendors see the value before committing anything.</p>
       <table class="cs-table cs-table--plain">
         <colgroup>
           <col class="col-measure">
@@ -243,42 +291,6 @@
           </tr>
         </tbody>
       </table>
-    </section>
-
-    <section class="cs-section">
-      <h2><span class="sec-num">04</span>Concept prototype</h2>
-
-      <div class="hero-proto proto-inline">
-        <div class="laptop-mock">
-          <div class="laptop-lid">
-            <div class="laptop-screen laptop-screen--1440x855 proto-fit">
-              <iframe title="Interactive prototype of the redesigned supplier onboarding flow"
-                src="https://embed.figma.com/proto/2l2Tjm7yYYDeJR0BUOvlQT/2027-Portfolio?node-id=10699-117586&amp;page-id=9623%3A944&amp;starting-point-node-id=10699%3A117586&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;hide-ui=1&amp;embed-host=share"
-                allowfullscreen></iframe>
-              <!-- First frame, held over the embed until it has loaded. -->
-              <img class="proto-poster" src="../assets/img/Supplier onboarding/concept-proto-poster.png" alt=""
-                aria-hidden="true" width="1440" height="855">
-            </div>
-          </div>
-          <div class="laptop-base"><span class="laptop-notch"></span></div>
-        </div>
-
-        <!-- Same loading toast as the other case-study prototypes. -->
-        <div class="proto-toast proto-toast--inline" id="proto-toast-concept" role="status" aria-live="polite">
-          <div class="proto-toast-card">
-            <div class="proto-gauge" style="--stroke-percent: 0">
-              <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                <circle class="gauge-track" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <circle class="gauge-fill" cx="50" cy="50" r="45" stroke-width="10" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-              <span class="proto-gauge-num">0</span>
-            </div>
-            <p class="proto-toast-title">Prototype is loading...</p>
-          </div>
-        </div>
-      </div>
     </section>
 
     <nav class="cs-pager" aria-label="Case study navigation">

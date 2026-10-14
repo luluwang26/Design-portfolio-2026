@@ -7,7 +7,7 @@
   <title>Answering “Where is my money?” — Lulu Wang</title>
   <meta name="description"
     content="Clarifying payment status, offering best next steps, and introducing product value to new receivers after they sign up.">
-  <link rel="stylesheet" href="../assets/style.css?v=103">
+  <link rel="stylesheet" href="../assets/style.css?v=105">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -117,26 +117,33 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">01</span>Context &amp; problem</h2>
-      <p>The platform is a B2B payment network where payors pay receivers, and receivers are asked by payors (their
-        customers) to create a free account in order to get paid. The platform had millions of receiver accounts, but
-        only a small fraction were transacting and most transacting receivers stopped using the platform after three
-        months.</p>
-    </section>
+      <h2><span class="sec-num">01</span>Where it got hard</h2>
+      <p>The platform had millions of receiver accounts, but only a small fraction ever transacted, and most stopped
+        using the platform within three months. Receivers are asked by their customers to create a free account to get
+        paid, so they arrive with money waiting, and the first-time experience couldn’t answer the only question they
+        had: where is my money, and when does it land?</p>
+      <div class="quote-card">
+        <span class="chip chip-grey">User quotes</span>
 
-    <section class="cs-section">
-      <h2><span class="sec-num">02</span>Three ways to find out why</h2>
-      <p>The first step I took was to go through the receiver experience myself. I created a payor account on our
-        testing
-        platform to pay a fictional receiver. I screenshotted my experience and mapped the journey along the way.</p>
-      <p>Meanwhile, I partnered with a researcher to look at the problem from both directions. On the qualitative side,
-        we ran a 10-participant study on the receiver journey from signup to first payment: 5 SMBs and 5 independent
-        contractors who had signed up or gotten paid within the prior 30 days. On the quantitative side, we surveyed
-        recently signed-up receivers and received 1,056 responses across solo operators, micro-businesses, SMBs, and a
-        smaller set of larger firms.</p>
-      <p>I also worked with our customer experience team and sales to look for blockers, such as bank verification
-        failure causing payment delay.</p>
+        <p class="quote-lead">Payment uncertainty created real emotional drag.</p>
+        <blockquote>"When I meant cumbersome, there was like a lot of stuff that I knew I didn't need… I don't
+          understand
+          why all this stuff is here, I'm just trying to get paid."</blockquote>
 
+        <p class="quote-lead">Timing clarity mattered more than feature discovery.</p>
+        <blockquote>"The biggest challenges are, timing, understanding when a payment is going to be made… It's nice to
+          see a due date but that doesn't mean that that is when we will receive payment."</blockquote>
+
+        <p class="quote-lead">The payment process itself wasn't intuitive.</p>
+        <blockquote>"I had gotten a notification on my phone that I have an invoice… I didn't know exactly what that
+          meant."</blockquote>
+      </div>
+
+      <p><span class="lead">How I found out.</span> I went through the receiver experience myself, creating a payor
+        account on our testing platform to pay a fictional receiver and mapping the journey. With a researcher, I ran a
+        10-participant study from signup to first payment (5 SMBs, 5 independent contractors) and a survey of recently
+        signed-up receivers (1,056 responses). Customer experience and sales helped surface blockers, such as bank
+        verification failures delaying payment.</p>
       <div class="method-tree">
         <div class="method-question">Why receiver activation and retention rates are so low?</div>
         <div class="method-connector" aria-hidden="true"></div>
@@ -154,23 +161,6 @@
             <p>From CX support tickets and from talking to Sales.</p>
           </div>
         </div>
-      </div>
-
-      <div class="quote-card">
-        <span class="chip chip-grey">User quotes</span>
-
-        <p class="quote-lead">Payment uncertainty created real emotional drag.</p>
-        <blockquote>"When I meant cumbersome, there was like a lot of stuff that I knew I didn't need… I don't
-          understand
-          why all this stuff is here, I'm just trying to get paid."</blockquote>
-
-        <p class="quote-lead">Timing clarity mattered more than feature discovery.</p>
-        <blockquote>"The biggest challenges are, timing, understanding when a payment is going to be made… It's nice to
-          see a due date but that doesn't mean that that is when we will receive payment."</blockquote>
-
-        <p class="quote-lead">The payment process itself wasn't intuitive.</p>
-        <blockquote>"I had gotten a notification on my phone that I have an invoice… I didn't know exactly what that
-          meant."</blockquote>
       </div>
 
       <div class="cause-card">
@@ -192,17 +182,6 @@
         <p class="cause-title">Receivers are uncertain about what actions to take after signing up.</p>
         <p>Some receivers thought they were receiving a one-time payment and were done.</p>
       </div>
-    </section>
-
-    <section class="cs-section">
-      <h2><span class="sec-num">03</span>Project scope</h2>
-      <p>We decided to redesign the "Get Started" page, where new receivers land to check payment status after signing
-        up.</p>
-
-      <figure class="cs-figure">
-        <img src="../assets/img/ftu/ftu-journey map.png"
-          alt="Customer journey mapped against psych level: entry points and signup jump to a Peak, setup and identity verification drop to a Pit, adding a bank recovers, and the Get Started page is marked as the moment to redesign.">
-      </figure>
 
       <div class="statement-card">
         <p class="statement-title">Problem Statement</p>
@@ -213,61 +192,27 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">04</span>Design to match real world use cases</h2>
-      <p>Here is how things work in a real world scenario:</p>
-      <ul>
-        <li>A receiver is asked to create an account to get paid. They sign up, then inform the payor of their PNI
-          (Payment Network ID); the payor connects with them via PNI, creates a bill (from an existing invoice or not)
-          and schedules a payment to the receiver.</li>
-        <li>After adding a bank, there could be a bank verification process that asks the receiver to enter a random
-          deposit amount, which requires at least 24h of wait.</li>
-        <li>Once the bank is successfully connected, the receiver needs to find their PNI and send it to their payor.
-          The
-          payor needs to first connect with the receiver.</li>
-        <li>Right after, if the payor creates a bill, an invoice for this payment will be created and automatically show
-          up in the receiver's Inbox. If the payor schedules a payment, more rich metadata such as <em>Amount, Payor
-            name, Estimated delivery date</em> can be shown on the frontend.</li>
-        <li>However, if the payor didn't take action, the receiver can nudge the payor by sending them an invoice about
-          the expected payment in-product to kick start the payment process. The payor will receive the invoice in their
-          Inbox and turn it into a bill from there.</li>
-      </ul>
+      <h2><span class="sec-num">02</span>The decision I made, and why</h2>
+      <p>I redesigned the “Get Started” page, where new receivers land after signing up, to be payment-status-first:
+        answer “how and when will I get paid?” before teaching anything else. The product tour became optional and moved
+        later. The redesign also moved the experience onto the design system.</p>
+      <p><span class="lead">Why:</span> timing clarity beat feature discovery in every research signal, and invoicing,
+        network and upsell messaging at the moment of maximum anxiety was noise. The journey map shows that moment.</p>
+      <figure class="cs-figure">
+        <img src="../assets/img/ftu/ftu-journey map.png"
+          alt="Customer journey mapped against psych level: entry points and signup jump to a Peak, setup and identity verification drop to a Pit, adding a bank recovers, and the Get Started page is marked as the moment to redesign.">
+      </figure>
 
-      <p><strong>Multiple layers of variables create the complexity.</strong></p>
-      <p>First, whether there's an in-flight payment changes what to show. Receivers with an incoming payment are
-        concerned with when and where the fund will land. Receivers with no in-flight payment wonder how to kick start
-        the payment process.</p>
-      <p>Another layer of complexity is whether an invoice of the in-flight payment was created. When the payor creates
-        a
-        bill on their end and schedules a payment, it is ideal to have a digital invoice that matches the incoming
-        payment. This invoice unlocks capabilities such as adding a custom discount or calculating taxes later. We may
-        want to recommend they create an invoice in-product if no such invoice exists.</p>
-      <p>Other variables affecting the design include the preferred receiving method (ACH or instant transfer), bank
-        verification (success or failure), bank add method (via Plaid or manual), identification verification, etc. I
-        created a matrix to visualize this complexity.</p>
-
+      <p>The hard part was that “where is my money?” has a different answer in every state: whether a payment is on the
+        way, whether an invoice exists for it, how the receiver gets paid (ACH or instant transfer), and whether bank
+        verification succeeded. I mapped those variables into a decision tree so every state got a clear answer and a
+        next step.</p>
       <figure class="cs-figure">
         <img src="../assets/img/ftu/ftu-logic-diagram.png"
           alt="Receiver first-time-use experience logic: a decision tree branching on bank verification success, network connection with the customer, whether a payment is scheduled, and whether the receiver takes Instant Transfer.">
       </figure>
-    </section>
 
-    <section class="cs-section">
-      <h2><span class="sec-num">05</span>Concepts by sections</h2>
-
-      <p>We designed a tutorial section to explain product offerings and "how-tos" (Root cause #1).</p>
-
-      <div class="concept-block">
-        <div class="concept-labels"><span>Concept A</span><span>Concept B</span></div>
-        <div class="concept-pair">
-          <img src="../assets/img/ftu/ftu-concept-A.png"
-            alt="Concept A: a row of video tutorial cards covering the payment process, updating payment methods, and invoicing.">
-          <img src="../assets/img/ftu/ftu-concept-B.png"
-            alt="Concept B: a single hero video paired with a list of common questions about the payment process and network.">
-        </div>
-      </div>
-
-      <p>A "Payment status widget" that answers the "Where is my money?" question (Root cause #2).</p>
-
+      <p>A payment status widget answers “where is my money?” in each of those states:</p>
       <div class="concept-block">
         <div class="widget-grid">
           <figure class="widget-state">
@@ -343,8 +288,41 @@
         </div>
       </div>
 
-      <p>A "Get the most out of your account" section to recommend next best actions (Root cause #3).</p>
+      <p>Concept testing tightened it before launch: payment status and “what happens next” language became more
+        explicit, bank-verification messaging explained that delays could be normal, and card pricing was made less
+        ambiguous.</p>
+      <figure class="cs-figure">
+        <img src="../assets/img/ftu/web/ftu-before and after.png"
+          alt="Before and after of the receiver Get Started page. Before: unclear next steps, no payment status, and a random product feature. After: clear payment status and expectations, clear next steps, and personalized product offerings."
+          width="4096" height="1922">
+      </figure>
+    </section>
 
+    <section class="cs-section">
+      <h2><span class="sec-num">03</span>What I tried and dropped</h2>
+      <ul>
+        <li><span class="lead">Video tutorials.</span> Dropped for launch because of production cost.</li>
+        <li><span class="lead">A mandatory walkthrough.</span> Made optional: seven of ten participants thought it made
+          sense, but not all wanted to go through it.</li>
+        <li><span class="lead">Early invoicing, network and upsell messaging.</span> Pulled back from the moment of peak
+          anxiety. “Network” only made sense to people when it was tied to their actual payment.</li>
+        <li><span class="lead">The Concept A layout.</span> Six of ten preferred Concept B as more logically ordered and
+          easier to learn from, so I adopted it.</li>
+        <li><span class="lead">Vague language.</span> Rewritten: “Advanced” sounded expensive or complex, and “arrival
+          date” didn’t say when money would actually hit the bank.</li>
+      </ul>
+      <p>Tutorials: a row of video cards (A) versus one hero video with common questions (B).</p>
+      <div class="concept-block">
+        <div class="concept-labels"><span>Concept A</span><span>Concept B</span></div>
+        <div class="concept-pair">
+          <img src="../assets/img/ftu/ftu-concept-A.png"
+            alt="Concept A: a row of video tutorial cards covering the payment process, updating payment methods, and invoicing.">
+          <img src="../assets/img/ftu/ftu-concept-B.png"
+            alt="Concept B: a single hero video paired with a list of common questions about the payment process and network.">
+        </div>
+      </div>
+
+      <p>Next best actions: a vertical list (A) versus a two-column grid (B).</p>
       <div class="concept-block">
         <div class="concept-labels"><span>Concept A</span><span>Concept B</span></div>
         <div class="concept-pair">
@@ -354,14 +332,6 @@
             alt="Concept B: the same actions arranged in a two-column grid of tappable rows.">
         </div>
       </div>
-    </section>
-
-    <section class="cs-section">
-      <h2><span class="sec-num">06</span>User tests</h2>
-      <p>To validate the direction, I partnered with a researcher and tested the concept with 10 participants: 7 new
-        receiver customers and 3 prospects. Participants generally responded positively to the overall direction. The
-        redesigned experience felt clearer and more useful than the legacy flow, and users better understood where to go
-        for payment information.</p>
 
       <div class="concept-block">
         <p class="concept-title">What we showed to the users during a test.</p>
@@ -373,125 +343,12 @@
             alt="Concept B: the same page reordered, with recommended actions in a two-column grid and a tutorial block below.">
         </div>
       </div>
-
-      <div class="table-wrap">
-        <table class="cs-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Concept A (user flow)</th>
-              <th>Concept B (alternative UI)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Scenario 1.</strong> A payment is on the way by the time the user lands on the "Get Started"
-                page.</td>
-              <td>Welcome screen → Navigation walkthrough → Get Started page → Get to know us → Get the most out of your
-                account</td>
-              <td rowspan="3" class="td-merge">A different "Get Started" page UI. Otherwise the same as in Concept A.
-              </td>
-            </tr>
-            <tr>
-              <td><strong>Scenario 2.</strong> No payment on the way, sign up invitation email only, no existing invoice
-                created on user's behalf.</td>
-              <td>Get Started page → Invoicing flow</td>
-            </tr>
-            <tr>
-              <td><strong>Scenario 3.</strong> No payment on the way, sign up invitation email only, 1 invoice created
-                on
-                user's behalf.</td>
-              <td>Get Started page → Invoices page</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">07</span>Key decisions &amp; tradeoffs</h2>
-      <p>Here's what we hoped to learn from the user test.</p>
-
-      <div class="table-wrap">
-        <table class="cs-table">
-          <thead>
-            <tr>
-              <th>"Product offerings" section</th>
-              <th>Payment status widget</th>
-              <th>Best next steps</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>What are the most valuable offerings to receivers?</td>
-              <td>Do we want to show invoice and bank account info here?</td>
-              <td>What actions have the least friction to take?</td>
-            </tr>
-            <tr>
-              <td>What topics are of most interest to receivers?</td>
-              <td>Will users want to see the Instant Transfer option if it is available?</td>
-              <td>What features should receivers learn about?</td>
-            </tr>
-            <tr>
-              <td>What is the preferred way to learn? Video, article, or others?</td>
-              <td>What other info do they care about?</td>
-              <td>Do users prefer vertical or horizontal layout of the recommended actions?</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <ul>
-        <li>The biggest decision was to make the overview experience answer "how and when will I get paid?" before
-          trying
-          to teach anything else. The research was clear that surfacing invoicing, network benefits, and upsell
-          messaging
-          too early made the experience feel noisier, not more valuable. So we pushed the product tour to optional and
-          later.</li>
-        <li>Modernize without destabilizing. The redesign also moved the experience onto the design system.</li>
-        <li>Due to the cost of video tutorial creation, we dropped it for the initial launch.</li>
-      </ul>
-
-      <p>The testing also exposed several important gaps.</p>
-      <ul>
-        <li>Trust was still fragile: participants often researched the platform before accepting the invite, or wanted
-          reassurance that the invitation was legitimate.</li>
-        <li>The network story was still too abstract: people didn't naturally understand "network" as a practical
-          benefit
-          unless it was tied to their actual payment workflow.</li>
-        <li>Some language was still vague or intimidating: "Advanced" sounded expensive or overly complex. "Arrival
-          date"
-          didn't reliably communicate when money would actually hit the bank account.</li>
-        <li>The test also showed that optionality mattered. Seven of ten participants thought the walkthrough made
-          sense,
-          but not all wanted to go through it, and six of ten preferred the alternate Concept B layout because it felt
-          more logically ordered and easier to learn from.</li>
-      </ul>
-    </section>
-
-    <section class="cs-section">
-      <h2><span class="sec-num">08</span>Iteration &amp; design lock</h2>
-      <p>I used the concept-test findings to tighten the design before launch.</p>
-      <ul>
-        <li>Adopted the stronger layout direction from Concept B.</li>
-        <li>Made payment status and "what happens next" language more explicit.</li>
-        <li>Clarified bank-verification messaging so users understood that delays could be normal.</li>
-        <li>Reduced ambiguity around card pricing and payment-option implications.</li>
-        <li>Treated walkthrough content as supportive, not mandatory, so users could stay focused on the main task.</li>
-      </ul>
-
-      <figure class="cs-figure">
-        <img src="../assets/img/ftu/web/ftu-before and after.png"
-          alt="Before and after of the receiver Get Started page. Before: unclear next steps, no payment status, and a random product feature. After: clear payment status and expectations, clear next steps, and personalized product offerings."
-          width="4096" height="1922">
-      </figure>
-    </section>
-
-    <section class="cs-section">
-      <h2><span class="sec-num">09</span>Launch &amp; results</h2>
-      <p>The redesign was measured head-to-head against the legacy first-time-use flow, and we saw lift across both
-        activation behavior and TPV (Total Payment Volume). Charts are for illustration purposes only.</p>
-
+      <h2><span class="sec-num">04</span>What changed</h2>
+      <p>Measured head-to-head against the legacy first-time-use flow: <span class="lead">+30% invoices created, +22%
+          initial TPV (Total Payment Volume), +21% incremental TPV.</span> Charts are for illustration purposes only.</p>
       <figure class="cs-figure">
         <div class="chart-wrap">
           <img class="chart-base" src="../assets/img/ftu/ftu-results-chart-coral.svg"
@@ -503,14 +360,11 @@
       </figure>
 
       <p>The strongest takeaway for me was that comprehension changed behavior: once receivers could more clearly see
-        how
-        and when they would get paid, more of them created invoices, completed the flow, and moved more money through
-        the
-        platform.</p>
-      <p>The redesign also created a longer-lasting product insight: improving first-time understanding wasn't just a
-        usability win, it became a growth lever. The invoicing flow later became a major paid-tier entry point and
-        contributed meaningfully to paid-tier acquisition and receivable TPV, reinforcing that trust and clarity at the
-        first-use moment can compound well beyond onboarding.</p>
+        how and when they would get paid, more of them created invoices, completed the flow, and moved more money
+        through the platform.</p>
+      <p>It compounded, too. Improving first-time understanding became a growth lever: the invoicing flow later became a
+        major paid-tier entry point and contributed meaningfully to paid-tier acquisition and receivable TPV. Trust and
+        clarity at first use keep paying.</p>
     </section>
 
     <nav class="cs-pager" aria-label="Case study navigation">

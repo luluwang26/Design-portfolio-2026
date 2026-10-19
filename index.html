@@ -1290,12 +1290,16 @@ body.fact-open {
         resetJourney(); introDone = false;
         document.body.classList.remove('revealed');
         document.body.classList.add('typing', 'waiting');
-        // The intro plays once per browser session. Coming back to the homepage
-        // (from a case study, or a reload) shows the finished page straight away,
-        // as does a visitor who has asked for reduced motion.
+        // The intro plays on the first load of the tab and on every refresh.
+        // Coming back to the homepage from another page (a case study, the Back
+        // button) shows the finished page straight away, as does a visitor who
+        // has asked for reduced motion.
         var seen = false;
         try { seen = sessionStorage.getItem('introPlayed') === '1'; } catch (e) {}
-        if (reduce || seen) {
+        var navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+        var isReload = navEntry ? navEntry.type === 'reload'
+          : !!(performance.navigation && performance.navigation.type === 1);
+        if (reduce || (seen && !isReload)) {
           document.body.classList.add('instant');
           lead.textContent = LEAD; rest.textContent = REST; introDone = true;
           document.body.classList.remove('typing', 'waiting');

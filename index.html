@@ -1,60 +1,1009 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Lulu Wang — Product Designer</title>
-    <meta
-      name="description"
-      content="Lulu Wang is a Lead Product Designer who turns research into shipped, measured product wins — onboarding, activation, and network experiences in B2B payments."
-    />
-    <link rel="stylesheet" href="assets/style.css?v=105" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rock+Salt&family=Delius&family=Carter+One&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E"
-    />
-  </head>
 
-  <body>
-    <header class="home-header">
-      <div class="home-header-inner">
-        <div class="hh-avatar-wrap">
-          <img
-            class="hh-avatar"
-            src="assets/img/Lulu photo.png?v=2"
-            alt="Lulu Wang"
-          />
-          <!-- Same blob as the photo mask, drawn as an outline and offset down-left. -->
-          <svg
-            class="hh-avatar-outline"
-            viewBox="0 0 191.939 191.776"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              vector-effect="non-scaling-stroke"
-              d="M95.1348 0.560547C128.151 -0.605079 162.653 15.0862 179.138 40.3848C195.36 65.3159 194.201 99.66 183.413 125.735L182.893 126.971C171.817 152.706 151.235 169.877 128.246 180.455L127.149 180.953C104.111 191.292 78.8755 194.988 56.9756 186.806L55.9355 186.407L54.8984 185.99C33.5181 177.19 15.4915 156.863 6.54199 130.998L6.11621 129.742C-2.78459 102.89 -1.85227 70.3106 14.3262 45.0654C30.547 19.7742 62.0971 1.72583 95.1348 0.560547Z"
-            />
-          </svg>
-        </div>
-        <div class="hh-intro">
-          <h1 class="hh-title">Nice to meet you! I'm Lulu.</h1>
-          <p class="hh-lede">
-            I design trust into money movement. I'm a Staff Product Designer
-            with a Finance + HCI background, where my work doubled payment
-            remediation and made sure vendors were verified before money moved.
-            These days I'm focused on AI agents moving money, and my rule is
-            simple: the AI never guesses with money. I design where smart
-            systems meet human judgment.
-          </p>
-        </div>
-        <div class="hh-actions">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lulu Wang — Product Designer</title>
+  <meta name="description"
+    content="Lulu Wang is a Staff Product Designer who turns research into shipped, measured product wins — onboarding, activation, and network experiences in B2B payments.">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171717;
+      --ink-2: #525252;
+      --ink-3: #8f8f8f;
+      --line: #e7e5e1;
+      --paper: #ffffff;
+      --bg: #fbfaf8;
+      --accent: #3B3B76;
+      --ease: cubic-bezier(.2, .7, .2, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; }
+
+    /* The last card's tags extend past the column; keep them from adding a
+       sideways scrollbar. */
+    html, body { overflow-x: clip; }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    /* Visually hidden but read by screen readers (section headings, full intro, dates). */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0 0 0 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .row, .ms-list, .tools, .skills { list-style: none; margin: 0; padding: 0; }
+
+    /* One 994px content column for the whole page: the width of the homepage
+       design's 2x2 card grid (481px cards, 32px gap). */
+    .wrap {
+      max-width: calc(994px + 64px);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ---------- Hero: big typed intro ---------- */
+    .hero { padding-block: 72px 40px; }
+
+    .hello {
+      margin: 0 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .hello img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .14);
+    }
+
+    .intro {
+      font-size: clamp(26px, 3.4vw, 40px);
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+      font-weight: 500;
+      max-width: 22em;
+      min-height: 4.9em;
+      margin: 0;
+    }
+
+    .intro .rest { color: var(--ink-3); }
+
+    .caret {
+      display: inline-block;
+      width: 3px;
+      height: 0.95em;
+      margin-left: 3px;
+      vertical-align: -0.1em;
+      background: var(--accent);
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ---------- Journey rail ---------- */
+    .journey { padding-block: 8px 40px; }
+
+    .journey-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-end;
+    }
+
+    .year {
+      font-size: 56px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .rail {
+      position: relative;
+      height: 200px;
+      margin-top: 12px;
+    }
+
+    .axis, .axis-fill {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 2px;
+      background: var(--line);
+    }
+
+    .axis-fill {
+      background: var(--ink);
+      transform-origin: left;
+      transform: scaleX(var(--p, 0));
+    }
+
+    .tick {
+      position: absolute;
+      top: calc(50% + 14px);
+      transform: translateX(-50%);
+      font-size: 11px;
+      color: var(--ink-3);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ms {
+      position: absolute;
+      left: var(--at);
+      top: 50%;
+      width: 0;
+      height: 0;
+    }
+
+    .ms .dot {
+      position: absolute;
+      left: -7px;
+      top: -7px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      transform: scale(0);
+      transition: transform .45s cubic-bezier(.3, 1.6, .5, 1);
+    }
+
+    .ms.now .dot { background: var(--accent); border-color: var(--accent); }
+
+    /* Room for the longest title on one line; capped so the two labels below
+       the line on the left (2013 and 2015) never meet on narrower screens. */
+    .ms .label {
+      position: absolute;
+      left: -8px;
+      width: min(180px, calc(min(994px, 100vw - 64px) * .18));
+      opacity: 0;
+      transform: translateY(var(--from, 8px));
+      transition: opacity .45s var(--ease), transform .45s var(--ease);
+    }
+
+    .ms.up .label { bottom: 26px; --from: 8px; }
+    .ms.down .label { top: 40px; --from: -8px; }
+    /* the last stop has open space to its left, so its subtext can stay on two
+       lines; capped so it never reaches the 2019 label above the line */
+    .ms.end .label {
+      left: auto;
+      right: -8px;
+      text-align: right;
+      width: min(240px, calc(min(994px, 100vw - 64px) * .26));
+    }
+
+    /* title on a single line; subtext at most two lines */
+    .ms .label b { display: block; font-size: 14px; font-weight: 600; white-space: nowrap; }
+    .ms .label span:not(.sr-only) {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
+      font-size: 12.5px;
+      color: var(--ink-2);
+      margin-top: 2px;
+    }
+    .ms.end .label span:not(.sr-only) { text-align: right; }
+
+    .ms.on .dot { transform: scale(1); }
+    .ms.on .label { opacity: 1; transform: none; }
+
+    /* stem from dot to label */
+    .ms .stem {
+      position: absolute;
+      left: 0;
+      width: 1px;
+      background: var(--line);
+      transform: scaleY(0);
+      transition: transform .35s var(--ease);
+    }
+
+    .ms.up .stem { bottom: 8px; height: 16px; transform-origin: bottom; }
+    .ms.down .stem { top: 8px; height: 30px; transform-origin: top; }
+    .ms.on .stem { transform: scaleY(1); }
+
+    /* ---------- Work: a row of small cards that open up ---------- */
+    .work { padding-block: 0; }
+    .more { padding-block: 0 80px; }
+
+    /* ---------- Work: the homepage's large cards ---------- */
+    :root {
+      --white: #FFFFFF;
+      --chip-ink: #1F1F1E;
+      --chip-field: #F6F6F3;
+      --card-radius: 8px;
+      --shadow-lg: 0 4px 6px -2px rgba(0, 0, 0, 0.03), 0 12px 16px -4px rgba(0, 0, 0, 0.08);
+      --accent-soft: #fcf4f2;
+      --n900: #171717;
+      --n600: #525252;
+      --accent-ink: #E16A54;
+    }
+
+    #basic-ftu-redesign {
+  background: var(--white);
+}
+    .badge {
+  font-family: "Inter", var(--font);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--chip-ink);
+  background: var(--chip-field);
+  border-radius: 16px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+    .work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+    .post-card {
+  background: #fff;
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+    .post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 10px -4px rgba(0, 0, 0, 0.05), 0 20px 28px -6px rgba(0, 0, 0, 0.12);
+}
+    .post-card-link {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px 24px 32px;
+  color: inherit;
+  height: 100%;
+}
+    .post-card-link:hover {
+  text-decoration: none;
+}
+    .post-media {
+  height: 240px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+}
+    .post-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+    #basic-ftu-redesign .post-media {
+  background: #FCEFEA;
+}
+    #let-me-in {
+  background: var(--white);
+}
+    #let-me-in .post-media {
+  background: #F0F0F8;
+}
+    #supplier-onboarding-agent .post-media {
+  background: #FFF2FE;
+}
+    #trust-in-search .post-media {
+  background: #EBE7E3;
+}
+    #trust-in-search .post-media img,
+#let-me-in .post-media img {
+  width: auto;
+  max-width: 100%;
+  height: calc(100% - 40px);
+  object-fit: contain;
+}
+    #supplier-onboarding-agent .post-media img,
+#basic-ftu-redesign .post-media img {
+  width: 280px;
+  max-width: calc(100% - 40px);
+  height: auto;
+  object-fit: contain;
+}
+    .post-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+    .post-tag {
+  font-family: "Inter", var(--font);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin: 0;
+}
+    .post-headrow {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+    .post-title {
+  flex: 1;
+  font-family: "Inter", var(--font);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--n900);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+    .post-arrow {
+  flex-shrink: 0;
+  padding-top: 4px;
+  color: var(--n900);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+    .post-arrow svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+    .post-card:hover .post-arrow {
+  color: var(--accent-ink);
+  transform: translate(2px, -2px);
+}
+    .post-desc {
+  font-family: "Inter", var(--font);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--n600);
+  margin: 0;
+}
+    .post-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+    /* the site stylesheet removes link underlines globally; this page doesn't load it */
+    .post-card-link { text-decoration: none; }
+
+    /* Entrance, from the design's motion: each card fades in (0.4s) while rising
+       40px (0.6s), first to last, starting 0, 0.4, 0.6 and 0.8s apart. */
+    body.revealed .post-card {
+      animation: card-fade .4s cubic-bezier(.5, 0, .5, 1) var(--delay, 0s) both,
+        card-rise .6s cubic-bezier(.05, .4, .5, 1) var(--delay, 0s) both;
+    }
+
+    .post-card:nth-child(2) { --delay: .4s; }
+    .post-card:nth-child(3) { --delay: .6s; }
+    .post-card:nth-child(4) { --delay: .8s; }
+
+    @keyframes card-fade { from { opacity: 0; } }
+    @keyframes card-rise { from { translate: 0 40px; } }
+
+    /* light divider between the fact row and the tools/skills */
+    .divider {
+      border: 0;
+      border-top: 1px solid #E5E5E5;
+      margin: 36px 0 0;
+    }
+
+    /* ---------- A fact about me + contact icons (styles from the homepage) ---------- */
+    :root {
+      --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-hand: "Inter", var(--font);
+      --hand-ink: #494545;
+      --n700: #404040;
+    }
+
+    .connect {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px 28px;
+      margin-top: 56px;
+    }
+
+.fact-btn {
+  --shiny-width: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 999px;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+}
+.fact-btn:hover {
+  background: #e5e5e5;
+}
+.fact-btn:focus-visible {
+  outline: 2px solid var(--n700);
+  outline-offset: 2px;
+}
+.shiny-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
+  /* Translucent so the clipped gradient behind reads through as a shimmer. */
+  color: rgba(82, 82, 82, 0.7);
+  background-image: linear-gradient(to right,
+      transparent,
+      rgba(0, 0, 0, 0.8) 50%,
+      transparent);
+  background-size: var(--shiny-width) 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shiny-text 8s infinite;
+  transition: color 0.3s ease-out;
+}
+.fact-btn:hover .shiny-text {
+  color: #525252;
+}
+.shiny-arrow {
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+}
+.fact-btn:hover .shiny-arrow {
+  transform: translateX(2px);
+}
+@keyframes shiny-text {
+
+  0%,
+  90%,
+  100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+  }
+
+  30%,
+  60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text,
+  .shiny-arrow {
+    animation: none;
+    transition: none;
+  }
+}
+.fact-text {
+  font-family: var(--font-hand);
+  color: var(--hand-ink);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 24em;
+}
+.socials {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.socials a {
+  display: inline-flex;
+  line-height: 0;
+}
+.socials a:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+.socials img,
+.socials svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+@media (max-width: 900px) {
+  }
+.fact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.fact-modal[hidden] {
+  display: none;
+}
+.fact-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(255, 255, 255, 0.7);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .fact-backdrop {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+body.fact-open {
+  overflow: hidden;
+}
+.fact-dialog {
+  position: relative;
+  width: min(900px, 100%);
+  max-height: calc(100vh - 48px);
+  border-radius: 24px;
+  box-shadow: 0 36px 90px -18px rgba(0, 0, 0, 0.35);
+  animation: fact-in 0.22s ease-out both;
+}
+@keyframes fact-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fact-dialog {
+    animation: none;
+  }
+}
+.fact-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #171717;
+  cursor: pointer;
+}
+.fact-close svg {
+  width: 27px;
+  height: 27px;
+}
+.fact-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+.fact-close:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 2px;
+}
+.fact-panel {
+  display: flex;
+  align-items: center;
+  gap: 54px;
+  min-height: min(600px, calc(100vh - 120px));
+  padding: 72px;
+  border-radius: 24px;
+}
+.fact-panel[hidden] {
+  display: none;
+}
+.fact-panel--stacked {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 42px;
+}
+.fact-panel--stacked .fact-copy {
+  max-width: 620px;
+  margin-inline: auto;
+}
+.fact-copy {
+  margin: 0;
+  font-family: "Inter", var(--font);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+.fact-img {
+  display: block;
+  flex-shrink: 0;
+}
+.fact-img--tilt {
+  /* 670px of the 900px modal = 74.4%, but this resolves against the panel's
+     content box (modal minus 40px padding each side), so 670/820 = 81.7%. */
+  width: 81.7%;
+  aspect-ratio: 670 / 366;
+  height: auto;
+  object-fit: cover;
+  border-radius: 18px;
+  transform: rotate(-4.55deg);
+}
+.fact-img--phone {
+  width: 233px;
+  height: auto;
+}
+.fact-img--wide {
+  width: 100%;
+  max-width: 570px;
+  height: auto;
+}
+.fact-panel--bjj {
+  background: #E3F2FD;
+  padding: 36px 40px 44px;
+  gap: 26px;
+}
+.fact-panel--bjj .fact-copy {
+  color: #0D47A1;
+}
+.fact-panel--draw {
+  background: #fdede3;
+}
+.fact-panel--draw .fact-copy {
+  color: #d96f3e;
+}
+.fact-panel--coffee {
+  background: #fff5e6;
+}
+.fact-panel--coffee .fact-copy {
+  color: #8e5801;
+}
+@media (max-width: 980px) {
+  .fact-panel {
+    gap: 40px;
+    padding: 52px;
+    min-height: min(460px, calc(100vh - 120px));
+  }
+  .fact-copy {
+    font-size: 23px;
+  }
+  .fact-close {
+    top: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+  }
+  .fact-close svg {
+    width: 21px;
+    height: 21px;
+  }
+  .fact-img--phone {
+    width: 178px;
+  }
+  .fact-img--wide {
+    max-width: 435px;
+  }
+}
+@media (max-width: 620px) {
+  .fact-panel {
+    flex-direction: column;
+    text-align: center;
+    gap: 28px;
+    padding: 64px 32px 40px;
+    min-height: 0;
+  }
+  .fact-copy {
+    font-size: 20px;
+  }
+  .fact-img--phone {
+    width: 150px;
+  }
+  .fact-img--wide {
+    max-width: 100%;
+  }
+}
+
+    /* Tools and skills, the homepage rail laid out as two rows. */
+    .toolkit {
+      margin-top: 32px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .tools img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: #1F1F1E;
+      background: #F6F6F3;
+      border-radius: 16px;
+      padding: 4px 12px;
+      white-space: nowrap;
+    }
+
+    .site-footer {
+      padding: 40px 16px;
+      color: #737373;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* ---------- Sequencing ---------- */
+    /* While the intro types, it is the only thing on the page. When it finishes,
+       the greeting and timeline fade in (the timeline then plays) and the work
+       appears as-is, with no motion. */
+    body.typing .after { visibility: hidden; opacity: 0; }
+    /* the photo and greeting arrive with the first typed letter */
+    body.waiting .start { opacity: 0; }
+    .start { transition: opacity .5s var(--ease); }
+    body.typing { overflow: hidden; }
+    .after { transition: opacity .6s var(--ease); }
+    .work.after { transition: none; }
+
+    /* ---------- Small screens ---------- */
+    @media (max-width: 860px) {
+      .wrap { padding-inline: 16px; }
+      .journey { padding-bottom: 40px; }
+      .hero { padding-block: 56px 40px; }
+      .rail { height: auto; margin-top: 16px; }
+      .axis, .axis-fill { left: 6px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
+      .axis-fill { transform-origin: top; transform: scaleY(var(--p, 0)); }
+      .tick { display: none; }
+      .ms { position: relative; left: auto; top: auto; height: auto; width: auto; padding: 0 0 22px 32px; }
+      .ms .dot { left: 0; top: 2px; }
+      .ms .label, .ms.up .label, .ms.down .label, .ms.end .label { position: static; width: auto; text-align: left; }
+      .ms .stem { display: none; }
+      .work-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .post-title { font-size: 20px; line-height: 28px; }
+      .post-card-link { gap: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .caret { animation: none; }
+      body.revealed .post-card { animation: none; }
+      * { transition-duration: 0s !important; }
+    }
+  </style>
+</head>
+
+<body class="typing waiting">
+  <header class="hero wrap">
+    <h1 class="hello start"><img src="assets/img/Lulu photo.png?v=2" alt="">Nice to meet you! I’m Lulu.</h1>
+    <p class="intro" id="intro">
+      <span class="sr-only">I design trust into money movement. Staff Product Designer, Finance + HCI. These days: AI agents moving money, where the AI never guesses.</span>
+      <span class="lead" aria-hidden="true"></span><span class="rest" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+    </p>
+  </header>
+
+  <main>
+  <section class="journey wrap after" aria-labelledby="journey-h">
+    <h2 id="journey-h" class="sr-only">Design journey</h2>
+    <div class="journey-head" aria-hidden="true">
+      <span class="year" id="year">2013</span>
+    </div>
+    <div class="rail" id="rail">
+      <div class="axis" aria-hidden="true"></div>
+      <div class="axis-fill" aria-hidden="true"></div>
+      <div id="ticks" aria-hidden="true"></div>
+      <ol class="ms-list">
+      <li class="ms down" data-year="2013" style="--at:0%"><i class="stem" aria-hidden="true"></i><i class="dot" aria-hidden="true"></i><div class="label"><span class="sr-only">2013 to 2015: </span><b>MS, HCI</b><span>Indiana University</span></div></li>
+      <li class="ms up" data-year="2014.5" style="--at:11.5%"><i class="stem" aria-hidden="true"></i><i class="dot" aria-hidden="true"></i><div class="label"><span class="sr-only">2014: </span><b>UX Design Intern</b><span>TED Conferences</span></div></li>
+      <li class="ms down" data-year="2015.5" style="--at:19.2%"><i class="stem" aria-hidden="true"></i><i class="dot" aria-hidden="true"></i><div class="label"><span class="sr-only">2015 to 2019: </span><b>UX Designer</b><span>MDPI · Preprints.org, 0→1</span></div></li>
+      <li class="ms up" data-year="2019.3" style="--at:48.5%"><i class="stem" aria-hidden="true"></i><i class="dot" aria-hidden="true"></i><div class="label"><span class="sr-only">2019 to 2021: </span><b>Founding UX Designer</b><span>Altitude Networks · design system</span></div></li>
+      <li class="ms down" data-year="2021.8" style="--at:67.7%"><i class="stem" aria-hidden="true"></i><i class="dot" aria-hidden="true"></i><div class="label"><span class="sr-only">2021 to 2025: </span><b>Sr. Product Designer</b><span>Invoice2Go · Cashflow</span></div></li>
+      <li class="ms up end now" aria-current="step" data-year="2025.1" style="--at:93%"><i class="stem" aria-hidden="true"></i><i class="dot" aria-hidden="true"></i><div class="label"><span class="sr-only">2025 to now: </span><b>Staff Product Designer</b><span>BILL · AP/AR, onboarding, payments, search</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="work wrap after" aria-labelledby="work-h">
+    <h2 id="work-h" class="sr-only">Selected work</h2>
+    <div class="work-grid">
+          <article class="post-card" id="trust-in-search">
+            <a class="post-card-link" href="work/trust-in-search.html">
+              <div class="post-media">
+                <img
+                  src="assets/img/Trust in search/hero-small.png"
+                  alt="Adding a vendor from an uploaded invoice: the assistant finds a likely network match and shows the evidence for it"
+                />
+              </div>
+              <div class="post-content">
+                <p class="post-tag">
+                  Vendor Search · Network Growth · A/B test
+                </p>
+                <div class="post-headrow">
+                  <h3 class="post-title">Trust in “Who am I paying?”</h3>
+                  <span class="post-arrow" aria-hidden="true"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" /></svg
+                  ></span>
+                </div>
+                <p class="post-desc">
+                  Accounts Payable users struggled to trust the vendors shown in
+                  network search, forcing manual checks before a first payment.
+                  AI-assisted identity matching shows the evidence behind each
+                  match.
+                </p>
+                <div class="post-badges">
+                  <span class="badge">3+ experiments</span>
+                  <span class="badge">50%+ success rate target</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="post-card" id="let-me-in">
+            <a class="post-card-link" href="work/let-me-in.html">
+              <div class="post-media">
+                <img src="assets/img/Let me in/hero-small.png"
+                  alt="Let me in — the new sign-up experience for employees of an existing account" />
+              </div>
+              <div class="post-content">
+                <p class="post-tag">Receiver Onboarding · Identity &amp; Fraud · A/B test</p>
+                <div class="post-headrow">
+                  <h3 class="post-title">Fraud risk and customer trust: “Let me in”</h3>
+                  <span class="post-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg></span>
+                </div>
+                <p class="post-desc">The question “how do we verify everyone?” became “how much risk on one payment is worth
+                  the trust of tens of thousands of users a month?”</p>
+                <div class="post-badges">
+                  <span class="badge">Risk &amp; Compliance triage</span>
+                  <span class="badge">Experiment vs. legacy</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="post-card" id="basic-ftu-redesign">
+            <a class="post-card-link" href="work/basic-ftu-redesign.html">
+              <div class="post-media">
+                <img
+                  src="assets/img/ftu/hero-small.png"
+                  alt="Receiver First-Time-Use redesign, onboarding experience"
+                />
+              </div>
+              <div class="post-content">
+                <p class="post-tag">
+                  Receiver Onboarding · Network Growth · A/B test
+                </p>
+                <div class="post-headrow">
+                  <h3 class="post-title">Answering “Where is my money?”</h3>
+                  <span class="post-arrow" aria-hidden="true"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" /></svg
+                  ></span>
+                </div>
+                <p class="post-desc">
+                  New receivers came to the platform to get paid, but the
+                  first-time experience answered everything except how and when.
+                  Rebuilding it around "where's my money?", payment status
+                  first, education phased, turned confusion into transactions.
+                </p>
+                <div class="post-badges">
+                  <span class="badge">+30% invoices created</span>
+                  <span class="badge">+22% initial TPV</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="post-card" id="supplier-onboarding-agent">
+            <a
+              class="post-card-link"
+              href="work/supplier-onboarding-agent.html"
+            >
+              <div class="post-media">
+                <img
+                  src="assets/img/Supplier onboarding/hero-small.png"
+                  alt="Supplier Onboarding — the process of getting suppliers set up on the platform"
+                />
+              </div>
+              <div class="post-content">
+                <p class="post-tag">
+                  Receiver Onboarding · Network Growth · Vision work
+                </p>
+                <div class="post-headrow">
+                  <h3 class="post-title">Supplier Onboarding</h3>
+                  <span class="post-arrow" aria-hidden="true"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" /></svg
+                  ></span>
+                </div>
+                <p class="post-desc">
+                  Letting suppliers receive their first payment before creating
+                  an account, deferring credentials until after value is
+                  delivered, instead of demanding them before.
+                </p>
+                <div class="post-badges">
+                  <span class="badge">20+% drop at password</span>
+                  <span class="badge">50% funnel target</span>
+                </div>
+              </div>
+            </a>
+          </article>
+    </div>
+  </section>
+
+  <section class="more wrap after" aria-labelledby="more-h">
+    <h2 id="more-h" class="sr-only">More about me</h2>
+    <div class="connect">
           <button
             type="button"
             class="fact-btn"
@@ -160,226 +1109,36 @@
               </svg>
             </a>
           </nav>
-        </div>
-      </div>
-    </header>
+    </div>
 
-    <div class="home-divider"></div>
+    <hr class="divider">
 
-    <main class="home-layout">
-      <aside class="rail" aria-label="Tools and skills">
-        <div class="rail-logos">
-          <img
-            src="https://cdn.simpleicons.org/figma"
-            alt="Figma"
-            title="Figma"
-            onerror="this.style.display = 'none'"
-          />
-          <img
-            src="https://cdn.simpleicons.org/claude"
-            alt="Claude"
-            title="Claude"
-            onerror="this.style.display = 'none'"
-          />
-          <img
-            src="https://cdn.simpleicons.org/html5"
-            alt="HTML5"
-            title="HTML5"
-            onerror="this.style.display = 'none'"
-          />
-          <img
-            src="https://cdn.simpleicons.org/tailwindcss"
-            alt="Tailwind"
-            title="Tailwind"
-            onerror="this.style.display = 'none'"
-          />
-          <img
-            src="https://cdn.simpleicons.org/react"
-            alt="React"
-            title="React"
-            onerror="this.style.display = 'none'"
-          />
-          <img
-            src="https://cdn.simpleicons.org/mixpanel"
-            alt="Mixpanel"
-            title="Mixpanel"
-            onerror="this.style.display = 'none'"
-          />
-          <img
-            src="assets/img/icons/tableau.png"
-            alt="Tableau"
-            title="Tableau"
-            onerror="this.style.display = 'none'"
-          />
-        </div>
-        <div class="rail-badges">
-          <span class="badge">User research</span>
-          <span class="badge">Cohort analysis</span>
-          <span class="badge">Product psychology</span>
-          <span class="badge">A/B testing</span>
-          <span class="badge">Prototyping with AI</span>
-          <span class="badge">User testing</span>
-          <span class="badge">Motion</span>
-        </div>
-      </aside>
+    <div class="toolkit">
+      <h3 class="sr-only">Tools I use</h3>
+      <ul class="tools" role="list">
+        <li><img src="https://cdn.simpleicons.org/figma" alt="Figma" title="Figma" onerror="this.style.display = 'none'"></li>
+        <li><img src="https://cdn.simpleicons.org/claude" alt="Claude" title="Claude" onerror="this.style.display = 'none'"></li>
+        <li><img src="https://cdn.simpleicons.org/html5" alt="HTML5" title="HTML5" onerror="this.style.display = 'none'"></li>
+        <li><img src="https://cdn.simpleicons.org/tailwindcss" alt="Tailwind" title="Tailwind" onerror="this.style.display = 'none'"></li>
+        <li><img src="https://cdn.simpleicons.org/react" alt="React" title="React" onerror="this.style.display = 'none'"></li>
+        <li><img src="https://cdn.simpleicons.org/mixpanel" alt="Mixpanel" title="Mixpanel" onerror="this.style.display = 'none'"></li>
+        <li><img src="assets/img/icons/tableau.png" alt="Tableau" title="Tableau"></li>
+      </ul>
+      <h3 class="sr-only">Skills</h3>
+      <ul class="skills" role="list">
+        <li class="skill">User research</li>
+        <li class="skill">Cohort analysis</li>
+        <li class="skill">Product psychology</li>
+        <li class="skill">A/B testing</li>
+        <li class="skill">Prototyping with AI</li>
+        <li class="skill">User testing</li>
+        <li class="skill">Motion</li>
+      </ul>
+    </div>
+  </section>
+  </main>
 
-      <div class="home-content">
-        <section class="work-grid" id="work">
-          <article class="post-card" id="trust-in-search">
-            <a class="post-card-link" href="work/trust-in-search.html">
-              <div class="post-media">
-                <img
-                  src="assets/img/Trust in search/hero-small.png"
-                  alt="Adding a vendor from an uploaded invoice: the assistant finds a likely network match and shows the evidence for it"
-                />
-              </div>
-              <div class="post-content">
-                <p class="post-tag">
-                  Vendor Search · Network Growth · A/B test
-                </p>
-                <div class="post-headrow">
-                  <h3 class="post-title">Trust in “Who am I paying?”</h3>
-                  <span class="post-arrow" aria-hidden="true"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <line x1="7" y1="17" x2="17" y2="7" />
-                      <polyline points="7 7 17 7 17 17" /></svg
-                  ></span>
-                </div>
-                <p class="post-desc">
-                  Accounts Payable users struggled to trust the vendors shown in
-                  network search, forcing manual checks before a first payment.
-                  AI-assisted identity matching shows the evidence behind each
-                  match.
-                </p>
-                <div class="post-badges">
-                  <span class="badge">3+ experiments</span>
-                  <span class="badge">50%+ success rate target</span>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="post-card" id="let-me-in">
-            <a class="post-card-link" href="work/let-me-in.html">
-              <div class="post-media">
-                <img src="assets/img/Let me in/hero-small.png"
-                  alt="Let me in — the new sign-up experience for employees of an existing account" />
-              </div>
-              <div class="post-content">
-                <p class="post-tag">Receiver Onboarding · Identity &amp; Fraud · A/B test</p>
-                <div class="post-headrow">
-                  <h3 class="post-title">Fraud risk and customer trust: “Let me in”</h3>
-                  <span class="post-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7" />
-                      <polyline points="7 7 17 7 17 17" />
-                    </svg></span>
-                </div>
-                <p class="post-desc">The question “how do we verify everyone?” became “how much risk on one payment is worth
-                  the trust of tens of thousands of users a month?”</p>
-                <div class="post-badges">
-                  <span class="badge">Risk &amp; Compliance triage</span>
-                  <span class="badge">Experiment vs. legacy</span>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="post-card" id="basic-ftu-redesign">
-            <a class="post-card-link" href="work/basic-ftu-redesign.html">
-              <div class="post-media">
-                <img
-                  src="assets/img/ftu/hero-small.png"
-                  alt="Receiver First-Time-Use redesign, onboarding experience"
-                />
-              </div>
-              <div class="post-content">
-                <p class="post-tag">
-                  Receiver Onboarding · Network Growth · A/B test
-                </p>
-                <div class="post-headrow">
-                  <h3 class="post-title">Answering “Where is my money?”</h3>
-                  <span class="post-arrow" aria-hidden="true"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <line x1="7" y1="17" x2="17" y2="7" />
-                      <polyline points="7 7 17 7 17 17" /></svg
-                  ></span>
-                </div>
-                <p class="post-desc">
-                  New receivers came to the platform to get paid, but the
-                  first-time experience answered everything except how and when.
-                  Rebuilding it around "where's my money?", payment status
-                  first, education phased, turned confusion into transactions.
-                </p>
-                <div class="post-badges">
-                  <span class="badge">+30% invoices created</span>
-                  <span class="badge">+22% initial TPV</span>
-                </div>
-              </div>
-            </a>
-          </article>
-
-          <article class="post-card" id="supplier-onboarding-agent">
-            <a
-              class="post-card-link"
-              href="work/supplier-onboarding-agent.html"
-            >
-              <div class="post-media">
-                <img
-                  src="assets/img/Supplier onboarding/hero-small.png"
-                  alt="Supplier Onboarding — the process of getting suppliers set up on the platform"
-                />
-              </div>
-              <div class="post-content">
-                <p class="post-tag">
-                  Receiver Onboarding · Network Growth · Vision work
-                </p>
-                <div class="post-headrow">
-                  <h3 class="post-title">Supplier Onboarding</h3>
-                  <span class="post-arrow" aria-hidden="true"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <line x1="7" y1="17" x2="17" y2="7" />
-                      <polyline points="7 7 17 7 17 17" /></svg
-                  ></span>
-                </div>
-                <p class="post-desc">
-                  Letting suppliers receive their first payment before creating
-                  an account, deferring credentials until after value is
-                  delivered, instead of demanding them before.
-                </p>
-                <div class="post-badges">
-                  <span class="badge">20+% drop at password</span>
-                  <span class="badge">50% funnel target</span>
-                </div>
-              </div>
-            </a>
-          </article>
-        </section>
-      </div>
-    </main>
-
-    <footer class="site-footer">© 2026 Lulu Wang. All rights reserved.</footer>
+  <footer class="site-footer after">© 2026 Lulu Wang. All rights reserved.</footer>
 
     <!-- "A fact about me" — three panels shown in sequence, looping. -->
     <div class="fact-modal" id="fact-modal" hidden>
@@ -451,96 +1210,108 @@
       </div>
     </div>
 
-    <!-- Lightbox: click the header portrait to view it at 80% of the viewport width. -->
-    <div class="lightbox" id="lightbox" hidden>
-      <div class="lightbox-backdrop" data-lb-close></div>
-      <div
-        class="lightbox-inner"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Enlarged image"
-      >
-        <button
-          type="button"
-          class="lightbox-close"
-          data-lb-close
-          aria-label="Close image"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            aria-hidden="true"
-          >
-            <line x1="6" y1="6" x2="18" y2="18" />
-            <line x1="18" y1="6" x2="6" y2="18" />
-          </svg>
-        </button>
-        <img class="lightbox-img" id="lightbox-img" alt="" />
-      </div>
-    </div>
 
-    <script>
-      // Click the header portrait to enlarge it. Homepage only: on case-study
-      // pages the same photo is the nav's link back home, so it must stay a link.
-      (function () {
-        var lb = document.getElementById("lightbox");
-        var lbImg = document.getElementById("lightbox-img");
-        var avatar = document.querySelector(".hh-avatar");
-        if (!lb || !lbImg || !avatar) return;
-        var closeBtn = lb.querySelector(".lightbox-close");
-        var lastFocus = null;
+  <script>
+    (function () {
+      var LEAD = 'I design trust into money movement.';
+      var REST = ' Staff Product Designer, Finance + HCI. These days: AI agents moving money, where the AI never guesses.';
+      var START = 2013, END = 2026;
+      var intro = document.getElementById('intro');
+      var lead = intro.querySelector('.lead'), rest = intro.querySelector('.rest');
+      var rail = document.getElementById('rail');
+      var yearEl = document.getElementById('year');
+      var ms = rail.querySelectorAll('.ms');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var timers = [], raf = 0, journeyPlayed = false;
 
-        avatar.classList.add("zoomable");
-        avatar.setAttribute("tabindex", "0");
-        avatar.setAttribute("role", "button");
-        avatar.setAttribute("aria-label", "Enlarge photo of Lulu Wang");
+      // year ticks along the axis (desktop only; hidden by CSS on small screens)
+      var ticks = document.getElementById('ticks');
+      for (var y = START; y <= END; y++) {
+        var t = document.createElement('span');
+        t.className = 'tick';
+        t.style.left = ((y - START) / (END - START) * 100) + '%';
+        t.textContent = (y % 2 === 1 || y === END) ? "’" + String(y).slice(2) : '';
+        ticks.appendChild(t);
+      }
 
-        function open() {
-          lbImg.src = avatar.currentSrc || avatar.src;
-          lbImg.alt = avatar.alt || "";
-          lastFocus = document.activeElement;
-          lb.removeAttribute("hidden");
-          document.body.classList.add("lb-open");
-          closeBtn.focus();
+      function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+      function delayFor(ch) { return ch === '.' || ch === ':' ? 420 : ch === ',' ? 180 : 20 + Math.random() * 34; }
+      function type(target, text, done) {
+        var i = 0;
+        (function step() {
+          target.textContent = text.slice(0, ++i);
+          if (i < text.length) later(step, delayFor(text[i - 1])); else done();
+        })();
+      }
+
+      // The rail fills from 2013 to now; the year counter runs with it, and each
+      // milestone pops in as the fill passes its year.
+      function playJourney() {
+        journeyPlayed = true;
+        cancelAnimationFrame(raf);
+        var DUR = 3600, t0 = performance.now();
+        (function frame(now) {
+          var p = Math.min(1, (now - t0) / DUR);
+          var e = 1 - Math.pow(1 - p, 3);
+          rail.style.setProperty('--p', e);
+          var yr = START + e * (END - START);
+          yearEl.textContent = Math.floor(yr);
+          ms.forEach(function (m) { if (yr >= parseFloat(m.dataset.year)) m.classList.add('on'); });
+          if (p < 1) raf = requestAnimationFrame(frame); else yearEl.textContent = 'Now';
+        })(t0);
+      }
+
+      function resetJourney() {
+        cancelAnimationFrame(raf);
+        rail.style.setProperty('--p', 0);
+        yearEl.textContent = START;
+        ms.forEach(function (m) { m.classList.remove('on'); });
+        journeyPlayed = false;
+      }
+
+      // start the journey when it scrolls into view (or right after the intro)
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting && !journeyPlayed && introDone) playJourney(); });
+      }, { threshold: 0.45 });
+      io.observe(rail);
+      var introDone = false;
+
+      function play() {
+        timers.forEach(clearTimeout); timers = [];
+        lead.textContent = ''; rest.textContent = '';
+        resetJourney(); introDone = false;
+        document.body.classList.remove('revealed');
+        document.body.classList.add('typing', 'waiting');
+        if (reduce) {
+          lead.textContent = LEAD; rest.textContent = REST; introDone = true;
+          document.body.classList.remove('typing', 'waiting');
+          document.body.classList.add('revealed');
+          rail.style.setProperty('--p', 1); yearEl.textContent = 'Now';
+          ms.forEach(function (m) { m.classList.add('on'); });
+          return;
         }
+        later(function () {
+          document.body.classList.remove('waiting');
+          type(lead, LEAD, function () {
+            later(function () {
+              type(rest, REST, function () {
+                introDone = true;
+                later(function () {
+                  document.body.classList.remove('typing');
+                  document.body.classList.add('revealed');
+                  var r = rail.getBoundingClientRect();
+                  if (r.top < innerHeight * 0.9) later(playJourney, 450);
+                }, 500);
+              });
+            }, 500);
+          });
+        }, 400);
+      }
 
-        function close() {
-          lb.setAttribute("hidden", "");
-          document.body.classList.remove("lb-open");
-          lbImg.removeAttribute("src");
-          if (lastFocus && lastFocus.focus) lastFocus.focus();
-        }
-
-        avatar.addEventListener("click", open);
-        avatar.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            open();
-          }
-        });
-
-        lb.addEventListener("click", function (e) {
-          if (e.target.closest("[data-lb-close]")) close();
-        });
-
-        document.addEventListener("keydown", function (e) {
-          if (lb.hasAttribute("hidden")) return;
-          if (e.key === "Escape") {
-            close();
-            return;
-          }
-          if (e.key === "Tab") {
-            e.preventDefault();
-            closeBtn.focus();
-          }
-        });
-      })();
-    </script>
-
-    <script>
+      play();
+    })();
+  </script>
+  <script>
       // "A fact about me" — cycle through the fact panels, one per click.
       (function () {
         var btn = document.getElementById("fact-btn");
@@ -596,39 +1367,12 @@
           }
         });
       })();
+  </script>
 
-      // Contact form: no backend yet — fall back to an email draft so the form still works.
-      (function () {
-        var form = document.getElementById("contact-form"),
-          note = document.getElementById("contact-note");
-        if (!form) return;
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          var name = (document.getElementById("cf-name").value || "").trim();
-          var email = (document.getElementById("cf-email").value || "").trim();
-          var msg = (document.getElementById("cf-message").value || "").trim();
-          var subject = "Portfolio inquiry" + (name ? " from " + name : "");
-          var body = msg + (email ? "\n\n— " + name + " (" + email + ")" : "");
-          window.location.href =
-            "mailto:luluhefei@gmail.com?subject=" +
-            encodeURIComponent(subject) +
-            "&body=" +
-            encodeURIComponent(body);
-          if (note) {
-            note.hidden = false;
-            note.textContent =
-              "Opening your email app… or write me directly at luluhefei@gmail.com.";
-          }
-        });
-      })();
-    </script>
+  <!-- Cloudflare Web Analytics -->
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "bb018103d6134490886ee10538300744"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
 
-    <!-- Cloudflare Web Analytics -->
-    <script
-      type="module"
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "bb018103d6134490886ee10538300744"}'
-    ></script>
-    <!-- End Cloudflare Web Analytics -->
-  </body>
 </html>

@@ -777,6 +777,14 @@ body.fact-open {
       text-align: center;
     }
 
+    /* Return visits: everything already in place, no transitions. */
+    body.instant .after,
+    body.instant .start,
+    body.instant .ms .dot,
+    body.instant .ms .label,
+    body.instant .ms .stem { transition: none; }
+    body.instant .post-card { animation: none; }
+
     /* ---------- Sequencing ---------- */
     /* While the intro types, it is the only thing on the page. When it finishes,
        the greeting and timeline fade in (the timeline then plays) and the work
@@ -1282,14 +1290,22 @@ body.fact-open {
         resetJourney(); introDone = false;
         document.body.classList.remove('revealed');
         document.body.classList.add('typing', 'waiting');
-        if (reduce) {
+        // The intro plays once per browser session. Coming back to the homepage
+        // (from a case study, or a reload) shows the finished page straight away,
+        // as does a visitor who has asked for reduced motion.
+        var seen = false;
+        try { seen = sessionStorage.getItem('introPlayed') === '1'; } catch (e) {}
+        if (reduce || seen) {
+          document.body.classList.add('instant');
           lead.textContent = LEAD; rest.textContent = REST; introDone = true;
           document.body.classList.remove('typing', 'waiting');
           document.body.classList.add('revealed');
           rail.style.setProperty('--p', 1); yearEl.textContent = 'Now';
           ms.forEach(function (m) { m.classList.add('on'); });
+          journeyPlayed = true;
           return;
         }
+        try { sessionStorage.setItem('introPlayed', '1'); } catch (e) {}
         later(function () {
           document.body.classList.remove('waiting');
           type(lead, LEAD, function () {

@@ -1699,7 +1699,7 @@ a:hover {
   --indigo-ink: #4841A3;
   --indigo-tint: #F0F0F8;
   --plum-ink: #6A2663;
-  --plum-tint: #FFF2FE;
+  --plum-tint: #F6ECF5;
   --azure-ink: #0F77F8;
   --azure-tint: #E7F1FE;
   --amber-ink: #D68D31;
@@ -3449,7 +3449,7 @@ body.lb-open {
 }
 
 .cs-banner--blush {
-  background: #FFF2FE;
+  background: #F6ECF5;
 }
 
 .cs-banner--rose {

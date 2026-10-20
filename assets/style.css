@@ -3602,8 +3602,8 @@ body.lb-open {
   margin: 16px 0 10px;
   padding: 5px 20px 5px 10px;
   text-align: center;
-  background: #FEC747;
-  color: #000;
+  background: #F6ECF5;
+  color: #6A2663;
   font-family: "Inter", var(--font);
   /* The design's label measures ~12.4px cap-to-descender; 13px matches it and
      keeps the longest numbered label on one line. */

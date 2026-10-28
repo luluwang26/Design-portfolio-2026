@@ -7,7 +7,7 @@
   <title>Answering “Where is my money?” — Lulu Wang</title>
   <meta name="description"
     content="Clarifying payment status, offering best next steps, and introducing product value to new receivers after they sign up.">
-  <link rel="stylesheet" href="../assets/style.css?v=107">
+  <link rel="stylesheet" href="../assets/style.css?v=111">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -212,80 +212,155 @@
           alt="Receiver first-time-use experience logic: a decision tree branching on bank verification success, network connection with the customer, whether a payment is scheduled, and whether the receiver takes Instant Transfer.">
       </figure>
 
-      <p>A payment status widget answers “where is my money?” in each of those states:</p>
-      <div class="concept-block">
-        <div class="widget-grid">
-          <figure class="widget-state">
-            <figcaption>
-              <ul>
-                <li>1 payment on the way</li>
-                <li>Receiving via Instant Transfer</li>
-              </ul>
-            </figcaption>
-            <img src="../assets/img/ftu/ftu-payment-widget-1.png"
-              alt="Payment status card for one payment on the way, with a Get Paid Instantly option.">
-          </figure>
+      <p>A payment status widget answers “where is my money?” in each of those states. Change the inputs to see the
+        answer each receiver gets:</p>
+      <div class="concept-block state-proto" id="widget-states" data-state-proto>
+        <p class="state-eq" aria-hidden="true"><span class="eq-ui">ui</span> = fn(<span class="eq-state">state</span>)</p>
 
-          <figure class="widget-state">
-            <figcaption>
-              <ul>
-                <li>1 payment on the way</li>
-                <li>Receiving via ACH</li>
-              </ul>
-            </figcaption>
-            <img src="../assets/img/ftu/ftu-payment-widget-2.png"
-              alt="The same payment status card without the instant transfer option.">
-          </figure>
+        <div class="state-proto-body">
+          <div class="state-controls">
+            <div class="state-ctl" data-key="payments" role="group" aria-labelledby="ctl-payments">
+              <span class="state-ctl-label" id="ctl-payments">Payments</span>
+              <div class="seg">
+                <button type="button" data-value="0">None</button>
+                <button type="button" data-value="1">1</button>
+                <button type="button" data-value="2">2</button>
+              </div>
+            </div>
+            <div class="state-ctl" data-key="payout" role="group" aria-labelledby="ctl-payout">
+              <span class="state-ctl-label" id="ctl-payout">Receiving via</span>
+              <div class="seg">
+                <button type="button" data-value="instant">Instant</button>
+                <button type="button" data-value="ach">ACH</button>
+              </div>
+            </div>
+            <div class="state-ctl" data-key="status" role="group" aria-labelledby="ctl-status">
+              <span class="state-ctl-label" id="ctl-status">Payment status</span>
+              <div class="seg">
+                <button type="button" data-value="flight">In flight</button>
+                <button type="button" data-value="delivered">Delivered</button>
+              </div>
+            </div>
+            <div class="state-ctl" data-key="age" role="group" aria-labelledby="ctl-age">
+              <span class="state-ctl-label" id="ctl-age">Last delivered</span>
+              <div class="seg">
+                <button type="button" data-value="recent">&lt; 30 days</button>
+                <button type="button" data-value="old">30+ days</button>
+              </div>
+            </div>
+            <div class="state-ctl" data-key="inbox" role="group" aria-labelledby="ctl-inbox">
+              <span class="state-ctl-label" id="ctl-inbox">Invoice in Inbox</span>
+              <div class="seg">
+                <button type="button" data-value="0">None</button>
+                <button type="button" data-value="1">1</button>
+              </div>
+            </div>
+          </div>
 
-          <figure class="widget-state">
-            <figcaption>
-              <ul>
-                <li>No payment on the way</li>
-                <li>No invoice in Inbox</li>
-              </ul>
-            </figcaption>
-            <img src="../assets/img/ftu/ftu-payment-widget-3.png"
-              alt="What's Next card prompting the receiver to invoice their customer to start the payment process.">
-          </figure>
+          <div class="state-stage">
+            <div class="state-frame">
+              <div class="state-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="state-cards">
 
-          <figure class="widget-state">
-            <figcaption>
-              <ul>
-                <li>No payment on the way</li>
-                <li>1 invoice in Inbox</li>
-              </ul>
-            </figcaption>
-            <img src="../assets/img/ftu/ftu-payment-widget-4.png"
-              alt="What's Next card showing an invoice created on the receiver's behalf, with a link to view it.">
-          </figure>
+                <!-- 1 · 1 payment on the way, receiving via Instant Transfer -->
+                <div class="pw is-on" data-card="1">
+                  <p class="pw-title">Your $200.00 payment from <span class="pw-blue">Green Plate</span> is on its way</p>
+                  <ul class="pw-meta">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5h4"/></svg>Estimated delivery: June 5, 2026</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="M9 8h2M9 12h6M9 16h6"/></svg><span>Invoice: <span class="pw-link">1681332429114</span> and <span class="pw-link">3 more</span></span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-5 9 5zM5 9v8M9.5 9v8M14.5 9v8M19 9v8M3 20h18"/></svg>Bank account: Chase ****0210</li>
+                  </ul>
+                  <span class="pw-btn">View Payment Details</span>
+                </div>
 
-          <figure class="widget-state">
-            <figcaption>
-              <ul>
-                <li>Payments delivered</li>
-              </ul>
-            </figcaption>
-            <img src="../assets/img/ftu/ftu-payment-widget-5.png" alt="Card confirming two payments were delivered.">
-          </figure>
+                <!-- 2 · 1 payment on the way, receiving via ACH: offer the switch to
+                     Instant Transfer (an instant payment has already landed) -->
+                <div class="pw" data-card="2">
+                  <p class="pw-title">Your $200.00 payment from <span class="pw-blue">Green Plate</span> is on its way</p>
+                  <ul class="pw-meta">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5h4"/></svg>Estimated delivery: June 5, 2026</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="M9 8h2M9 12h6M9 16h6"/></svg><span>Invoice: <span class="pw-link">1681332429114</span> and <span class="pw-link">3 more</span></span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-5 9 5zM5 9v8M9.5 9v8M14.5 9v8M19 9v8M3 20h18"/></svg>Bank account: Chase ****0210</li>
+                  </ul>
+                  <span class="pw-btn">View Payment Details</span>
+                  <span class="pw-btn pw-btn--ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Get Paid Instantly</span>
+                </div>
 
-          <figure class="widget-state">
-            <figcaption>
-              <ul>
-                <li>Payments in flight</li>
-              </ul>
-            </figcaption>
-            <img src="../assets/img/ftu/ftu-payment-widget-6.png" alt="Card showing two payments are on the way.">
-          </figure>
+                <!-- 3 · No payment on the way, no invoice in Inbox -->
+                <div class="pw" data-card="3">
+                  <p class="pw-h">What’s Next</p>
+                  <ol class="pw-steps">
+                    <li>
+                      <span class="pw-step-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span>
+                      <div class="pw-step-body">If you haven’t invoiced <span class="pw-blue">Green Plate</span>, create an invoice so they can get started with the payment process.<br><span class="pw-btn pw-btn--pill">Invoice Green Plate</span></div>
+                    </li>
+                    <li>
+                      <span class="pw-step-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span>
+                      <div class="pw-step-body">If you already sent an invoice (email, phone, etc.), wait for your customer to start the payment process.</div>
+                    </li>
+                  </ol>
+                </div>
 
-          <figure class="widget-state">
-            <figcaption>
-              <ul>
-                <li>Empty state</li>
-              </ul>
-            </figcaption>
-            <img src="../assets/img/ftu/ftu-payment-widget-7.png" alt="Empty state: no payments right now.">
-          </figure>
+                <!-- 4 · No payment on the way, 1 invoice in Inbox -->
+                <div class="pw" data-card="4">
+                  <p class="pw-h">What’s Next</p>
+                  <ol class="pw-steps">
+                    <li>
+                      <span class="pw-step-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span>
+                      <div class="pw-step-body">View 1 new invoice that <span class="pw-blue">Green Plate</span> has created on your behalf.<br><span class="pw-btn pw-btn--pill">View new invoice</span></div>
+                    </li>
+                    <li>
+                      <span class="pw-step-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></span>
+                      <div class="pw-step-body">When a payment is scheduled, we’ll email you to let you know it’s on the way.</div>
+                    </li>
+                  </ol>
+                </div>
+
+                <!-- 5 · Payments delivered -->
+                <div class="pw pw--art" data-card="5">
+                  <img src="../assets/img/ftu/widget-art-highfive.png" alt="" width="330" height="350">
+                  <p class="pw-title">Your 2 payments were delivered.</p>
+                  <span class="pw-btn">View Payment Details</span>
+                </div>
+
+                <!-- 6 · Payments in flight -->
+                <div class="pw pw--art" data-card="6">
+                  <img src="../assets/img/ftu/widget-art-highfive.png" alt="" width="330" height="350">
+                  <p class="pw-title">Your 2 payments are on the way.</p>
+                  <span class="pw-btn">View Payment Details</span>
+                </div>
+
+                <!-- 7 · Empty state -->
+                <div class="pw pw--art" data-card="7">
+                  <img src="../assets/img/ftu/widget-art-mugs.png" alt="" width="340" height="360">
+                  <p class="pw-title">You don’t have any payments now.</p>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="state-readout">
+              <p class="state-name" aria-live="polite"><b data-state-num>State 1 of 7:</b> <span data-state-name>1 payment on the way, receiving via Instant Transfer</span></p>
+              <ol class="state-rail" aria-label="Jump to a state">
+                <li><button type="button" data-goto="1" aria-label="State 1">1</button></li>
+                <li><button type="button" data-goto="2" aria-label="State 2">2</button></li>
+                <li><button type="button" data-goto="3" aria-label="State 3">3</button></li>
+                <li><button type="button" data-goto="4" aria-label="State 4">4</button></li>
+                <li><button type="button" data-goto="5" aria-label="State 5">5</button></li>
+                <li><button type="button" data-goto="6" aria-label="State 6">6</button></li>
+                <li><button type="button" data-goto="7" aria-label="State 7">7</button></li>
+              </ol>
+            </div>
+          </div>
         </div>
+
+        <p class="state-note">
+          <button type="button" class="state-play" data-state="paused" aria-label="Play the state tour">
+            <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z" fill="currentColor"/></svg>
+            <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/><rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/></svg>
+            <span data-play-label>Play tour</span>
+          </button>
+        </p>
       </div>
 
       <p>Concept testing tightened it before launch: payment status and “what happens next” language became more
@@ -406,7 +481,7 @@
       var lastFocus = null;
 
       // Every image in the article body, but not the nav avatar or icons.
-      var targets = document.querySelectorAll('.cs-banner img, .cs-main img:not(.chart-badge)');
+      var targets = document.querySelectorAll('.cs-banner img, .cs-main img:not(.chart-badge):not(.pw img)');
 
       Array.prototype.forEach.call(targets, function (img) {
         img.classList.add('zoomable');
@@ -499,6 +574,190 @@
 
         if (video.hasAttribute('data-autoplay') && !reduceMotion) start();
       });
+    })();
+  </script>
+
+  <script>
+    // Payment-widget prototype: ui = fn(state). Five inputs decide which of the
+    // seven cards the receiver sees. Inputs that can't change the card in the
+    // current state are greyed out; clicking one also sets whatever it depends
+    // on (e.g. "ACH" sets Payments to 1). The input(s) the last change touched
+    // get an accent outline.
+    //
+    // While the block is on screen it tours the states one input at a time,
+    // unless the visitor asks for reduced motion. Any click stops the tour;
+    // the Play button resumes it.
+    (function () {
+      var root = document.querySelector('[data-state-proto]');
+      if (!root) return;
+
+      var NAMES = {
+        1: '1 payment on the way, receiving via Instant Transfer',
+        2: '1 payment on the way, receiving via ACH',
+        3: 'No payment on the way, no invoice in Inbox',
+        4: 'No payment on the way, 1 invoice in Inbox',
+        5: 'Payments delivered',
+        6: 'Payments in flight',
+        7: 'Empty state, 30 days after the last payment was delivered'
+      };
+
+      // Inputs that pin each state, used by the 1–7 rail.
+      var STATES = {
+        1: { payments: '1', payout: 'instant' },
+        2: { payments: '1', payout: 'ach' },
+        3: { payments: '0', inbox: '0' },
+        4: { payments: '0', inbox: '1' },
+        5: { payments: '2', status: 'delivered', age: 'recent' },
+        6: { payments: '2', status: 'flight' },
+        7: { payments: '2', status: 'delivered', age: 'old' }
+      };
+
+      // What an input needs before it matters.
+      var NEEDS = {
+        payout: { payments: '1' },
+        status: { payments: '2' },
+        age: { payments: '2', status: 'delivered' },
+        inbox: { payments: '0' }
+      };
+
+      // One input per step; a full lap returns to the starting state and
+      // passes through all seven cards.
+      var TOUR = [
+        ['payout', 'ach'], ['payments', '0'], ['inbox', '1'],
+        ['payments', '2'], ['status', 'delivered'], ['age', 'old'],
+        ['payments', '1'], ['payout', 'instant'], ['payments', '2'],
+        ['age', 'recent'], ['status', 'flight'], ['payments', '0'],
+        ['inbox', '0'], ['payments', '1']
+      ];
+
+      var state = { payments: '1', payout: 'instant', status: 'flight', age: 'recent', inbox: '0' };
+
+      // The empty state isn't "no payments": it's what a receiver sees once
+      // 30 days have passed since their latest payment was delivered.
+      function cardFor(s) {
+        if (s.payments === '1') return s.payout === 'instant' ? 1 : 2;
+        if (s.payments === '2') {
+          if (s.status === 'flight') return 6;
+          return s.age === 'old' ? 7 : 5;
+        }
+        return s.inbox === '1' ? 4 : 3;
+      }
+
+      function applies(key, s) {
+        var need = NEEDS[key];
+        if (!need) return true;
+        for (var k in need) if (s[k] !== need[k]) return false;
+        return true;
+      }
+
+      var ctls = root.querySelectorAll('.state-ctl');
+      var cards = root.querySelectorAll('[data-card]');
+      var rail = root.querySelectorAll('[data-goto]');
+      var numEl = root.querySelector('[data-state-num]');
+      var nameEl = root.querySelector('[data-state-name]');
+
+      function render(changed) {
+        var n = cardFor(state);
+        Array.prototype.forEach.call(ctls, function (ctl) {
+          var key = ctl.getAttribute('data-key');
+          ctl.classList.toggle('is-off', !applies(key, state));
+          ctl.classList.toggle('is-changed', !!(changed && changed[key]));
+          Array.prototype.forEach.call(ctl.querySelectorAll('button'), function (b) {
+            b.setAttribute('aria-pressed', String(b.getAttribute('data-value') === state[key]));
+          });
+        });
+        Array.prototype.forEach.call(cards, function (c) {
+          var on = c.getAttribute('data-card') === String(n);
+          c.classList.toggle('is-on', on);
+          c.setAttribute('aria-hidden', String(!on));
+        });
+        Array.prototype.forEach.call(rail, function (b) {
+          b.setAttribute('aria-current', String(b.getAttribute('data-goto') === String(n)));
+        });
+        numEl.textContent = 'State ' + n + ' of 7:';
+        nameEl.textContent = NAMES[n];
+      }
+
+      // Merge new values into the state; returns the keys that actually moved.
+      function set(values) {
+        var changed = {};
+        for (var k in values) {
+          if (state[k] !== values[k]) { state[k] = values[k]; changed[k] = true; }
+        }
+        render(changed);
+        return changed;
+      }
+
+      // ---- Tour ----
+      var playBtn = root.querySelector('.state-play');
+      var playLabel = root.querySelector('[data-play-label]');
+      var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var playing = !reduceMotion;
+      var visible = false;
+      var timer = null;
+      var step = 0;
+
+      function tick() {
+        // Skip steps that wouldn't change the card from where we are now.
+        for (var i = 0; i < TOUR.length; i++) {
+          var t = TOUR[step];
+          step = (step + 1) % TOUR.length;
+          var before = cardFor(state);
+          var v = {}; v[t[0]] = t[1];
+          set(v);
+          if (cardFor(state) !== before) return;
+        }
+      }
+
+      function sync() {
+        var run = playing && visible;
+        if (run && !timer) timer = setInterval(tick, 2600);
+        if (!run && timer) { clearInterval(timer); timer = null; }
+        playBtn.setAttribute('data-state', playing ? 'playing' : 'paused');
+        playBtn.setAttribute('aria-label', playing ? 'Pause the state tour' : 'Play the state tour');
+        playLabel.textContent = playing ? 'Pause tour' : 'Play tour';
+      }
+
+      function stopTour() { playing = false; sync(); }
+
+      playBtn.addEventListener('click', function () {
+        playing = !playing;
+        if (playing) tick();
+        sync();
+      });
+
+      // ---- Inputs ----
+      Array.prototype.forEach.call(ctls, function (ctl) {
+        var key = ctl.getAttribute('data-key');
+        ctl.addEventListener('click', function (e) {
+          var b = e.target.closest('button[data-value]');
+          if (!b) return;
+          stopTour();
+          var v = {};
+          var need = NEEDS[key] || {};
+          for (var k in need) v[k] = need[k];
+          v[key] = b.getAttribute('data-value');
+          set(v);
+        });
+      });
+
+      Array.prototype.forEach.call(rail, function (b) {
+        b.addEventListener('click', function () {
+          stopTour();
+          set(STATES[b.getAttribute('data-goto')]);
+        });
+      });
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          sync();
+        }, { threshold: 0.5 }).observe(root);
+      }
+
+      render(null);
+      sync();
     })();
   </script>
 

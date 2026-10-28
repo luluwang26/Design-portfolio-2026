@@ -4081,3 +4081,477 @@ body.lb-open {
 .cs-main .lead {
   font-weight: 600;
 }
+
+/* ============================================================
+   FTU case study — "ui = fn(state)" payment-widget prototype
+   After Matt Rothenberg's Pure UI demo: segmented controls on the
+   left set the receiver's state, the widget on the right renders the
+   one card that state gets. All seven cards sit stacked in one grid
+   cell, so the frame keeps the tallest card's height and never jumps.
+   ============================================================ */
+
+.state-proto {
+  padding: 28px 28px 24px;
+}
+
+.state-eq {
+  margin: 0 0 24px !important;
+  text-align: center;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.state-eq .eq-ui {
+  color: var(--cs-accent);
+}
+
+.state-eq .eq-state {
+  text-decoration: underline dotted var(--n300);
+  text-underline-offset: 7px;
+  text-decoration-thickness: 2px;
+}
+
+/* The frame and the readout under it are two rows of the right column
+   (.state-stage dissolves into the grid), so the controls centre on the
+   frame alone, whose height is fixed, and stay put whatever the readout says. */
+.state-proto-body {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  column-gap: 28px;
+  align-items: center;
+}
+
+.state-stage {
+  display: contents;
+}
+
+.state-controls {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.state-frame {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.state-readout {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* ---------- Controls ---------- */
+
+.state-controls {
+  display: grid;
+  gap: 14px;
+}
+
+.state-ctl {
+  transition: opacity .3s ease;
+}
+
+.state-ctl-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--n600);
+}
+
+.state-ctl.is-off {
+  opacity: .38;
+}
+
+.seg {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  background: #fff;
+  border: 1px solid var(--n200);
+  border-radius: 10px;
+  transition: border-color .7s ease, box-shadow .7s ease;
+}
+
+/* The control(s) the last change touched. */
+.state-ctl.is-changed .seg {
+  border-color: var(--cs-accent);
+  box-shadow: 0 0 0 1px var(--cs-accent);
+}
+
+.seg button {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.3;
+  white-space: nowrap;
+  color: var(--n600);
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+.seg button:hover {
+  color: var(--ink);
+}
+
+.seg button[aria-pressed="true"] {
+  background: var(--ink);
+  color: #fff;
+}
+
+.seg button:focus-visible,
+.state-rail button:focus-visible,
+.state-play:focus-visible {
+  outline: 2px solid var(--cs-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Stage: a browser frame around the widget ---------- */
+
+.state-frame {
+  background: #fff;
+  border: 1px solid var(--n200);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px -24px rgba(23, 23, 28, .28);
+  overflow: hidden;
+}
+
+.state-frame-bar {
+  display: flex;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.state-frame-bar i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--n200);
+}
+
+.state-cards {
+  display: grid;
+  padding: 24px;
+  background: #FAFAFA;
+}
+
+.pw {
+  grid-area: 1 / 1;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  max-width: 360px;
+  padding: 22px 22px 20px;
+  background: #fff;
+  border: 1px solid #d6d6d6;
+  border-radius: 12px;
+  color: #1f1f1f;
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity .35s ease, transform .35s ease, visibility 0s linear .35s;
+}
+
+.pw.is-on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity .35s ease .05s, transform .35s ease .05s;
+}
+
+.pw-blue {
+  color: #1C0FB0;
+  font-weight: 600;
+}
+
+.pw-link {
+  color: #1C0FB0;
+}
+
+.pw-title {
+  margin: 0 0 14px !important;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.state-proto .pw-meta {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 12px 16px;
+  background: #F5F5F5;
+  border-radius: 10px;
+}
+
+.pw-meta li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 3px 0;
+}
+
+.pw-meta svg,
+.pw-btn svg,
+.pw-step-dot svg {
+  flex: none;
+  width: 15px;
+  height: 15px;
+}
+
+.pw-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 31px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: #1C0FB0;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pw-btn--ghost {
+  background: #fff;
+  color: #1C0FB0;
+  box-shadow: inset 0 0 0 1.5px #1C0FB0;
+}
+
+.pw-btn--pill {
+  display: inline-flex;
+  height: 28px;
+  margin-top: 10px;
+  padding: 0 16px;
+  white-space: nowrap;
+  background: #4A3FCB;
+}
+
+.pw-h {
+  margin: 0 0 10px !important;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.state-proto .pw-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pw-steps li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 8px;
+  margin: 0;
+  padding-bottom: 12px;
+}
+
+.pw-steps li:last-child {
+  padding-bottom: 0;
+}
+
+/* the line joining the two check marks */
+.pw-steps li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: calc(50% + 4px);
+  height: calc(50% + 4px);
+  width: 1.5px;
+  background: #1f1f1f;
+}
+
+.pw-step-dot {
+  align-self: center;
+}
+
+.pw-step-body {
+  padding: 12px 14px;
+  background: #F5F5F5;
+  border-radius: 10px;
+}
+
+.pw--art {
+  text-align: center;
+}
+
+.pw--art img {
+  display: block;
+  width: 132px;
+  height: auto;
+  margin: 4px auto 14px;
+}
+
+.pw--art .pw-title {
+  margin-bottom: 4px !important;
+}
+
+/* ---------- State readout + rail ---------- */
+
+.state-readout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+/* Room for two lines whatever the state, so the note below doesn't jump. */
+.state-name {
+  margin: 0 !important;
+  min-height: 40px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--n600);
+}
+
+.state-name b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.state-proto .state-rail {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.state-rail li {
+  margin: 0;
+}
+
+.state-rail button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--n200);
+  border-radius: 50%;
+  background: #fff;
+  font: inherit;
+  font-size: 11px;
+  color: var(--n600);
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.state-rail button[aria-current="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.state-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 12px;
+  color: var(--n600);
+  cursor: pointer;
+}
+
+.state-play svg {
+  width: 10px;
+  height: 10px;
+}
+
+.state-play .icon-play,
+.state-play[data-state="paused"] .icon-pause {
+  display: none;
+}
+
+.state-play[data-state="paused"] .icon-play {
+  display: block;
+}
+
+.state-note {
+  margin: 20px 0 0 !important;
+  font-size: 14px;
+  color: var(--n600);
+}
+
+@media (max-width: 720px) {
+  .state-proto {
+    padding: 20px 16px;
+  }
+
+  .state-eq {
+    font-size: 22px;
+    margin-bottom: 18px !important;
+  }
+
+  .state-proto-body {
+    grid-template-columns: 1fr;
+  }
+
+  .state-controls,
+  .state-frame,
+  .state-readout {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .state-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .state-cards {
+    padding: 16px 12px;
+  }
+
+  .state-readout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Phones: one input per row, label beside its control. */
+@media (max-width: 480px) {
+  .state-controls {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .state-ctl {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+  }
+
+  .state-ctl-label {
+    margin: 0;
+  }
+
+  .seg button {
+    padding: 6px 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pw,
+  .pw.is-on {
+    transform: none;
+    transition: none;
+  }
+}

@@ -323,6 +323,17 @@
     #trust-in-search .post-media {
   background: #EBE7E3;
 }
+    #how-it-works-onboarding .post-media { background: #FCEFEA; }
+    #how-it-works-onboarding .post-media img { transform: scale(1.45); }
+    #prompt-bank-add-first .post-media { background: #FEF1E1; }
+    #prompt-bank-add-first .post-media img {
+  width: calc(100% - 48px);
+  height: calc(100% - 48px);
+  object-fit: cover;
+  object-position: 50% 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
     #trust-in-search .post-media img,
 #let-me-in .post-media img {
   width: auto;
@@ -408,6 +419,8 @@
     .post-card:nth-child(2) { --delay: .4s; }
     .post-card:nth-child(3) { --delay: .6s; }
     .post-card:nth-child(4) { --delay: .8s; }
+    .post-card:nth-child(5) { --delay: 1s; }
+    .post-card:nth-child(6) { --delay: 1.2s; }
 
     @keyframes card-fade { from { opacity: 0; } }
     @keyframes card-rise { from { translate: 0 40px; } }
@@ -985,6 +998,52 @@ body.fact-open {
                 <div class="post-badges">
                   <span class="badge">3+ experiments</span>
                   <span class="badge">50%+ success rate target</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="post-card" id="how-it-works-onboarding">
+            <a class="post-card-link" href="work/how-it-works-onboarding.html">
+              <div class="post-media">
+                <img src="assets/img/how it works/howitworks-hero-sm.png" alt="Guided AP onboarding — the &quot;How it works&quot; welcome screen on a laptop" />
+              </div>
+              <div class="post-content">
+                <p class="post-tag">Subscriber Onboarding · Growth</p>
+                <div class="post-headrow">
+                  <h3 class="post-title">“How it works” in Guided Onboarding</h3>
+                  <span class="post-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg></span>
+                </div>
+                <p class="post-desc">New customers signed up believing the platform could help, but many never saw enough value to stay. A short, skippable walkthrough teaches the product before asking anyone to configure it — turning onboarding from a checklist into a path.</p>
+                <div class="post-badges">
+                  <span class="badge">5–7× setup completion</span>
+                  <span class="badge">83% finish the tour</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="post-card" id="prompt-bank-add-first">
+            <a class="post-card-link" href="work/prompt-bank-add-first.html">
+              <div class="post-media">
+                <img src="assets/img/prompt-bank-add-first.png" alt="The set-up guide variant with a &quot;Start here&quot; step that leads with adding a bank" />
+              </div>
+              <div class="post-content">
+                <p class="post-tag">Subscriber Onboarding · Growth · A/B test</p>
+                <div class="post-headrow">
+                  <h3 class="post-title">Prompt bank add first during set up</h3>
+                  <span class="post-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg></span>
+                </div>
+                <p class="post-desc">Research said users who add a bank first convert more, but onboarding gave adding a funding method no more weight than nine other tiles. A “Start here” step pinned to the top of the set-up guide leads new trialers straight to the one action that unlocks value.</p>
+                <div class="post-badges">
+                  <span class="badge">10+% lift in conversion</span>
+                  <span class="badge">5+% lift in banks added</span>
                 </div>
               </div>
             </a>

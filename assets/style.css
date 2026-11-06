@@ -3802,6 +3802,15 @@ body.lb-open {
   }
 }
 
+/* The same recording inside an article column (the agent vision in the FTU
+   case study): no band to stand on, so the control tucks into the
+   recording's own bottom-left margin, darker to read on the pale pink. */
+.feature-video--panel.feature-video--so .play-toggle {
+  left: 8px;
+  bottom: 8px;
+  background: rgba(57, 57, 57, 0.55);
+}
+
 /* ---------- Learning cards (Trust in search, Research & Learnings) ---------- */
 
 /* Measured from the design: white card, 1px #CFCFCF border, 8px radius, 24px

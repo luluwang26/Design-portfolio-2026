@@ -7,7 +7,7 @@
   <title>Answering “Where is my money?” — Lulu Wang</title>
   <meta name="description"
     content="Clarifying payment status, offering best next steps, and introducing product value to new receivers after they sign up.">
-  <link rel="stylesheet" href="../assets/style.css?v=111">
+  <link rel="stylesheet" href="../assets/style.css?v=112">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -440,6 +440,44 @@
       <p>It compounded, too. Improving first-time understanding became a growth lever: the invoicing flow later became a
         major paid-tier entry point and contributed meaningfully to paid-tier acquisition and receivable TPV. Trust and
         clarity at first use keep paying.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">05</span>Supplier onboarding vision</h2>
+      <p>The research and learnings of this project served as the foundation for an agentic vendor onboarding vision 3
+        years later.</p>
+      <p>The data pointed out only 39% of vendors who opened onboarding finished it, and the password step alone lost
+        about 20% of vendors a month. Leadership wanted an "onboarding agent," but nobody had defined what it should
+        actually do.</p>
+      <p>I was the lead designer for Phase 1. My job was to turn "build an agent" into a concrete interaction model that
+        vendors would trust with their tax ID and bank details.</p>
+      <p>I did two things.</p>
+      <p>First, I defined a principle that the agent should deliver value before asking for commitment. The payment shows
+        up first, and the password moves to the end. Our Maze study with 24 vendors showed their unwillingness to commit
+        to account creation before seeing their first payment. One vendor said, "I just want to get paid, not have to
+        manage another account."</p>
+      <p>Second, I designed the trust model for the agent's work. The agent pre-fills the business profile from the
+        invoice, AP data, and directory data, so the vendor confirms a profile instead of filling out a form. Every
+        pre-filled field stays editable. The mental model I gave users is "the agent drafts, you confirm."</p>
+      <p>Here is the prototype.</p>
+      <div class="feature-video feature-video--panel feature-video--so">
+        <div class="feature-video-frame">
+          <video src="../assets/img/Supplier onboarding/onboarding-agent-proto.mp4"
+            poster="../assets/img/Supplier onboarding/onboarding-agent-proto-poster.jpg" muted playsinline
+            preload="none"
+            aria-label="Onboarding agent prototype: a vendor opens the payment email, sees their $800.00 payment first, confirms a profile the agent pre-filled, then links a bank and chooses payment speed."></video>
+        </div>
+        <button type="button" class="play-toggle" data-label="onboarding agent prototype video"
+          aria-label="Play onboarding agent prototype video">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
     </section>
 
     <nav class="cs-pager" aria-label="Case study navigation">

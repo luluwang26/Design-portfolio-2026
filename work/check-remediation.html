@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rescuing returned checks — Lulu Wang</title>
+  <meta name="description"
+    content="An opinionated, self-service workflow that lets AP customers fix returned checks in the product instead of letting the payment quietly fail.">
+  <link rel="stylesheet" href="../assets/style.css?v=122">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23FF4B26'/%3E%3C/svg%3E">
+</head>
+
+<body>
+
+  <header class="cs-nav">
+    <div class="cs-nav-inner">
+      <a class="cs-brand" href="../index.html" aria-label="Home">
+        <img src="../assets/img/Lulu photo.png?v=2" alt="Lulu Wang">
+      </a>
+      <nav class="cs-nav-links" aria-label="Main">
+        <div class="cs-nav-menu">
+          <button type="button" class="cs-nav-trigger" aria-expanded="false" aria-controls="nav-projects">
+            Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul class="cs-nav-dropdown" id="nav-projects" hidden>
+            <li><a href="basic-ftu-redesign.html">Answering “Where is my money?”</a></li>
+            <li><a href="trust-in-search.html">Trust in “Who am I paying?”</a></li>
+            <li><a href="check-remediation.html" aria-current="page">Rescuing returned checks</a></li>
+            <li><a href="let-me-in.html">Fraud risk and customer trust: “Let me in”</a></li>
+          </ul>
+        </div>
+        <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
+        <a href="../assets/Lulu_Wang_Resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/luluwangux/" target="_blank" rel="noopener me">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="cs-banner cs-banner--bleed cs-banner--plum cs-banner--cr">
+    <div class="feature-video feature-video--hero feature-video--cr">
+      <div class="feature-video-frame">
+        <video src="../assets/img/Check remediation/new-design.mp4"
+          poster="../assets/img/Check remediation/poster-hero.jpg" muted playsinline preload="none" data-autoplay
+          aria-label="The new design: returned checks flagged in Payments Out with an inline error and a Fix now action, which opens a drawer that validates and updates the vendor's address before reissuing the check."></video>
+      </div>
+      <button type="button" class="play-toggle" data-label="feature video" aria-label="Play feature video">
+        <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+          <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <main class="cs-main cs-main--plum">
+
+    <p class="cs-tag">Payments · Remediation · Shipped to GA</p>
+    <h1 class="cs-title">Rescuing returned checks</h1>
+    <p class="cs-lede">Turning a silent, support-dependent failure into a guided fix.</p>
+
+    <section class="glance-card">
+      <span class="chip chip-accent">At a glance</span>
+      <dl class="glance-list">
+        <dt>Summary:</dt>
+        <dd>When a paper check comes back undelivered, almost always because of a wrong vendor address, AP customers were
+          left with a failed payment, an unpaid vendor and no way to fix it in the product. I designed an opinionated,
+          end-to-end workflow that walks them through the fix in the order experts use: correct the address, then
+          reissue.</dd>
+
+        <dt>Design process:</dt>
+        <dd>Audit of the legacy experience → customer call, journey-map research → every address-validation outcome
+          mapped to a user story with engineering → concept flows → a full-day walkthrough with PM and engineering →
+          shipped in two phases.</dd>
+
+        <dt>Team:</dt>
+        <dd>1 product manager, 1 product designer, 1 front-end engineer, 1 back-end engineer.</dd>
+
+        <dt>AI Concept:</dt>
+        <dd><a class="glance-jump" href="#ai-concept">View prototype</a></dd>
+      </dl>
+
+      <div class="stat-row">
+        <div class="stat-tile">
+          <span class="stat-num">+20%</span>
+          <span class="stat-label">Check remediation rate increase</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">52%</span>
+          <span class="stat-label">Checks remediated in the guided workflow</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-num">2x</span>
+          <span class="stat-label">Checks fixed in the flow vs. baseline</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">01</span>Where it got hard</h2>
+      <blockquote class="cs-quote cs-quote--card">
+        <p>"I just wanted to make sure that a check wasn’t sent out.”</p>
+      </blockquote>
+      <p>Our AP customers move a huge volume of payments, and success was never the number of payments sent, it was
+        whether they arrived. A returned check is a remediable payment: it failed in flight, but it can still be
+        completed once the problem is fixed. In practice, it usually wasn’t.</p>
+      <p>Here is the legacy experience, which failed customers in three connected ways:</p>
+      <ol>
+        <li><span class="lead">It was passive.</span> Customers heard about a returned check by email, then had to chase a
+          fix through support. Nothing in the product let them resolve it.</li>
+        <li><span class="lead">It had no opinion.</span> “Void and credit” (give up) and “void and reissue” (fix it) had
+          the same weight, so customers had to work out the right move at the worst possible moment. Journey-map research
+          found people felt “reactive rather than empowered” around voids and returned payments.</li>
+        <li><span class="lead">It left them unsure afterwards.</span> With no clear, lasting status, customers couldn’t
+          tell whether their fix had worked, as the quote above shows.</li>
+      </ol>
+      <div class="feature-video feature-video--panel feature-video--cr feature-video--cr-legacy">
+        <div class="feature-video-frame">
+          <video src="../assets/img/Check remediation/legacy.mp4"
+            poster="../assets/img/Check remediation/poster-legacy.jpg" muted playsinline preload="none"
+            aria-label="The legacy experience: returned checks sit in Payments Out with only a Void action, and voiding offers credit or reissue as equal choices with no way to fix the vendor's address."></video>
+        </div>
+        <button type="button" class="play-toggle" data-label="legacy experience video"
+          aria-label="Play legacy experience video">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">02</span>Understanding the problem space</h2>
+      <p>Listening to a customer call, then comparing it with the journey map, support patterns and escalations, gave one
+        root cause: a returned check is almost always an address problem, and it can’t be reissued successfully until
+        the address is fixed. A support specialist put the expert sequence plainly: “you want to make sure that your
+        team is updating the vendor’s address first.”</p>
+      <div class="cause-card">
+        <span class="chip chip-accent">Design direction</span>
+        <p class="cause-title">Check remediation couldn’t be a single “reissue” button.</p>
+        <p>It had to follow the order experts used: fix the address, then reissue.</p>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">03</span>The decision I made, and why</h2>
+      <ol>
+        <li><span class="lead">Be opinionated about fixing, not voiding.</span> For the first time, the product took a
+          point of view: guide customers to fix the address and complete the payment.</li>
+        <li><span class="lead">Put the address fix inside one remediation drawer.</span> A single action now orchestrates
+          several operations behind the scenes.</li>
+        <li><span class="lead">Validate automatically, and suggest strongly rather than block.</span> The drawer runs
+          address validation and, when something is off, makes an explicit recommendation and asks the customer to
+          confirm.</li>
+        <li><span class="lead">Make the outcome explicit and persistent.</span> A “Fixed on [date]” marker and a “Reissue
+          pending” status.</li>
+      </ol>
+      <p>Awareness and action moved into one place: inline error icons, a single “Fix now” entry point for each returned
+        check, and a persistent inline status that gets updated in real time.</p>
+      <figure class="cs-figure cs-figure--outlined-8">
+        <img src="../assets/img/Check remediation/remediation-drawer.jpg" width="1640" height="1095" loading="lazy"
+          alt="Payments Out in the new design: each returned check shows an inline error, such as Invalid vendor address, a Voiding in N days status and its own Fix Now button.">
+      </figure>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">04</span>What I tried and dropped</h2>
+      <ul>
+        <li><span class="lead">Two equal void options.</span> Presenting “void and credit” and “void and reissue” side by
+          side was neutral, and left customers to decide alone. The fix became the default; giving up became a clearly
+          labeled exit.</li>
+        <li><span class="lead">A bare “Void” button.</span> Not giving users a way to fix the address goes against their
+          best practice.</li>
+        <li><span class="lead">Designing only the happy path.</span> I walked every address-validation result with
+          engineering (valid, corrected, missing, unconfirmed, warning and exception) and gave each one a defined
+          behaviour. That is what made a strong suggestion safe to ship instead of a hard block.</li>
+      </ul>
+      <p>PM, design and engineering then spent a full day walking the flows end to end, to catch logic gaps before they
+        became expensive in code. We shipped in two phases: an awareness layer first, then the end-to-end workflow at
+        general availability three months later.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2><span class="sec-num">05</span>What changed</h2>
+      <p>The awareness phase alone, which surfaced returned checks and created urgency, moved the check remediation rate
+        up 20%, from 18.3% to 22%, against the prior half. Once the guided workflow was live, checks fixed in the flow
+        were remediated at roughly twice the portfolio average.</p>
+      <table class="cs-table cs-table--plain cs-table--nowrap">
+        <colgroup>
+          <col class="col-measure">
+          <col class="col-legacy">
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Measure</th>
+            <th scope="col">Before</th>
+            <th scope="col">After</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Check remediation rate</td>
+            <td>18.3%</td>
+            <td>22% (awareness phase)</td>
+          </tr>
+          <tr>
+            <td>Guided check workflow vs. portfolio</td>
+            <td>~21% portfolio</td>
+            <td>~52% in the workflow</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>We accepted one risk openly: making fixable checks visible could raise support contacts in the short term,
+        because customers would finally notice checks they used to miss. Next steps were already scoped: guide only
+        users with permission to void, and record exactly why a reissue fails, including the remaining address
+        exceptions.</p>
+    </section>
+
+    <section class="cs-section cs-ai" id="ai-concept">
+      <h2><span class="sec-num">06</span>AI concept: a payment assistant that does the legwork</h2>
+      <p>The guided workflow still asks the customer to know the right address. Often they don’t, and finding it means
+        digging through invoices, W-9s and email. In this concept an assistant does that legwork. Here are the 4 main
+        steps:</p>
+      <ol>
+        <li><span class="lead">Triage.</span> It lists every returned check with how many days are left before it voids,
+          so the most urgent comes first.</li>
+        <li><span class="lead">Gather evidence, then recommend.</span> For each check it compares the address that was
+          mailed with recent invoices, the W-9 and the inbox, and recommends a validated address.</li>
+        <li><span class="lead">Ask the vendor.</span> A reissue needs the vendor’s confirmation. The vendor can approve,
+          correct the address, or switch to electronic payment.</li>
+        <li><span class="lead">Screen the reply and follow up.</span></li>
+      </ol>
+      <p>Guardrails: It never reissues on its own recommendation, contacts vendors only through details already on file,
+        never takes bank details by chat or email, and holds the payment at the first sign of fraud.</p>
+
+      <figure class="proto-figure">
+        <div class="proto-frame proto-live">
+          <div class="proto-screen proto-fit">
+            <iframe title="Interactive concept prototype: a payment assistant that fixes returned checks"
+              src="../proto/check-remediation/index.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <img class="proto-still" src="../assets/img/Check remediation/ai-concept.jpg" width="2160" height="1350"
+          alt="Concept prototype: the Payments Out table of returned checks, with the payment assistant open beside it showing evidence from four sources and a recommended, validated address."
+          loading="lazy">
+        <figcaption>A scripted, interactive prototype. Click Fix now on any vendor; each one is a different case.
+          <a href="../proto/check-remediation/index.html" target="_blank" rel="noopener">Open full screen ↗</a>
+        </figcaption>
+      </figure>
+    </section>
+
+    <nav class="cs-pager" aria-label="Case study navigation">
+      <a class="pager-link prev" href="trust-in-search.html">
+        <span class="pager-dir">← Previous</span>
+        <span class="pager-title">Trust in “Who am I paying?”</span>
+      </a>
+      <a class="pager-link next" href="let-me-in.html">
+        <span class="pager-dir">Next →</span>
+        <span class="pager-title">Fraud risk and customer trust: “Let me in”</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">© 2026 Lulu Wang. All rights reserved.</footer>
+
+  <script>
+    // Feature videos, after Mercury's marketing site: each rests on a still frame
+    // and plays inline, muted. One button toggles play and pause and its label
+    // follows suit; clicking the video does the same. Only one runs at a time.
+    //
+    // Hero videos (data-autoplay) start on their own when the page loads, unless
+    // the visitor's system asks for reduced motion. Nothing loops: when a video
+    // finishes, load() resets it to its still (the poster) and the button goes
+    // back to Play. That reset is why autoplay is started here rather than by the
+    // autoplay attribute, which would make load() set it running again.
+    (function () {
+      var players = document.querySelectorAll('.feature-video');
+      var videos = document.querySelectorAll('.feature-video video');
+      var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      Array.prototype.forEach.call(players, function (box) {
+        var video = box.querySelector('video');
+        var btn = box.querySelector('.play-toggle');
+        if (!video || !btn) return;
+        var label = btn.getAttribute('data-label') || 'video';
+
+        function sync() {
+          var playing = !video.paused && !video.ended;
+          btn.setAttribute('data-state', playing ? 'playing' : 'paused');
+          btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + label);
+        }
+
+        function start() {
+          Array.prototype.forEach.call(videos, function (v) {
+            if (v !== video && !v.paused) v.pause();
+          });
+          var attempt = video.play();
+          if (attempt && attempt.catch) attempt.catch(sync);
+        }
+
+        function toggle() {
+          if (video.paused) { start(); } else { video.pause(); }
+        }
+
+        btn.addEventListener('click', toggle);
+        video.addEventListener('click', toggle);
+        video.addEventListener('play', sync);
+        video.addEventListener('pause', sync);
+        video.addEventListener('ended', function () {
+          video.load();
+          sync();
+        });
+        sync();
+
+        if (video.hasAttribute('data-autoplay') && !reduceMotion) start();
+      });
+    })();
+  </script>
+
+  <script>
+    // Projects dropdown. Click-toggle rather than :hover, so it works on touch
+    // and from the keyboard; Esc and an outside click both close it.
+    (function () {
+      var menu = document.querySelector('.cs-nav-menu');
+      if (!menu) return;
+      var trigger = menu.querySelector('.cs-nav-trigger');
+      var list = menu.querySelector('.cs-nav-dropdown');
+      if (!trigger || !list) return;
+
+      function setOpen(open) {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) { list.removeAttribute('hidden'); } else { list.setAttribute('hidden', ''); }
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    // The AI concept prototype renders at its native 1440x900 frame. Read that
+    // size off the iframe rather than assuming it, then scale to fill the frame
+    // exactly.
+    (function () {
+      var boxes = document.querySelectorAll('.proto-fit');
+      Array.prototype.forEach.call(boxes, function (box) {
+        var frame = box.querySelector('iframe');
+        if (!frame) return;
+        function fit() {
+          var native = frame.offsetWidth;
+          if (!native) return;
+          frame.style.transform = 'scale(' + (box.clientWidth / native) + ')';
+        }
+        fit();
+        window.addEventListener('resize', fit);
+        if (window.ResizeObserver) new ResizeObserver(fit).observe(box);
+      });
+    })();
+  </script>
+
+
+    <!-- Cloudflare Web Analytics -->
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "bb018103d6134490886ee10538300744"}'
+    ></script>
+    <!-- End Cloudflare Web Analytics -->
+  </body>
+
+</html>

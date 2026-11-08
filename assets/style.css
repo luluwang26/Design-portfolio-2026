@@ -4564,3 +4564,281 @@ body.lb-open {
     transition: none;
   }
 }
+
+/* ---------- AI concept section ---------- */
+
+/* Trust in search, Supplier onboarding and Check remediation each end with an
+   "AI concept" section: a live, scripted prototype (site/proto/) in the laptop
+   mockup. Those prototypes render at 1440x900. */
+.laptop-screen--1440x900 {
+  aspect-ratio: 1440 / 900;
+}
+
+.laptop-screen--1440x900 iframe {
+  width: 1440px;
+  height: 900px;
+}
+
+/* A still screenshot in the laptop (Check remediation hero). Outranks
+   `.cs-banner img { width: 85% }`. */
+.laptop-screen .laptop-shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+.cs-ai .chip {
+  margin-bottom: 4px;
+}
+
+.proto-figure figcaption a {
+  color: var(--cs-accent, inherit);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Phones: a 1440px prototype scaled to ~340px is unreadable, so show its still
+   and point to the full-screen version instead. */
+.proto-still {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .proto-figure .proto-live {
+    display: none;
+  }
+
+  .proto-figure .proto-still {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  }
+}
+
+/* ---------- Prototype frame (replaces the laptop mockup) ---------- */
+
+/* Prototypes sit in a plain light-grey bordered frame, the width of the
+   reading column (820px less .cs-main's 24px padding each side) so they line
+   up with the text above and below. Overrides the older break-out
+   `.proto-figure` rule, which centred a 1100px laptop past the column. */
+.prose .proto-figure,
+.proto-figure {
+  width: 100%;
+  max-width: calc(var(--cs-col) - 48px);
+  margin: 32px 0;
+  transform: none;
+}
+
+.proto-frame {
+  border: 1px solid #E4E4E7;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* The screen keeps the prototype's native 1440x900 shape; the iframe renders
+   at that size and the page script scales it to the frame's width. */
+.proto-screen {
+  position: relative;
+  aspect-ratio: 1440 / 900;
+  overflow: hidden;
+}
+
+.proto-screen iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 900px;
+  border: 0;
+  display: block;
+  transform-origin: 0 0;
+}
+
+/* A still screenshot in the frame (Check remediation hero). Outranks
+   `.cs-banner img { width: 85% }`. */
+.proto-screen .proto-shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+/* In the hero band the frame matches the reading column's width below it. */
+.proto-frame--hero {
+  width: 100%;
+  max-width: calc(var(--cs-col) - 48px);
+  margin: 0 auto;
+}
+
+@media (max-width: 760px) {
+  .cs-banner--proto {
+    padding: 32px 24px;
+  }
+
+  .proto-figure .proto-still {
+    border: 1px solid #E4E4E7;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+}
+
+/* "AI concept: View prototype" in the At a glance card jumps to the AI concept
+   section; the margin keeps its heading clear of the sticky nav. */
+.glance-list a.glance-jump {
+  color: var(--cs-accent, inherit);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cs-ai {
+  scroll-margin-top: 96px;
+}
+
+/* The onboarding agent recording in "Where is my money?" section 05 sits at the
+   reading column's width, like the prototype frames, instead of bleeding 24px
+   past the text on each side. */
+.feature-video--panel.feature-video--so {
+  width: 100%;
+  max-width: calc(var(--cs-col) - 48px);
+  margin: 0 0 20px;
+}
+
+/* ---------- One column width for every block (2026-11-07) ---------- */
+
+/* Every figure, video, card row and hero recording matches the reading column:
+   820px less .cs-main's 24px padding each side, so media edges line up with the
+   text. Replaces the older 24px "bleed" past the text and the per-hero widths
+   (842 / 818 / 751px). */
+.cs-figure--bleed,
+.feature-video--panel,
+.learning-cards {
+  width: 100%;
+  margin: 0 0 20px;
+}
+
+.feature-video--hero,
+.feature-video--hero.feature-video--ftu,
+.feature-video--hero.feature-video--lmi {
+  width: min(calc(var(--cs-col) - 48px), calc(100% - 48px));
+  margin: 0 auto;
+  transform: none;
+}
+
+/* With the hero now at the column's width, keep the FTU play control inside
+   the frame rather than hanging past its left edge. */
+.feature-video--hero.feature-video--ftu .play-toggle {
+  left: max(8px, calc(6% - 63px));
+}
+
+/* ---------- Rescuing returned checks (2026-11-07) ---------- */
+
+.cs-banner--plum {
+  background: #F6ECF5;
+}
+
+.cs-banner--cr {
+  padding: 40px 0;
+}
+
+/* Both recordings are app screens; the hero is full-bleed white UI, so it gets
+   the design's light outline and rounded corners to read against the plum band. */
+.feature-video--cr .feature-video-frame {
+  aspect-ratio: 1920 / 1284;
+  background: #fff;
+  border-radius: 8px;
+}
+
+/* The legacy recording carries its own pink margin (#F6ECF3), so no outline. */
+.feature-video--cr-legacy .feature-video-frame {
+  aspect-ratio: 1920 / 1268;
+  background: #F6ECF3;
+  border: 0;
+}
+
+.feature-video--cr .play-toggle {
+  left: 12px;
+  bottom: 12px;
+  background: rgba(57, 57, 57, 0.55);
+}
+
+/* Pull quote set as a grey card with a rule, per the design. */
+.cs-quote--card {
+  background: #FAFAFA;
+  border-radius: 8px;
+  border-left: 0;
+  padding: 24px 40px;
+  margin: 0 0 20px;
+  color: var(--n900, #171717);
+  position: relative;
+}
+
+.cs-quote--card::before {
+  content: "";
+  position: absolute;
+  left: 40px;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  background: var(--cs-accent);
+}
+
+.cs-quote--card p {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.cs-figure--outlined-8 img {
+  border: 1px solid var(--n300, #D4D4D4);
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .cs-quote--card { padding: 20px 20px; }
+  .cs-quote--card::before { left: 20px; top: 20px; bottom: 20px; }
+}
+
+/* Results table on Rescuing returned checks: columns size to their content so
+   every cell stays on one line; on narrow screens it's allowed to wrap again. */
+.cs-table--nowrap {
+  width: auto;
+  margin-bottom: 24px;
+}
+
+.cs-table--nowrap col.col-measure,
+.cs-table--nowrap col.col-legacy {
+  width: auto;
+}
+
+.cs-table--nowrap th,
+.cs-table--nowrap td {
+  white-space: nowrap;
+  padding-right: 40px;
+}
+
+.cs-table--nowrap th:last-child,
+.cs-table--nowrap td:last-child {
+  padding-right: 0;
+}
+
+@media (max-width: 600px) {
+  .cs-table--nowrap th,
+  .cs-table--nowrap td {
+    white-space: normal;
+    padding-right: 16px;
+  }
+}

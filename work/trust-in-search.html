@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Trust in “Who am I paying?” — Lulu Wang</title>
   <meta name="description" content="AI-assisted vendor identity matching.">
-  <link rel="stylesheet" href="../assets/style.css?v=107">
+  <link rel="stylesheet" href="../assets/style.css?v=122">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
@@ -31,12 +31,10 @@
             </svg>
           </button>
           <ul class="cs-nav-dropdown" id="nav-projects" hidden>
-            <li><a href="in-product-sales-connect.html">In-Product Sales Connect</a></li>
             <li><a href="basic-ftu-redesign.html">Answering “Where is my money?”</a></li>
-            <li><a href="let-me-in.html">Fraud risk and customer trust: “Let me in”</a></li>
             <li><a href="trust-in-search.html" aria-current="page">Trust in “Who am I paying?”</a></li>
-            <li><a href="how-it-works-onboarding.html">“How it works” in Guided Onboarding</a></li>
-            <li><a href="prompt-bank-add-first.html">Prompt bank add first during set up</a></li>
+            <li><a href="check-remediation.html">Rescuing returned checks</a></li>
+            <li><a href="let-me-in.html">Fraud risk and customer trust: “Let me in”</a></li>
           </ul>
         </div>
         <a href="https://medium.com/@luluwang" target="_blank" rel="noopener me">Writings</a>
@@ -82,6 +80,9 @@
 
         <dt>Team:</dt>
         <dd>1 product manager, 1 product designer, 1 front-end engineer, 1 back-end engineer.</dd>
+
+        <dt>AI concept:</dt>
+        <dd><a class="glance-jump" href="#ai-concept">View prototype</a></dd>
       </dl>
 
       <div class="stat-row stat-row--two">
@@ -304,14 +305,49 @@
       </ul>
     </section>
 
+    <section class="cs-section cs-ai" id="ai-concept">
+      <h2><span class="sec-num">05</span>AI concept: from a match to a vendor you can pay</h2>
+      <span class="chip chip-accent">Concept · not shipped</span>
+      <p>Round 3 stopped at the match card: four equal buttons, and nothing designed for after the click. This concept
+        lets the same assistant finish the job.</p>
+      <ol>
+        <li><span class="lead">Start from the document.</span> Drop an invoice or W-9. The assistant reads it, and the
+          field it’s reading lights up on the page.</li>
+        <li><span class="lead">One recommendation.</span> Each check names its source.</li>
+        <li><span class="lead">Only the open questions.</span> It asks just what needs a person, each with a default and
+          a reason: keep the invoice’s newer email, and request a W-9 because the team requires one.</li>
+        <li><span class="lead">Ask the vendor, then check the answer.</span> E.g., a W-9 carries no bank details, so the
+          assistant asks the vendor to confirm.</li>
+        <li><span class="lead">Review before saving.</span> The full record, with every change marked, before anything
+          is saved.</li>
+      </ol>
+      <p><span class="lead">Guardrails:</span> the assistant recommends and the AP decides. It never accepts a bank
+        change silently, and any call-back number comes from the record on file.</p>
+
+      <figure class="proto-figure">
+        <div class="proto-frame proto-live">
+          <div class="proto-screen proto-fit">
+            <iframe title="Interactive concept prototype: adding a vendor from an invoice or W-9 with an AI assistant"
+              src="../proto/agent-chat/index.html#/search" loading="lazy"></iframe>
+          </div>
+        </div>
+        <img class="proto-still" src="../assets/img/Trust in search/ai-concept.jpg" width="2160" height="1350"
+          alt="Concept prototype: an invoice on the left with the fields the assistant read highlighted; on the right, the assistant recommends Boston Tea, LLC with each check and its source, and flags an email that has changed."
+          loading="lazy">
+        <figcaption>A scripted, interactive prototype. Try both sample files, and the W-9 path’s bank change.
+          <a href="../proto/agent-chat/index.html#/search" target="_blank" rel="noopener">Open full screen ↗</a>
+        </figcaption>
+      </figure>
+    </section>
+
     <nav class="cs-pager" aria-label="Case study navigation">
-      <a class="pager-link prev" href="let-me-in.html">
+      <a class="pager-link prev" href="basic-ftu-redesign.html">
         <span class="pager-dir">← Previous</span>
-        <span class="pager-title">Fraud risk and customer trust: “Let me in”</span>
+        <span class="pager-title">Answering “Where is my money?”</span>
       </a>
-      <a class="pager-link next" href="how-it-works-onboarding.html">
+      <a class="pager-link next" href="check-remediation.html">
         <span class="pager-dir">Next →</span>
-        <span class="pager-title">“How it works” in Guided Onboarding</span>
+        <span class="pager-title">Rescuing returned checks</span>
       </a>
     </nav>
 
@@ -363,6 +399,27 @@
           setOpen(false);
           trigger.focus();
         }
+      });
+    })();
+  </script>
+
+  <script>
+    // The AI concept prototype renders at its native 1440x900 frame. Read that
+    // size off the iframe rather than assuming it, then scale to fill the frame
+    // exactly.
+    (function () {
+      var boxes = document.querySelectorAll('.proto-fit');
+      Array.prototype.forEach.call(boxes, function (box) {
+        var frame = box.querySelector('iframe');
+        if (!frame) return;
+        function fit() {
+          var native = frame.offsetWidth;
+          if (!native) return;
+          frame.style.transform = 'scale(' + (box.clientWidth / native) + ')';
+        }
+        fit();
+        window.addEventListener('resize', fit);
+        if (window.ResizeObserver) new ResizeObserver(fit).observe(box);
       });
     })();
   </script>

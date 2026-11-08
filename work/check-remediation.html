@@ -7,7 +7,7 @@
   <title>Rescuing returned checks — Lulu Wang</title>
   <meta name="description"
     content="An opinionated, self-service workflow that lets AP customers fix returned checks in the product instead of letting the payment quietly fail.">
-  <link rel="stylesheet" href="../assets/style.css?v=122">
+  <link rel="stylesheet" href="../assets/style.css?v=123">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
@@ -172,10 +172,22 @@
       </ol>
       <p>Awareness and action moved into one place: inline error icons, a single “Fix now” entry point for each returned
         check, and a persistent inline status that gets updated in real time.</p>
-      <figure class="cs-figure cs-figure--outlined-8">
-        <img src="../assets/img/Check remediation/remediation-drawer.jpg" width="1640" height="1095" loading="lazy"
-          alt="Payments Out in the new design: each returned check shows an inline error, such as Invalid vendor address, a Voiding in N days status and its own Fix Now button.">
-      </figure>
+      <div class="feature-video feature-video--panel feature-video--cr feature-video--cr-outlined">
+        <div class="feature-video-frame">
+          <video src="../assets/img/Check remediation/new-design.mp4"
+            poster="../assets/img/Check remediation/poster-hero.jpg" muted playsinline preload="none"
+            aria-label="The new design: returned checks flagged in Payments Out with an inline error and a Fix now action, which opens a drawer that validates and updates the vendor's address before reissuing the check."></video>
+        </div>
+        <button type="button" class="play-toggle" data-label="new design video" aria-label="Play new design video">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
     </section>
 
     <section class="cs-section">

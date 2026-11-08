@@ -4802,9 +4802,9 @@ body.lb-open {
   padding-left: 16px;
 }
 
-.cs-figure--outlined-8 img {
+/* White app UI on the white page needs an edge; the hero sits on plum and doesn't. */
+.feature-video--cr-outlined .feature-video-frame {
   border: 1px solid var(--n300, #D4D4D4);
-  border-radius: 8px;
 }
 
 @media (max-width: 600px) {

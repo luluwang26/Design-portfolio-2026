@@ -7,7 +7,7 @@
   <title>Rescuing returned checks — Lulu Wang</title>
   <meta name="description"
     content="An opinionated, self-service workflow that lets AP customers fix returned checks in the product instead of letting the payment quietly fail.">
-  <link rel="stylesheet" href="../assets/style.css?v=123">
+  <link rel="stylesheet" href="../assets/style.css?v=127">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
@@ -50,9 +50,9 @@
   <section class="cs-banner cs-banner--bleed cs-banner--plum cs-banner--cr">
     <div class="feature-video feature-video--hero feature-video--cr">
       <div class="feature-video-frame">
-        <video src="../assets/img/Check remediation/new-design.mp4"
-          poster="../assets/img/Check remediation/poster-hero.jpg" muted playsinline preload="none" data-autoplay
-          aria-label="The new design: returned checks flagged in Payments Out with an inline error and a Fix now action, which opens a drawer that validates and updates the vendor's address before reissuing the check."></video>
+        <video src="../assets/img/Check remediation/new-design-1117.mp4"
+          poster="../assets/img/Check remediation/poster-hero-1117.jpg" muted playsinline preload="none" data-autoplay
+          aria-label="The new design: each returned check in Payments Out has a Fix it action that opens a drawer showing the undeliverable address on file; the customer updates the address and the check is reissued, ending on a Check reissued summary."></video>
       </div>
       <button type="button" class="play-toggle" data-label="feature video" aria-label="Play feature video">
         <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
@@ -127,7 +127,7 @@
         <li><span class="lead">It left them unsure afterwards.</span> With no clear, lasting status, customers couldn’t
           tell whether their fix had worked, as the quote above shows.</li>
       </ol>
-      <div class="feature-video feature-video--panel feature-video--cr feature-video--cr-legacy">
+      <div class="feature-video feature-video--panel feature-video--cr">
         <div class="feature-video-frame">
           <video src="../assets/img/Check remediation/legacy.mp4"
             poster="../assets/img/Check remediation/poster-legacy.jpg" muted playsinline preload="none"
@@ -160,35 +160,99 @@
     </section>
 
     <section class="cs-section">
-      <h2><span class="sec-num">03</span>The decision I made, and why</h2>
-      <ol>
-        <li><span class="lead">Be opinionated about fixing, not voiding.</span> For the first time, the product took a
-          point of view: guide customers to fix the address and complete the payment.</li>
-        <li><span class="lead">Put the address fix inside one remediation drawer.</span> A single action now orchestrates
-          several operations behind the scenes.</li>
-        <li><span class="lead">Validate automatically, and suggest strongly rather than block.</span> The drawer runs
-          address validation and, when something is off, makes an explicit recommendation and asks the customer to
-          confirm.</li>
-        <li><span class="lead">Make the outcome explicit and persistent.</span> A “Fixed on [date]” marker and a “Reissue
-          pending” status.</li>
-      </ol>
-      <p>Awareness and action moved into one place: inline error icons, a single “Fix now” entry point for each returned
-        check, and a persistent inline status that gets updated in real time.</p>
-      <div class="feature-video feature-video--panel feature-video--cr feature-video--cr-outlined">
-        <div class="feature-video-frame">
-          <video src="../assets/img/Check remediation/new-design.mp4"
-            poster="../assets/img/Check remediation/poster-hero.jpg" muted playsinline preload="none"
-            aria-label="The new design: returned checks flagged in Payments Out with an inline error and a Fix now action, which opens a drawer that validates and updates the vendor's address before reissuing the check."></video>
+      <h2><span class="sec-num">03</span>6 questions &amp; 6 decisions</h2>
+
+      <div class="cause-card qd-card qd-card--stack">
+        <div class="qd-text">
+          <span class="chip chip-accent">Question &amp; Decision</span>
+          <p class="cause-title">How many entry points currently? Are they effective?</p>
+          <p>Answer: Two. Email notification &amp; In product payment entry. No. Email can be improved. CTA can be
+            improved.</p>
+          <p>Decision: Keep the 2 entry points. Rewrite the email. Update CTA content.</p>
         </div>
-        <button type="button" class="play-toggle" data-label="new design video" aria-label="Play new design video">
-          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M4 2.5v11l9.5-5.5z" fill="currentColor" />
-          </svg>
-          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true">
-            <rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
-            <rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor" />
-          </svg>
-        </button>
+        <div class="qd-pair">
+          <figure class="qd-shot">
+            <img src="../assets/img/Check remediation/decisions/entry-before.png" width="1440" height="1021"
+              loading="lazy" alt="Before: Payments Out lists the returned checks with only a Void button and no sign of what went wrong.">
+            <span class="qd-tag">Before</span>
+          </figure>
+          <figure class="qd-shot">
+            <img src="../assets/img/Check remediation/decisions/entry-after.png" width="1440" height="1021"
+              loading="lazy" alt="After: each returned check shows an Invalid vendor address error and a Fix it button.">
+            <span class="qd-tag">After</span>
+          </figure>
+        </div>
+      </div>
+
+      <div class="cause-card qd-card">
+        <div class="qd-text">
+          <span class="chip chip-accent">Question &amp; Decision</span>
+          <p class="cause-title">Which action should AP see first once engaging?</p>
+          <p>Answer: 1. Address correction, 2. void &amp; re-issue, 3. void &amp; credit.</p>
+          <p>Decision: Re-order task sequence.</p>
+        </div>
+        <div class="qd-visual">
+          <img class="qd-phone" src="../assets/img/Check remediation/decisions/order-before.png" width="500"
+            height="1080" loading="lazy"
+            alt="Before: a Request to void payment drawer asks the customer to pick void and reissue or void and credit, with no way to fix the address.">
+          <span class="qd-arrow" aria-hidden="true">→</span>
+          <img class="qd-phone" src="../assets/img/Check remediation/decisions/order-after.png" width="500"
+            height="1080" loading="lazy"
+            alt="After: a Fix payment issue drawer leads with Update the address to reissue, with Update address as the main action and Void and credit as the secondary one.">
+        </div>
+      </div>
+
+      <div class="cause-card qd-card">
+        <div class="qd-text">
+          <span class="chip chip-accent">Question &amp; Decision</span>
+          <p class="cause-title">Should AP edit incorrect addresses in the same drawer, or a new one?</p>
+          <p>Answer: On a new drawer with a reference of the incorrect address, and a focused form.</p>
+          <p>Decision: After committing, a new drawer slides out with a clean form and the incorrect address as
+            reference.</p>
+        </div>
+        <div class="qd-visual">
+          <img class="qd-button" src="../assets/img/Check remediation/decisions/update-address-button.png" width="155"
+            height="36" loading="lazy" alt="The Update address button">
+          <span class="qd-arrow" aria-hidden="true">→</span>
+          <img class="qd-phone" src="../assets/img/Check remediation/decisions/update-address-drawer.png" width="500"
+            height="1080" loading="lazy"
+            alt="An Update address drawer: the undeliverable address on file at the top for reference, then an empty address form.">
+        </div>
+      </div>
+
+      <div class="cause-card qd-card">
+        <div class="qd-text">
+          <span class="chip chip-accent">Question &amp; Decision</span>
+          <p class="cause-title">Is the content clear and concise?</p>
+          <p>Answer: No. Too much text, no visual hierarchy.</p>
+          <p>Decision: Cut the text and add visuals.</p>
+        </div>
+        <div class="qd-visual">
+          <img class="qd-phone" src="../assets/img/Check remediation/decisions/confirmation-before.png" width="500"
+            height="1080" loading="lazy"
+            alt="Before: a Void request submitted confirmation with paragraphs of explanation and a void summary.">
+          <span class="qd-arrow" aria-hidden="true">→</span>
+          <img class="qd-phone" src="../assets/img/Check remediation/decisions/confirmation-after.png" width="500"
+            height="1080" loading="lazy" alt="After: a shorter confirmation with an illustration and a brief summary.">
+        </div>
+      </div>
+
+      <div class="cause-card qd-card">
+        <div class="qd-text">
+          <span class="chip chip-accent">Question &amp; Decision</span>
+          <p class="cause-title">Is the new design Design System compliant?</p>
+          <p>Answer: Yes.</p>
+          <p>Decision: Reuse it. Same drawer, same correction behavior.</p>
+        </div>
+      </div>
+
+      <div class="cause-card qd-card">
+        <div class="qd-text">
+          <span class="chip chip-accent">Question &amp; Decision</span>
+          <p class="cause-title">Any changes needed to operations or customer support?</p>
+          <p>Answer: No.</p>
+          <p>Decision: Both stay as they are.</p>
+        </div>
       </div>
     </section>
 
@@ -247,10 +311,10 @@
     </section>
 
     <section class="cs-section cs-ai" id="ai-concept">
-      <h2><span class="sec-num">06</span>AI concept: a payment assistant that does the legwork</h2>
-      <p>The guided workflow still asks the customer to know the right address. Often they don’t, and finding it means
-        digging through invoices, W-9s and email. In this concept an assistant does that legwork. Here are the 4 main
-        steps:</p>
+      <h2><span class="sec-num">06</span>AI concept</h2>
+      <p><strong>“Show how easy it is to fix”, but is it really easy?</strong> No. AP still has to email or call the
+        vendor to confirm the address, or digging through invoices, W-9s and email. The interface could change intent,
+        but it doesn’t replace the manual work. An agentic system can. Here are the 4 main steps:</p>
       <ol>
         <li><span class="lead">Triage.</span> It lists every returned check with how many days are left before it voids,
           so the most urgent comes first.</li>
@@ -262,6 +326,13 @@
       </ol>
       <p>Guardrails: It never reissues on its own recommendation, contacts vendors only through details already on file,
         never takes bank details by chat or email, and holds the payment at the first sign of fraud.</p>
+
+      <figure class="cs-figure cr-agent-design">
+        <a href="../assets/img/Check remediation/agent-design.png" target="_blank" rel="noopener">
+          <img src="../assets/img/Check remediation/agent-design.png" width="1508" height="1808" loading="lazy"
+            alt="Agent design diagram. The agent gathers evidence automatically, recommends a better address and asks the vendor on file, while fraud rules screen every step and hold the payment on any signal. The vendor approves or corrects the address, adds a bank account, or doesn't reply before day N; rules check the reply, then the system reissues the check, pays electronically, or hands the address fix to the AP user in the existing flow. No reissue happens until the vendor or the AP user confirms the address.">
+        </a>
+      </figure>
 
       <figure class="proto-figure">
         <div class="proto-frame proto-live">

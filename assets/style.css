@@ -4755,19 +4755,12 @@ body.lb-open {
   padding: 40px 0;
 }
 
-/* Both recordings are app screens; the hero is full-bleed white UI, so it gets
-   the design's light outline and rounded corners to read against the plum band. */
+/* All three recordings (new design x2, legacy) carry their own pink margin
+   (#F6ECF3) around the app, so they need no outline on white or plum. */
 .feature-video--cr .feature-video-frame {
-  aspect-ratio: 1920 / 1284;
-  background: #fff;
-  border-radius: 8px;
-}
-
-/* The legacy recording carries its own pink margin (#F6ECF3), so no outline. */
-.feature-video--cr-legacy .feature-video-frame {
   aspect-ratio: 1920 / 1268;
   background: #F6ECF3;
-  border: 0;
+  border-radius: 8px;
 }
 
 .feature-video--cr .play-toggle {
@@ -4800,11 +4793,6 @@ body.lb-open {
 .cs-quote--card p {
   margin: 0;
   padding-left: 16px;
-}
-
-/* White app UI on the white page needs an edge; the hero sits on plum and doesn't. */
-.feature-video--cr-outlined .feature-video-frame {
-  border: 1px solid var(--n300, #D4D4D4);
 }
 
 @media (max-width: 600px) {
@@ -4841,4 +4829,124 @@ body.lb-open {
     white-space: normal;
     padding-right: 16px;
   }
+}
+
+/* ---------- Rescuing returned checks: 6 questions & 6 decisions (2026-11-17) ---------- */
+
+.qd-card {
+  border-color: #CFCFCF;
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.qd-card--stack {
+  flex-direction: column;
+  gap: 6px;
+}
+
+.qd-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.qd-text .chip {
+  margin-bottom: 10px;
+}
+
+.qd-text p {
+  margin: 0 0 10px !important;
+  color: var(--n800, #262626);
+}
+
+.qd-text p.cause-title {
+  color: var(--n900, #171717);
+}
+
+.qd-text p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.qd-visual {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qd-phone {
+  display: block;
+  width: 130px;
+  height: auto;
+}
+
+.qd-button {
+  display: block;
+  width: 65px;
+  height: auto;
+}
+
+.qd-arrow {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--n900, #171717);
+}
+
+.qd-pair {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.qd-shot {
+  position: relative;
+  margin: 0;
+}
+
+.qd-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #F5F5F5;
+  border-radius: 8px;
+}
+
+.qd-tag {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #1C1B1B;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+@media (max-width: 600px) {
+  .qd-card {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .qd-visual {
+    align-self: center;
+  }
+
+  .qd-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Section 06 agent design diagram: shown at the design's 350px, opens full size. */
+.cr-agent-design img {
+  width: 350px;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--n300, #D4D4D4);
+  border-radius: 8px;
 }

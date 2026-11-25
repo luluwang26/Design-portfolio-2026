@@ -1704,6 +1704,10 @@ a:hover {
   --azure-tint: #E7F1FE;
   --amber-ink: #D68D31;
   --amber-tint: #FEF1E1;
+  --linen-ink: #2D2725;
+  --linen-tint: #F6F6F3;
+  --violet-ink: #473CC5;
+  --violet-tint: #EEEDFA;
   --stone-ink: #393939;
   --stone-tint: #EEEBE7;
   --grey-tint: #FAFAFA;
@@ -1749,6 +1753,19 @@ a:hover {
 .cs-main--amber {
   --cs-accent: var(--amber-ink);
   --cs-accent-tint: var(--amber-tint);
+}
+
+
+/* Violet-themed case study ("How it works", 2026-11-25). */
+.cs-main--violet {
+  --cs-accent: var(--violet-ink);
+  --cs-accent-tint: var(--violet-tint);
+}
+
+/* Linen-themed case study (Prompt Bank Add First, 2026-11-25). */
+.cs-main--linen {
+  --cs-accent: var(--linen-ink);
+  --cs-accent-tint: var(--linen-tint);
 }
 
 /* Stone-themed case study (Trust in search). */
@@ -3429,7 +3446,7 @@ body.lb-open {
    the prototype's native 1440x916 aspect; the iframe is rendered at native
    size and scaled to fit by script. */
 .cs-banner--proto {
-  background: #FCEFE9;
+  background: #EEEDFA;
   max-width: none;
   padding: 60px 80px;
   /* Positioning context for the loading toast. */
@@ -3463,6 +3480,7 @@ body.lb-open {
 .cs-banner--peach {
   background: #FEF1E1;
 }
+
 
 /* Trust in search hero band. (The feature video's own margins are #EBE7E3, a
    shade darker, so its frame can read as a faint rectangle on this band.) */
@@ -4949,4 +4967,25 @@ body.lb-open {
   height: auto;
   border: 1px solid var(--n300, #D4D4D4);
   border-radius: 8px;
+}
+
+/* ---------- Prompt bank add first hero (2026-11-25) ----------
+   A product screenshot on the linen band, held to the 772px reading column. */
+.cs-banner--linen {
+  background: #F6F6F3;
+  max-width: none;
+  padding: 40px 24px;
+}
+
+.cs-banner--linen img {
+  width: 772px;
+  max-width: 100%;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .cs-banner--linen {
+    padding: 24px 16px;
+  }
 }
